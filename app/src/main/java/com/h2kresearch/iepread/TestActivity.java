@@ -16,9 +16,6 @@ public class TestActivity extends AppCompatActivity {
   TextView test2;
   Button button;
 
-  boolean test1Touch = false;
-  boolean test2Touch = false;
-
   String[] test1String = {"이", "야", "에", "아", "어", "오"};
   String[] test2String = {"에", "유", "오", "에", "오", "으"};
   int indexString = 1;
@@ -32,39 +29,34 @@ public class TestActivity extends AppCompatActivity {
     test2 = (TextView)findViewById(R.id.textView2);
     button = (Button)findViewById(R.id.button2);
     button.setEnabled(false);
+    button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        button.setEnabled(false);
+        button.setBackgroundColor(Color.parseColor("#EDEDED"));
+
+        test1.setBackgroundColor(Color.rgb(255, 255, 255));
+        test2.setBackgroundColor(Color.rgb(255, 255, 255));
+
+        test1.setText(test1String[indexString]);
+        test2.setText(test2String[indexString]);
+        indexString++;
+
+        if(indexString >= test1String.length) {
+          indexString = 0;
+        }
+      }
+    });
 
     test1.setOnTouchListener(new View.OnTouchListener() {
       @Override
       public boolean onTouch(View view, MotionEvent motionEvent) {
         if(motionEvent.getAction()==MotionEvent.ACTION_DOWN) {
-          if(test1Touch == false) {
-            test1Touch = true;
-            test2Touch = false;
-            test1.setBackgroundColor(Color.rgb(255, 0, 0));
-            test2.setBackgroundColor(Color.rgb(255, 255, 255));
-          } else {
-            test1.setBackgroundColor(Color.rgb(0, 255, 0));
+          button.setEnabled(true);
+          button.setBackgroundColor(Color.parseColor("#7ABC4F"));
 
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-              @Override
-              public void run() {
-                test1.setText(test1String[indexString]);
-                test2.setText(test2String[indexString]);
-                indexString++;
-
-                if(indexString >= test1String.length) {
-                  indexString = 0;
-                }
-
-                test1.setBackgroundColor(Color.rgb(255, 255, 255));
-                test2.setBackgroundColor(Color.rgb(255, 255, 255));
-                test1Touch = false;
-                test2Touch = false;
-
-              }
-            }, 1000);
-          }
+          test1.setBackgroundColor(Color.parseColor("#BAFC8E"));
+          test2.setBackgroundColor(Color.rgb(255, 255, 255));
         }
         return false;
       }
@@ -74,14 +66,11 @@ public class TestActivity extends AppCompatActivity {
       @Override
       public boolean onTouch(View view, MotionEvent motionEvent) {
         if(motionEvent.getAction()==MotionEvent.ACTION_DOWN) {
-          if (test2Touch == false) {
-            test1Touch = false;
-            test2Touch = true;
-            test1.setBackgroundColor(Color.rgb(255, 255, 255));
-            test2.setBackgroundColor(Color.rgb(255, 0, 0));
-          } else {
-            test2.setBackgroundColor(Color.rgb(0, 255, 0));
-          }
+          button.setEnabled(true);
+          button.setBackgroundColor(Color.parseColor("#7ABC4F"));
+
+          test1.setBackgroundColor(Color.rgb(255, 255, 255));
+          test2.setBackgroundColor(Color.parseColor("#BAFC8E"));
         }
         return false;
       }
