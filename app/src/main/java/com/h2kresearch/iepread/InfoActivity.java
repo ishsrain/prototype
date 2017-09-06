@@ -8,17 +8,23 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
+import android.text.Layout;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -31,111 +37,57 @@ import org.json.JSONException;
 
 public class InfoActivity extends AppCompatActivity {
 
-  EditText teacherName;
-  EditText studentName;
-
-  Button imgsel,upload;
-  ImageView img;
-  String path;
+  EditInfo teacherName;
+  EditInfo teacherEmail;
+  EditInfo studentName;
+  EditInfo studentNumber;
+  Button buttonStart;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_info);
 
-    teacherName = (EditText)findViewById(R.id.editText);
-    studentName = (EditText)findViewById(R.id.editText2);
-    teacherName.addTextChangedListener(nameWatcher);
-    studentName.addTextChangedListener(nameWatcher);
+    // Info EditText
+    teacherName = (EditInfo) findViewById(R.id.editText);
+    teacherEmail = (EditInfo) findViewById(R.id.editText2);
+    studentName = (EditInfo) findViewById(R.id.editText3);
+    studentNumber = (EditInfo) findViewById(R.id.editText4);
 
-    img = (ImageView)findViewById(R.id.img);
-    Ion.getDefault(this).configure().setLogging("ion-sample", Log.DEBUG);
-    imgsel = (Button)findViewById(R.id.imagesel);
-    upload =(Button)findViewById(R.id.upload);
+    // Add Text Watcher
+    teacherName.addTextChangedListener(buttonWatcher);
+    teacherEmail.addTextChangedListener(buttonWatcher);
+    studentName.addTextChangedListener(buttonWatcher);
+    studentNumber.addTextChangedListener(buttonWatcher);
 
-    upload.setVisibility(View.INVISIBLE);
-    upload.setOnClickListener(new View.OnClickListener() {
+    // Start Button
+    buttonStart = (Button) findViewById(R.id.button);
+    buttonStart.setEnabled(false);
+
+    // Set Button Click Listener
+    buttonStart.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View v) {
-        File f = new File(path);
-
-        Future uploading = Ion.with(InfoActivity.this)
-//            .load("http://110.76.77.86:3000/process/androidupload")
-            .load("http://192.168.0.124:3000/process/androidupload")
-            .setMultipartFile("image", f)
-            .asString()
-            .withResponse()
-            .setCallback(new FutureCallback<Response<String>>() {
-              @Override
-              public void onCompleted(Exception e, Response<String> result) {
-                try {
-                  JSONObject jobj = new JSONObject(result.getResult());
-                  Toast.makeText(getApplicationContext(), jobj.getString("response"), Toast.LENGTH_SHORT).show();
-
-                } catch (JSONException e1) {
-                  e1.printStackTrace();
-                }
-
-              }
-            });
-
-        Toast.makeText(InfoActivity.this, "abc", Toast.LENGTH_SHORT).show();
-      }
-
-    });
-
-    imgsel.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent fintent = new Intent(Intent.ACTION_GET_CONTENT);
-        fintent.setType("image/jpeg");
-        try {
-          startActivityForResult(fintent, 100);
-        } catch (ActivityNotFoundException e) {
-
-        }
+      public void onClick(View view) {
+        Intent intent = new Intent(getBaseContext(), TestActivity.class);
+        startActivity(intent);
+        //finish();
       }
     });
   }
 
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (data == null)
-      return;
-    switch (requestCode) {
-      case 100:
-        if (resultCode == RESULT_OK) {
-          path = getPathFromURI(data.getData());
-          img.setImageURI(data.getData());
-          upload.setVisibility(View.VISIBLE);
-
-          Toast.makeText(InfoActivity.this, path, Toast.LENGTH_SHORT).show();
-
-        }
-    }
-  }
-  private String getPathFromURI(Uri contentUri) {
-    String[] proj = { MediaStore.Images.Media.DATA };
-    CursorLoader loader = new CursorLoader(getApplicationContext(), contentUri, proj, null, null, null);
-    Cursor cursor = loader.loadInBackground();
-    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-    cursor.moveToFirst();
-    return cursor.getString(column_index);
-  }
-
-  TextWatcher nameWatcher = new TextWatcher() {
+  // Text Watcher
+  TextWatcher buttonWatcher = new TextWatcher() {
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
       //Toast.makeText(InfoActivity.this, "abc", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2){
-      if(charSequence.length() == 0) {
-        teacherName.setBackgroundColor(Color.rgb(255,255,255));
-      } else if(charSequence.length() >= 2 && charSequence.length() < 10) {
-        teacherName.setBackgroundColor(Color.rgb(0,255,0));
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+      if (teacherName.textSuccess == true && teacherEmail.textSuccess == true && studentName.textSuccess == true && studentNumber.textSuccess == true) {
+        buttonStart.setEnabled(true);
       } else {
-        teacherName.setBackgroundColor(Color.rgb(255,0,0));
+        buttonStart.setEnabled(false);
       }
     }
 

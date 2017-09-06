@@ -1,176 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="#DEDEDE"
-  android:fitsSystemWindows="true"
-  tools:context="com.h2kresearch.iepread.InfoActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DEDEDE"
+    android:fitsSystemWindows="true"
+    tools:context="com.h2kresearch.iepread.InfoActivity">
 
   <ScrollView
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0">
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0">
+
     <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical">
-      <TextView
-        android:id="@+id/textView3"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="선생님 이름"
-        android:textColor="#333333"
-        android:textSize="22sp" />
-      <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:hint="이름을 입력하세요."
-        android:imeOptions="flagNoExtractUi"
-        android:inputType="textPersonName"
-        android:textColor="#333333"
-        android:textColorHint="@android:color/darker_gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="29dp" />
-      <TextView
-        android:id="@+id/textView4"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="선생님 이메일"
-        android:textColor="#333333"
-        android:textSize="22sp" />
-      <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:hint="이메일 주소를 입력하세요."
-        android:imeOptions="flagNoExtractUi"
-        android:inputType="textEmailAddress"
-        android:textColor="#333333"
-        android:textColorHint="@android:color/darker_gray"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="159dp" />
-      <TextView
-        android:id="@+id/textView5"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="학생 이름"
-        android:textColor="#333333"
-        android:textSize="22sp" />
-      <EditText
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:hint="이름을 입력하세요."
-        android:imeOptions="flagNoExtractUi"
-        android:inputType="textPersonName"
-        android:textColor="#333333"
-        android:textColorHint="@android:color/darker_gray"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="236dp" />
-      <TextView
-        android:id="@+id/textView6"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="학생 학번"
-        android:textColor="#333333"
-        android:textSize="22sp" />
-      <EditText
-        android:id="@+id/editText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:hint="학년반번호를 입력하세요."
-        android:imeOptions="flagNoExtractUi"
-        android:inputType="number"
-        android:textColor="#333333"
-        android:textColorHint="@android:color/darker_gray"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="86dp" />
-      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <Button
-          android:id="@+id/upload"
-          android:layout_width="100dp"
-          android:layout_height="200dp"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/textView3"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="0dp"
+          android:layout_marginTop="0dp"
           android:layout_weight="1"
-          android:text="upload"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintHorizontal_bias="0.0"
+          android:fontFamily="sans-serif"
+          android:gravity="center_vertical"
+          android:text="선생님 이름"
+          android:textColor="#333333"
+          android:textSize="22sp"
+          android:textStyle="bold" />
+
+      <com.h2kresearch.iepread.EditInfo
+          android:id="@+id/editText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@android:color/background_light"
+          android:ems="10"
+          android:gravity="center_vertical"
+          android:hint="이름을 입력하세요."
+          android:imeOptions="flagNoExtractUi"
+          android:inputType="textPersonName"
+          android:paddingBottom="0dp"
+          android:paddingTop="0dp"
+          android:textColor="#333333"
+          android:textColorHint="@android:color/darker_gray"
           app:layout_constraintLeft_toLeftOf="parent"
           app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-          app:layout_constraintVertical_bias="0.0" />
-        <Button
-          android:id="@+id/imagesel"
-          android:layout_width="100dp"
-          android:layout_height="200dp"
+          tools:layout_editor_absoluteY="29dp" />
+
+      <TextView
+          android:id="@+id/textView4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="0dp"
+          android:layout_marginTop="0dp"
           android:layout_weight="1"
-          android:text="imagesel" />
-      </LinearLayout>
-      <ImageView
-        android:id="@+id/img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        app:srcCompat="@android:drawable/alert_light_frame" />
+          android:fontFamily="sans-serif"
+          android:gravity="center_vertical"
+          android:text="선생님 이메일"
+          android:textColor="#333333"
+          android:textSize="22sp"
+          android:textStyle="bold" />
+
+      <com.h2kresearch.iepread.EditInfo
+          android:id="@+id/editText2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@android:color/background_light"
+          android:ems="10"
+          android:gravity="center_vertical"
+          android:hint="이메일 주소를 입력하세요."
+          android:imeOptions="flagNoExtractUi"
+          android:inputType="textEmailAddress"
+          android:paddingBottom="0dp"
+          android:paddingTop="0dp"
+          android:textColor="#333333"
+          android:textColorHint="@android:color/darker_gray"
+          tools:layout_editor_absoluteX="188dp"
+          tools:layout_editor_absoluteY="159dp" />
+
+      <TextView
+          android:id="@+id/textView5"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="0dp"
+          android:layout_marginTop="0dp"
+          android:layout_weight="1"
+          android:fontFamily="sans-serif"
+          android:gravity="center_vertical"
+          android:text="학생 이름"
+          android:textColor="#333333"
+          android:textSize="22sp"
+          android:textStyle="bold" />
+
+      <com.h2kresearch.iepread.EditInfo
+          android:id="@+id/editText3"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@android:color/background_light"
+          android:ems="10"
+          android:gravity="center_vertical"
+          android:hint="이름을 입력하세요."
+          android:imeOptions="flagNoExtractUi"
+          android:inputType="textPersonName"
+          android:paddingBottom="0dp"
+          android:paddingTop="0dp"
+          android:textColor="#333333"
+          android:textColorHint="@android:color/darker_gray"
+          tools:layout_editor_absoluteX="188dp"
+          tools:layout_editor_absoluteY="236dp" />
+
+      <TextView
+          android:id="@+id/textView6"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="0dp"
+          android:layout_marginTop="0dp"
+          android:layout_weight="1"
+          android:fontFamily="sans-serif"
+          android:gravity="center_vertical"
+          android:text="학생 학번"
+          android:textColor="#333333"
+          android:textSize="22sp"
+          android:textStyle="bold" />
+
+      <com.h2kresearch.iepread.EditInfo
+          android:id="@+id/editText4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:background="@android:color/background_light"
+          android:ems="10"
+          android:gravity="center_vertical"
+          android:hint="학년반번호를 입력하세요."
+          android:imeOptions="flagNoExtractUi"
+          android:inputType="number"
+          android:paddingBottom="0dp"
+          android:paddingTop="0dp"
+          android:textColor="#333333"
+          android:textColorHint="@android:color/darker_gray"
+          tools:layout_editor_absoluteX="188dp"
+          tools:layout_editor_absoluteY="86dp" />
+
+      <Button
+          android:id="@+id/button"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="진단 시작"
+          android:textSize="22sp"
+          android:textStyle="bold" />
+
     </LinearLayout>
   </ScrollView>
 </android.support.constraint.ConstraintLayout>
