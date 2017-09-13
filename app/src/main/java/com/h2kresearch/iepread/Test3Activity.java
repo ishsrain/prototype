@@ -1,12 +1,18 @@
 package com.h2kresearch.iepread;
 
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import java.io.File;
 
 public class Test3Activity extends AppCompatActivity {
 
@@ -15,11 +21,14 @@ public class Test3Activity extends AppCompatActivity {
 
   Thread thread;
 
-//  String[] testString = {"소나문", "소나무", "자전거", "자동차", "가지", "가재"};
-//  int indexString = 0;
-
   // Record Time (ms)
-  int msTime = 3000;
+  int msTime = 1500;
+
+  // Record/Play File
+  public static String RECORDED_FILE;
+
+  MediaPlayer player = null;
+  MediaRecorder recorder = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +52,14 @@ public class Test3Activity extends AppCompatActivity {
         // Progress Bar Init
         progressBar.setProgress(0);
 
-//        // Next Step
-//        indexString++;
-//        if (indexString == testString.length) {
-//          indexString = 0;
-//        }
-//
-//        // TextView Change
-//        Message msg = Message.obtain();
-//        msg.what = indexString;
-//        handler.sendMessage(msg);
       }
     });
+
+    // Record
+    File sdcard = Environment.getExternalStorageDirectory();
+    File file = new File(sdcard, "recorded.mp4");
+    RECORDED_FILE = file.getAbsolutePath();
+
 
     // TextView
     test = (TextView) findViewById(R.id.textView10);
@@ -62,6 +67,7 @@ public class Test3Activity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         thread.start();
+        recordFunction();
       }
     });
 
@@ -70,10 +76,63 @@ public class Test3Activity extends AppCompatActivity {
     progressBar.setMax(msTime);
   }
 
-//  // Handler
-//  Handler handler = new Handler() {
-//    public void handleMessage(Message msg) {
-//      test.setText(testString[msg.what]);
-//    }
-//  };
+  private void recordFunction() {
+
+    // Recording
+    if (recorder != null) {
+      recorder.stop();
+      recorder.release();
+      recorder = null;
+    }
+
+    recorder = new MediaRecorder();
+
+    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+    recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+    recorder.setMaxDuration(3 * 1000);
+    recorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
+      @Override
+      public void onInfo(MediaRecorder mr, int what, int extra) {
+        if(what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED){
+          if (recorder == null)
+            return;
+
+          recorder.stop();
+          recorder.release();
+          recorder = null;
+          Toast.makeText(getApplicationContext(), "3초가 지나 녹음이 중지되었습니다", Toast.LENGTH_LONG).show();
+
+          // Playing
+          if (player != null) {
+            player.stop();
+            player.release();
+            player = null;
+          }
+
+//          Toast.makeText(getApplicationContext(), "녹음된 파일을 재생합니다.", Toast.LENGTH_LONG).show();
+          try {
+            player = new MediaPlayer();
+
+            player.setDataSource(RECORDED_FILE);
+            player.prepare();
+            player.start();
+          } catch (Exception e) {
+            Log.e("SampleAudioRecorder", "Audio play failed.", e);
+          }
+        }
+      }
+    });
+
+    recorder.setOutputFile(RECORDED_FILE);
+
+    try {
+//      Toast.makeText(getApplicationContext(), "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
+
+      recorder.prepare();
+      recorder.start();
+    } catch (Exception ex) {
+      Log.e("SampleAudioRecorder", "Exception : ", ex);
+    }
+  }
 }
