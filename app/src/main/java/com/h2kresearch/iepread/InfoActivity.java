@@ -84,7 +84,8 @@ public class InfoActivity extends AppCompatActivity {
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-      if (teacherName.textSuccess == true && teacherEmail.textSuccess == true && studentName.textSuccess == true && studentNumber.textSuccess == true) {
+      if (teacherName.textSuccess == true && teacherEmail.textSuccess == true
+          && studentName.textSuccess == true && studentNumber.textSuccess == true) {
         buttonStart.setEnabled(true);
       } else {
         buttonStart.setEnabled(false);

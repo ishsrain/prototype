@@ -25,25 +25,26 @@ public class TestActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test);
 
-    test1 = (TextView)findViewById(R.id.textView);
-    test2 = (TextView)findViewById(R.id.textView2);
-    button = (Button)findViewById(R.id.button2);
+    test1 = (TextView) findViewById(R.id.textView);
+    test2 = (TextView) findViewById(R.id.textView2);
+    button = (Button) findViewById(R.id.button2);
     button.setEnabled(false);
     button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        button.setEnabled(false);
-        button.setBackgroundColor(Color.parseColor("#EDEDED"));
+        if (indexString >= test1String.length) {
+          Intent intent = new Intent(getBaseContext(), Test2Activity.class);
+          startActivity(intent);
+        } else {
+          button.setEnabled(false);
+          button.setBackgroundColor(Color.parseColor("#EDEDED"));
 
-        test1.setBackgroundColor(Color.rgb(255, 255, 255));
-        test2.setBackgroundColor(Color.rgb(255, 255, 255));
+          test1.setBackgroundColor(Color.rgb(255, 255, 255));
+          test2.setBackgroundColor(Color.rgb(255, 255, 255));
 
-        test1.setText(test1String[indexString]);
-        test2.setText(test2String[indexString]);
-        indexString++;
-
-        if(indexString >= test1String.length) {
-          indexString = 0;
+          test1.setText(test1String[indexString]);
+          test2.setText(test2String[indexString]);
+          indexString++;
         }
       }
     });
@@ -51,7 +52,7 @@ public class TestActivity extends AppCompatActivity {
     test1.setOnTouchListener(new View.OnTouchListener() {
       @Override
       public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(motionEvent.getAction()==MotionEvent.ACTION_DOWN) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
           button.setEnabled(true);
           button.setBackgroundColor(Color.parseColor("#7ABC4F"));
 
@@ -65,7 +66,7 @@ public class TestActivity extends AppCompatActivity {
     test2.setOnTouchListener(new View.OnTouchListener() {
       @Override
       public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(motionEvent.getAction()==MotionEvent.ACTION_DOWN) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
           button.setEnabled(true);
           button.setBackgroundColor(Color.parseColor("#7ABC4F"));
 

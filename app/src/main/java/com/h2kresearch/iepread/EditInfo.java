@@ -30,12 +30,12 @@ public class EditInfo extends android.support.v7.widget.AppCompatEditText {
     }
 
     @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2){
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
       textSuccess = false;
-      int type = getInputType()&(InputType.TYPE_MASK_VARIATION);
+      int type = getInputType() & (InputType.TYPE_MASK_VARIATION);
 
-      switch(type) {
+      switch (type) {
         case InputType.TYPE_TEXT_VARIATION_PERSON_NAME:
           if (charSequence.length() == 0) {
             setBackgroundColor(Color.rgb(255, 255, 255));
