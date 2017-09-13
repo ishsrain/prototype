@@ -5,6 +5,7 @@ import static java.lang.Thread.sleep;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -15,7 +16,16 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 
 public class Test2Activity extends AppCompatActivity {
 
@@ -34,6 +44,8 @@ public class Test2Activity extends AppCompatActivity {
 
   MediaPlayer player = null;
   MediaRecorder recorder = null;
+
+  private String result;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +113,10 @@ public class Test2Activity extends AppCompatActivity {
     recorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
       @Override
       public void onInfo(MediaRecorder mr, int what, int extra) {
-        if(what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED){
-          if (recorder == null)
+        if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
+          if (recorder == null) {
             return;
+          }
 
           recorder.stop();
           recorder.release();
@@ -124,6 +137,102 @@ public class Test2Activity extends AppCompatActivity {
             player.setDataSource(RECORDED_FILE);
             player.prepare();
             player.start();
+
+            // Server Test
+            new AsyncTask<Void,Void,Void>(){
+              @Override
+              protected void onPreExecute() {
+                super.onPreExecute();
+                //strUrl = "http://www.naver.com"; //탐색하고 싶은 URL이다.
+              }
+
+              @Override
+              protected Void doInBackground(Void... voids) {
+                try{
+                  // Variables
+//            String filename = "/mnt/sdcard/Download/file.img";
+                  String filename = RECORDED_FILE;
+                  String stringUrl = "http://110.76.77.86:3000/android";
+                  String attachmentName = "uploads";
+                  String crlf = "\r\n";
+                  String twoHyphens = "--";
+                  String boundary = "*****";
+
+                  //Setup the request
+                  HttpURLConnection httpUrlConnection = null;
+                  URL url = new URL(stringUrl);
+                  httpUrlConnection = (HttpURLConnection) url.openConnection();
+                  httpUrlConnection.setUseCaches(false);
+                  httpUrlConnection.setDoOutput(true);
+                  httpUrlConnection.setDoInput(true);
+
+                  httpUrlConnection.setRequestMethod("POST");
+                  httpUrlConnection.setRequestProperty("Connection", "Keep-Alive");
+                  httpUrlConnection.setRequestProperty("Cache-Control", "no-cache");
+                  //httpUrlConnection.setRequestProperty("Accept", "/process/androidupload");
+                  httpUrlConnection.setRequestProperty("Content-Type","multipart/form-data;boundary=" + boundary);
+//                  httpUrlConnection.setRequestProperty("Content-Type", "multipart/form-data");
+
+                  // Start content wrapper
+                  DataOutputStream dos = new DataOutputStream(httpUrlConnection.getOutputStream());
+                  dos.writeBytes(twoHyphens + boundary + crlf);
+                  dos.writeBytes(
+                      "Content-Disposition: form-data; name=\"" + attachmentName + "\";filename=\""
+                          + "test.jpg" + "\"" + crlf);
+                  dos.writeBytes(crlf);
+
+                  // Read from FileInputStream and write to OutputStream
+                  if (filename != null) {
+                    FileInputStream fileInputStream = new FileInputStream(filename);
+                    int res = 1;
+                    byte[] buffer = new byte[1000000];
+                    while (0 < (res = fileInputStream.read(buffer))) {
+//                      OutputStream os = httpUrlConnection.getOutputStream();
+//                      os.write(buffer, 0, res);
+//                      os.flush();
+//                      os.close();
+                      dos.write(buffer, 0, res);
+                    }
+                  }
+
+                  // content wrapper종료
+                  dos.writeBytes(crlf);
+                  dos.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
+
+                  dos.flush();
+                  dos.close();
+
+                  // Response받기
+//                  InputStream responseStream = new
+//                      BufferedInputStream(httpUrlConnection.getInputStream());
+//                  BufferedReader responseStreamReader =
+//                      new BufferedReader(new InputStreamReader(responseStream));
+//                  String line = "";
+//                  StringBuilder stringBuilder = new StringBuilder();
+//                  while ((line = responseStreamReader.readLine()) != null) {
+//                    stringBuilder.append(line).append("\n");
+//                  }
+//                  responseStreamReader.close();
+//                  String response = stringBuilder.toString();
+                  int returnCode = httpUrlConnection.getResponseCode();
+
+                  // Disconnection
+                  httpUrlConnection.disconnect();
+                }catch(MalformedURLException | ProtocolException exception) {
+                  exception.printStackTrace();
+                }catch(IOException io){
+                  io.printStackTrace();
+                }
+                return null;
+              }
+
+              @Override
+              protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                System.out.println(result);
+              }
+            }.execute();
+
           } catch (Exception e) {
             Log.e("SampleAudioRecorder", "Audio play failed.", e);
           }
