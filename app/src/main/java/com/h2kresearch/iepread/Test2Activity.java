@@ -153,7 +153,7 @@ public class Test2Activity extends AppCompatActivity {
 //            String filename = "/mnt/sdcard/Download/file.img";
                   String filename = RECORDED_FILE;
                   String stringUrl = "http://110.76.77.86:3000/android";
-                  String attachmentName = "uploads";
+                  String attachmentName = "data";
                   String crlf = "\r\n";
                   String twoHyphens = "--";
                   String boundary = "*****";
@@ -169,17 +169,14 @@ public class Test2Activity extends AppCompatActivity {
                   httpUrlConnection.setRequestMethod("POST");
                   httpUrlConnection.setRequestProperty("Connection", "Keep-Alive");
                   httpUrlConnection.setRequestProperty("Cache-Control", "no-cache");
-                  //httpUrlConnection.setRequestProperty("Accept", "/process/androidupload");
                   httpUrlConnection.setRequestProperty("Content-Type","multipart/form-data;boundary=" + boundary);
-//                  httpUrlConnection.setRequestProperty("Content-Type", "multipart/form-data");
 
                   // Start content wrapper
-                  DataOutputStream dos = new DataOutputStream(httpUrlConnection.getOutputStream());
-                  dos.writeBytes(twoHyphens + boundary + crlf);
-                  dos.writeBytes(
-                      "Content-Disposition: form-data; name=\"" + attachmentName + "\";filename=\""
-                          + "test.jpg" + "\"" + crlf);
-                  dos.writeBytes(crlf);
+                  DataOutputStream wr = new DataOutputStream(httpUrlConnection.getOutputStream());
+                  wr.writeBytes(twoHyphens + boundary + crlf);
+                  wr.writeBytes("Content-Disposition: form-data; name=\"" + attachmentName + "\";filename=\"" + "test.jpg" + "\"" + crlf);
+
+                  wr.writeBytes(crlf);
 
                   // Read from FileInputStream and write to OutputStream
                   if (filename != null) {
@@ -191,16 +188,16 @@ public class Test2Activity extends AppCompatActivity {
 //                      os.write(buffer, 0, res);
 //                      os.flush();
 //                      os.close();
-                      dos.write(buffer, 0, res);
+                      wr.write(buffer, 0, res);
                     }
                   }
 
                   // content wrapper종료
-                  dos.writeBytes(crlf);
-                  dos.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
+                  wr.writeBytes(crlf);
+                  wr.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
 
-                  dos.flush();
-                  dos.close();
+                  wr.flush();
+                  //wr.close();
 
                   // Response받기
 //                  InputStream responseStream = new
