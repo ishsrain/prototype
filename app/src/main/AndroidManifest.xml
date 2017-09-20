@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.h2kresearch.iepread">
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.INTERNET"/>
-  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
@@ -25,14 +27,15 @@
     <activity
       android:name=".InfoActivity"
       android:screenOrientation="landscape"
-      android:windowSoftInputMode="adjustResize"/>
+      android:windowSoftInputMode="adjustResize" />
     <activity
       android:name=".TestActivity"
       android:screenOrientation="landscape" />
     <activity
       android:name=".Test2Activity"
       android:screenOrientation="landscape" />
-    <activity android:name=".Test3Activity"></activity>
+    <activity android:name=".Test3Activity" />
+    <activity android:name=".ResultActivity"></activity>
   </application>
 
 </manifest>

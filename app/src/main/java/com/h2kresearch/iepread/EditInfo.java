@@ -38,7 +38,7 @@ public class EditInfo extends android.support.v7.widget.AppCompatEditText {
       switch (type) {
         case InputType.TYPE_TEXT_VARIATION_PERSON_NAME:
           if (charSequence.length() == 0) {
-            setBackgroundColor(Color.rgb(255, 255, 255));
+            setBackgroundColor(Color.parseColor("#ffe881"));
           } else if (charSequence.length() >= 2 && charSequence.length() < 10) {
             setBackgroundColor(Color.rgb(0, 255, 0));
             textSuccess = true;
@@ -48,7 +48,7 @@ public class EditInfo extends android.support.v7.widget.AppCompatEditText {
           break;
         case InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS:
           if (charSequence.length() == 0) {
-            setBackgroundColor(Color.rgb(255, 255, 255));
+            setBackgroundColor(Color.parseColor("#ffe881"));
           } else if (charSequence.length() > 0) {
             setBackgroundColor(Color.rgb(0, 255, 0));
             textSuccess = true;
@@ -56,7 +56,7 @@ public class EditInfo extends android.support.v7.widget.AppCompatEditText {
           break;
         case InputType.TYPE_CLASS_NUMBER:
           if (charSequence.length() == 0) {
-            setBackgroundColor(Color.rgb(255, 255, 255));
+            setBackgroundColor(Color.parseColor("#ffe881"));
           } else if (charSequence.length() > 0) {
             setBackgroundColor(Color.rgb(0, 255, 0));
             textSuccess = true;
@@ -64,7 +64,7 @@ public class EditInfo extends android.support.v7.widget.AppCompatEditText {
           break;
         default:
           if (charSequence.length() == 0) {
-            setBackgroundColor(Color.rgb(255, 255, 255));
+            setBackgroundColor(Color.parseColor("#ffe881"));
           } else if (charSequence.length() > 0) {
             setBackgroundColor(Color.rgb(0, 255, 0));
             textSuccess = true;

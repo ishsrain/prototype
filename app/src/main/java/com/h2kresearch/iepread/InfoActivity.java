@@ -54,6 +54,11 @@ public class InfoActivity extends AppCompatActivity {
     studentName = (EditInfo) findViewById(R.id.editText3);
     studentNumber = (EditInfo) findViewById(R.id.editText4);
 
+    // Set Focus
+    teacherName.setNextFocusDownId(R.id.editText2);
+    teacherEmail.setNextFocusDownId(R.id.editText3);
+    studentName.setNextFocusDownId(R.id.editText4);
+
     // Add Text Watcher
     teacherName.addTextChangedListener(buttonWatcher);
     teacherEmail.addTextChangedListener(buttonWatcher);

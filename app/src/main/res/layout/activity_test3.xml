@@ -4,37 +4,116 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@android:color/background_light"
   tools:context="com.h2kresearch.iepread.Test3Activity">
 
+  <ProgressBar
+    android:id="@+id/progressBar2"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="0dp"
+    android:layout_height="16dp"
+    android:layout_weight="1"
+    android:max="10"
+    android:progress="1"
+    android:progressBackgroundTint="@android:color/darker_gray"
+    android:progressTint="@android:color/holo_orange_dark"
+    android:scaleY="5"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
   <LinearLayout
-      android:layout_width="0dp"
-      android:layout_height="736dp"
-      android:background="@android:color/background_light"
-      android:orientation="vertical"
+    android:id="@+id/linearLayout6"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="9"
+    android:gravity="bottom|right"
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent">
+    <ImageView
+      android:id="@+id/imageView12"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/sound" />
+  </LinearLayout>
+  <LinearLayout
+    android:id="@+id/linearLayout5"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="50dp"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/progressBar2"
+    app:layout_constraintVertical_bias="0.0">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="2"
+      android:orientation="horizontal"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
-    <TextView
-        android:id="@+id/textView10"
+      tools:layout_editor_absoluteY="214dp">
+      <Button
+        android:id="@+id/button4"
+        style="?android:attr/borderlessButtonStyle"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="9.5"
+        android:background="@android:color/background_light"
+        android:text="다음"
+        android:textAlignment="textEnd"
+        android:textColor="#404040"
+        android:textSize="22sp" />
+      <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="0.5"
+        app:srcCompat="@drawable/next"
+        tools:layout_editor_absoluteX="565dp"
+        tools:layout_editor_absoluteY="195dp" />
+    </LinearLayout>
+    <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="8"
+      android:layout_marginRight="250dp"
+      android:scrollbarAlwaysDrawVerticalTrack="true"
+      android:scrollbarSize="20dp"
+      android:scrollbarThumbVertical="@drawable/scrollbar"
+      android:scrollbarTrackVertical="@drawable/scrollbar_back">
+      <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:gravity="center_vertical"
-        android:text="@string/example"
-        android:textColor="#000000"
-        android:textSize="25sp" />
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:max="10"
-        android:progress="5"
-        android:progressBackgroundTint="@android:color/darker_gray"
-        android:progressTint="@android:color/holo_orange_dark"
-        android:scaleY="5" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+          android:id="@+id/textView10"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="9"
+          android:layout_marginRight="80dp"
+          android:paddingTop="15dp"
+          android:paddingLeft="20dp"
+          android:paddingRight="20dp"
+          android:background="@drawable/linebackground"
+          android:gravity="center_vertical"
+          android:lineSpacingMultiplier="1.77"
+          android:text="@string/example"
+          android:textColor="#000000"
+          android:textSize="25sp"
+          tools:layout_editor_absoluteX="8dp"
+          tools:layout_editor_absoluteY="188dp" />
+      </LinearLayout>
+    </ScrollView>
   </LinearLayout>
 </android.support.constraint.ConstraintLayout>

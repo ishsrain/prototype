@@ -1,7 +1,13 @@
 <resources>
   <string name="app_name">IEPRead</string>
   <string name="teacher_name">선생님 이름</string>
-  <string name="example">시학관은 자기 생각으로는 수학이나 문법보다도 중요하다고 보는 계급 문제를 시시콜콜 히 물어 보기를 좋아하는 것이다. 단순히 재미를 볼 생각으로 그는 다시 물었다.
-“우리를 다스리시는 분은 누구시냐?”
-교장과 학생감은 활활 타는 듯한 눈을 가리기 위하여, 앞에 있는 장부를 들여다보고 있다. 대답이 이내 나오지 아니하니까, 호른베르</string>
+  <string name="example">시학관은 자기 생각으로는 수학이나 문법보다도 중요하다고 보는 계급 문제를 시시콜콜히 물어 보기를 좋아하는 것이다. 단순히 재미를 볼 생각으로 그는 다시 물었다. \n\n
+“우리를 다스리시는 분은 누구시냐?”\n\n
+교장과 학생감은 활활 타는 듯한 눈을 가리기 위하여, 앞에 있는 장부를 들여다보고 있다. 대답이 이내 나오지 아니하니까, 호른베르크는 안타까워서 좀 크게 뇐다.\n\n
+“우리를 다스리시는 분은?”\n
+“러시아 전체의 황제 알렉산드로 2세입니다.”\n
+  </string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

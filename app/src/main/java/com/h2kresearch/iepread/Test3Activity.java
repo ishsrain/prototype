@@ -1,5 +1,6 @@
 package com.h2kresearch.iepread;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Environment;
@@ -9,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ public class Test3Activity extends AppCompatActivity {
 
   TextView test;
   ProgressBar progressBar;
+  Button nextButton;
 
   Thread thread;
 
@@ -35,45 +39,55 @@ public class Test3Activity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test3);
 
-    thread = new Thread(new Runnable() {
-      @Override
-      public void run() {
-
-        // Progress Bar Working
-        for (int i = 0; i < msTime; i++) {
-          progressBar.setProgress(i);
-          try {
-            Thread.sleep(1);
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
-        }
-
-        // Progress Bar Init
-        progressBar.setProgress(0);
-
-      }
-    });
-
     // Record
     File sdcard = Environment.getExternalStorageDirectory();
     File file = new File(sdcard, "recorded.mp4");
     RECORDED_FILE = file.getAbsolutePath();
-
 
     // TextView
     test = (TextView) findViewById(R.id.textView10);
     test.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+
+        thread = new Thread(new Runnable() {
+          @Override
+          public void run() {
+
+            // Progress Bar Working
+            for (int i = 0; i < msTime; i++) {
+              progressBar.setProgress(i);
+              try {
+                Thread.sleep(1);
+              } catch (InterruptedException e) {
+                e.printStackTrace();
+              }
+            }
+
+            // Progress Bar Init
+            progressBar.setProgress(0);
+
+          }
+        });
+
         thread.start();
-        recordFunction();
+        //recordFunction();
       }
     });
 
     // ProgressBar
     progressBar = (ProgressBar) findViewById(R.id.progressBar2);
     progressBar.setMax(msTime);
+
+    // Next Button
+    nextButton = (Button) findViewById(R.id.button4);
+    nextButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+        startActivity(intent);
+      }
+    });
   }
 
   private void recordFunction() {

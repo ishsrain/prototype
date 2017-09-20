@@ -16,11 +16,14 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -41,38 +44,13 @@ public class Test2Activity extends AppCompatActivity {
 
   // Record/Play File
   public static String RECORDED_FILE;
-
-  MediaPlayer player = null;
-  MediaRecorder recorder = null;
-
-  private String result;
+  MediaPlayer player;
+  MediaRecorder recorder;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test2);
-
-    thread = new Thread(new Runnable() {
-      @Override
-      public void run() {
-
-        // Progress Bar Working
-        for (int i = 0; i < msTime; i++) {
-          progressBar.setProgress(i);
-          try {
-            Thread.sleep(1);
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
-        }
-
-        // Progress Bar Init
-        progressBar.setProgress(0);
-
-        // TextView Change
-        handler.sendEmptyMessage(0);
-      }
-    });
 
     // Record
     File sdcard = Environment.getExternalStorageDirectory();
@@ -81,10 +59,34 @@ public class Test2Activity extends AppCompatActivity {
 
     // TextView
     test = (TextView) findViewById(R.id.textView9);
+    test.setLetterSpacing(0.3f);
     test.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         test.setClickable(false);
+
+        thread = new Thread(new Runnable() {
+          @Override
+          public void run() {
+
+            // Progress Bar Working
+            for (int i = 0; i < msTime; i++) {
+              progressBar.setProgress(i);
+              try {
+                Thread.sleep(1);
+              } catch (InterruptedException e) {
+                e.printStackTrace();
+              }
+            }
+
+            // Progress Bar Init
+            progressBar.setProgress(0);
+
+            // TextView Change
+        handler.sendEmptyMessage(0);
+          }
+        });
+
         thread.start();
         recordFunction();
       }
@@ -97,153 +99,178 @@ public class Test2Activity extends AppCompatActivity {
 
   private void recordFunction() {
 
-    // Recording
-    if (recorder != null) {
-      recorder.stop();
-      recorder.release();
-      recorder = null;
-    }
+    try {
+      // Recording
+      if (recorder != null) {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+      }
 
-    recorder = new MediaRecorder();
+      recorder = new MediaRecorder();
 
-    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-    recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-    recorder.setMaxDuration(3 * 1000);
-    recorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
-      @Override
-      public void onInfo(MediaRecorder mr, int what, int extra) {
-        if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
-          if (recorder == null) {
-            return;
-          }
+      recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+      recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+      recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+      recorder.setMaxDuration(3 * 1000);
+      recorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
+        @Override
+        public void onInfo(MediaRecorder mr, int what, int extra) {
+          if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
+            if (recorder == null) {
+              return;
+            }
 
-          recorder.stop();
-          recorder.release();
-          recorder = null;
-          Toast.makeText(getApplicationContext(), "3초가 지나 녹음이 중지되었습니다", Toast.LENGTH_LONG).show();
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+            Toast.makeText(getApplicationContext(), "3초가 지나 녹음이 중지되었습니다", Toast.LENGTH_LONG).show();
 
-          // Playing
-          if (player != null) {
-            player.stop();
-            player.release();
-            player = null;
-          }
+            // Playing
+            if (player != null) {
+              player.stop();
+              player.release();
+              player = null;
+            }
 
-//          Toast.makeText(getApplicationContext(), "녹음된 파일을 재생합니다.", Toast.LENGTH_LONG).show();
-          try {
-            player = new MediaPlayer();
+            //          Toast.makeText(getApplicationContext(), "녹음된 파일을 재생합니다.", Toast.LENGTH_LONG).show();
+            try {
+              player = new MediaPlayer();
 
-            player.setDataSource(RECORDED_FILE);
-            player.prepare();
-            player.start();
+              player.setDataSource(RECORDED_FILE);
+              player.prepare();
+              player.start();
 
-            // Server Test
-            new AsyncTask<Void,Void,Void>(){
-              @Override
-              protected void onPreExecute() {
-                super.onPreExecute();
-                //strUrl = "http://www.naver.com"; //탐색하고 싶은 URL이다.
-              }
-
-              @Override
-              protected Void doInBackground(Void... voids) {
-                try{
-                  // Variables
-//            String filename = "/mnt/sdcard/Download/file.img";
-                  String filename = RECORDED_FILE;
-                  String stringUrl = "http://110.76.77.86:3000/android";
-                  String attachmentName = "data";
-                  String crlf = "\r\n";
-                  String twoHyphens = "--";
-                  String boundary = "*****";
-
-                  //Setup the request
-                  HttpURLConnection httpUrlConnection = null;
-                  URL url = new URL(stringUrl);
-                  httpUrlConnection = (HttpURLConnection) url.openConnection();
-                  httpUrlConnection.setUseCaches(false);
-                  httpUrlConnection.setDoOutput(true);
-                  httpUrlConnection.setDoInput(true);
-
-                  httpUrlConnection.setRequestMethod("POST");
-                  httpUrlConnection.setRequestProperty("Connection", "Keep-Alive");
-                  httpUrlConnection.setRequestProperty("Cache-Control", "no-cache");
-                  httpUrlConnection.setRequestProperty("Content-Type","multipart/form-data;boundary=" + boundary);
-
-                  // Start content wrapper
-                  DataOutputStream wr = new DataOutputStream(httpUrlConnection.getOutputStream());
-                  wr.writeBytes(twoHyphens + boundary + crlf);
-                  wr.writeBytes("Content-Disposition: form-data; name=\"" + attachmentName + "\";filename=\"" + "test.jpg" + "\"" + crlf);
-
-                  wr.writeBytes(crlf);
-
-                  // Read from FileInputStream and write to OutputStream
-                  if (filename != null) {
-                    FileInputStream fileInputStream = new FileInputStream(filename);
-                    int res = 1;
-                    byte[] buffer = new byte[1000000];
-                    while (0 < (res = fileInputStream.read(buffer))) {
-//                      OutputStream os = httpUrlConnection.getOutputStream();
-//                      os.write(buffer, 0, res);
-//                      os.flush();
-//                      os.close();
-                      wr.write(buffer, 0, res);
-                    }
-                  }
-
-                  // content wrapper종료
-                  wr.writeBytes(crlf);
-                  wr.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
-
-                  wr.flush();
-                  //wr.close();
-
-                  // Response받기
-//                  InputStream responseStream = new
-//                      BufferedInputStream(httpUrlConnection.getInputStream());
-//                  BufferedReader responseStreamReader =
-//                      new BufferedReader(new InputStreamReader(responseStream));
-//                  String line = "";
-//                  StringBuilder stringBuilder = new StringBuilder();
-//                  while ((line = responseStreamReader.readLine()) != null) {
-//                    stringBuilder.append(line).append("\n");
-//                  }
-//                  responseStreamReader.close();
-//                  String response = stringBuilder.toString();
-                  int returnCode = httpUrlConnection.getResponseCode();
-
-                  // Disconnection
-                  httpUrlConnection.disconnect();
-                }catch(MalformedURLException | ProtocolException exception) {
-                  exception.printStackTrace();
-                }catch(IOException io){
-                  io.printStackTrace();
+              // Server Test
+              new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected void onPreExecute() {
+                  super.onPreExecute();
                 }
-                return null;
-              }
 
-              @Override
-              protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                System.out.println(result);
-              }
-            }.execute();
+                @Override
+                protected Void doInBackground(Void... voids) {
+                  try {
+                    // Variables
+                    String filename = RECORDED_FILE;
+                    String stringUrl = "http://110.76.77.86:3000/android";
+                    String attachmentName = "data";
+                    String crlf = "\r\n";
+                    String twoHyphens = "--";
+                    String boundary = "*****";
 
-          } catch (Exception e) {
-            Log.e("SampleAudioRecorder", "Audio play failed.", e);
+                    //Setup the request
+                    HttpURLConnection httpUrlConnection = null;
+                    URL url = new URL(stringUrl);
+                    httpUrlConnection = (HttpURLConnection) url.openConnection();
+                    httpUrlConnection.setUseCaches(false);
+                    httpUrlConnection.setDoOutput(true);
+                    httpUrlConnection.setDoInput(true);
+
+                    httpUrlConnection.setRequestMethod("POST");
+                    httpUrlConnection.setRequestProperty("Connection", "Keep-Alive");
+                    httpUrlConnection.setRequestProperty("Cache-Control", "no-cache");
+                    httpUrlConnection.setRequestProperty("Content-Type",
+                        "multipart/form-data;boundary=" + boundary);
+
+                    // Start content wrapper
+                    DataOutputStream wr = new DataOutputStream(httpUrlConnection.getOutputStream());
+                    wr.writeBytes(twoHyphens + boundary + crlf);
+                    wr.writeBytes("Content-Disposition: form-data; name=\"" + attachmentName
+                        + "\";filename=\"" + "test1.mp4" + "\"" + crlf);
+                    wr.writeBytes(crlf);
+
+                    // Read from FileInputStream and write to OutputStream
+                    if (filename != null) {
+                      FileInputStream fileInputStream = new FileInputStream(filename);
+                      int res = 1;
+                      byte[] buffer = new byte[1000000];
+                      while (0 < (res = fileInputStream.read(buffer))) {
+                        //                      OutputStream os = httpUrlConnection.getOutputStream();
+                        //                      os.write(buffer, 0, res);
+                        //                      os.flush();
+                        //                      os.close();
+                        wr.write(buffer, 0, res);
+                      }
+                    }
+                    wr.writeBytes(crlf);
+
+                    wr.writeBytes(twoHyphens + boundary + crlf);
+                    wr.writeBytes("Content-Disposition: form-data; name=\"" + attachmentName
+                        + "\";filename=\"" + "test2.mp4" + "\"" + crlf);
+                    wr.writeBytes(crlf);
+
+                    // Read from FileInputStream and write to OutputStream
+                    if (filename != null) {
+                      FileInputStream fileInputStream = new FileInputStream(filename);
+                      int res = 1;
+                      byte[] buffer = new byte[1000000];
+                      while (0 < (res = fileInputStream.read(buffer))) {
+                        //                      OutputStream os = httpUrlConnection.getOutputStream();
+                        //                      os.write(buffer, 0, res);
+                        //                      os.flush();
+                        //                      os.close();
+                        wr.write(buffer, 0, res);
+                      }
+                    }
+                    wr.writeBytes(crlf);
+
+                    // Finish content wrapper
+                    wr.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
+                    wr.flush();
+                    wr.close();
+
+                    // Response
+                    InputStream responseStream = new BufferedInputStream(
+                        httpUrlConnection.getInputStream());
+                    BufferedReader responseStreamReader = new BufferedReader(
+                        new InputStreamReader(responseStream));
+                    String line = "";
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while ((line = responseStreamReader.readLine()) != null) {
+                      stringBuilder.append(line).append("\n");
+                    }
+                    responseStreamReader.close();
+                    String response = stringBuilder.toString();
+                    int returnCode = httpUrlConnection.getResponseCode();
+
+                    // Response Print
+                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                    System.out.println(response);
+
+                    // Disconnection
+                    httpUrlConnection.disconnect();
+                  } catch (MalformedURLException | ProtocolException exception) {
+                    exception.printStackTrace();
+                  } catch (IOException io) {
+                    io.printStackTrace();
+                  }
+                  return null;
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                  super.onPostExecute(aVoid);
+                }
+              }.execute();
+
+            } catch (Exception e) {
+              Log.e("SampleAudioRecorder", "Audio play failed.", e);
+            }
           }
         }
+      });
+
+      recorder.setOutputFile(RECORDED_FILE);
+
+      try {
+        //      Toast.makeText(getApplicationContext(), "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
+
+        recorder.prepare();
+        recorder.start();
+      } catch (Exception ex) {
+        Log.e("SampleAudioRecorder", "Exception : ", ex);
       }
-    });
-
-    recorder.setOutputFile(RECORDED_FILE);
-
-    try {
-//      Toast.makeText(getApplicationContext(), "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
-
-      recorder.prepare();
-      recorder.start();
     } catch (Exception ex) {
       Log.e("SampleAudioRecorder", "Exception : ", ex);
     }
