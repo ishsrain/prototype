@@ -36,20 +36,34 @@
       app:layout_constraintLeft_toRightOf="@+id/fragment8"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent">
-      <fragment
-        android:id="@+id/fragment9"
+      <LinearLayout
+        android:id="@+id/topMenuContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:name="com.h2kresearch.iepread.MenutopFragment"
-        tools:layout="@layout/fragment_menutop" />
-      <fragment
-        android:id="@+id/fragment10"
+        android:orientation="horizontal">
+        <fragment
+          android:id="@+id/fragment9"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:name="com.h2kresearch.iepread.MenutopFragment"
+          tools:layout="@layout/fragment_menutop" />
+      </LinearLayout>
+      <LinearLayout
+        android:id="@+id/contentsContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:name="com.h2kresearch.iepread.ContentsFragment"
-        tools:layout="@layout/fragment_contents" />
+        android:orientation="horizontal">
+        <fragment
+          android:id="@+id/fragment10"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:name="com.h2kresearch.iepread.ContentsFragment"
+          tools:layout="@layout/fragment_contents" />
+      </LinearLayout>
     </LinearLayout>
   </LinearLayout>
 </android.support.constraint.ConstraintLayout>

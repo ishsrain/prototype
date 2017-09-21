@@ -1,12 +1,17 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 /**
@@ -29,6 +34,11 @@ public class MenuleftFragment extends Fragment {
   private String mParam2;
 
   private OnFragmentInteractionListener mListener;
+
+  ResultActivity activity;
+  private ImageView menu1, menu2, menu3;
+  private TextView menu1Text, menu2Text, menu3Text;
+  private LinearLayout menu1Layout, menu2Layout, menu3Layout;
 
   public MenuleftFragment() {
     // Required empty public constructor
@@ -65,7 +75,68 @@ public class MenuleftFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_menuleft, container, false);
+    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menuleft, container, false);
+
+    activity = (ResultActivity) getActivity();
+
+    menu1 = (ImageView)rootView.findViewById(R.id.imageView13);
+    menu2 = (ImageView)rootView.findViewById(R.id.imageView14);
+    menu3 = (ImageView)rootView.findViewById(R.id.imageView15);
+
+    menu1Text = (TextView)rootView.findViewById(R.id.textView5);
+    menu2Text = (TextView)rootView.findViewById(R.id.textView6);
+    menu3Text = (TextView)rootView.findViewById(R.id.textView7);
+
+    menu1Layout = (LinearLayout)rootView.findViewById(R.id.linearLayout13);
+    menu2Layout = (LinearLayout)rootView.findViewById(R.id.linearLayout14);
+    menu3Layout = (LinearLayout)rootView.findViewById(R.id.linearLayout15);
+
+    menu1.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        menu1Layout.setBackgroundColor(Color.parseColor("#569af0"));
+        menu2Layout.setBackgroundColor(Color.TRANSPARENT);
+        menu3Layout.setBackgroundColor(Color.TRANSPARENT);
+
+        menu1Text.setTextColor(Color.WHITE);
+        menu2Text.setTextColor(Color.parseColor("#404040"));
+        menu3Text.setTextColor(Color.parseColor("#404040"));
+
+        activity.onMenutopFragmentChanged(1);
+      }
+    });
+
+    menu2.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        menu1Layout.setBackgroundColor(Color.TRANSPARENT);
+        menu2Layout.setBackgroundColor(Color.parseColor("#569af0"));
+        menu3Layout.setBackgroundColor(Color.TRANSPARENT);
+
+        menu1Text.setTextColor(Color.parseColor("#404040"));
+        menu2Text.setTextColor(Color.WHITE);
+        menu3Text.setTextColor(Color.parseColor("#404040"));
+
+        activity.onMenutopFragmentChanged(2);
+      }
+    });
+
+    menu3.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        menu1Layout.setBackgroundColor(Color.TRANSPARENT);
+        menu2Layout.setBackgroundColor(Color.TRANSPARENT);
+        menu3Layout.setBackgroundColor(Color.parseColor("#569af0"));
+
+        menu1Text.setTextColor(Color.parseColor("#404040"));
+        menu2Text.setTextColor(Color.parseColor("#404040"));
+        menu3Text.setTextColor(Color.WHITE);
+
+        activity.onMenutopFragmentChanged(3);
+      }
+    });
+
+    return rootView;
   }
 
   // TODO: Rename method, update argument and hook method into UI event

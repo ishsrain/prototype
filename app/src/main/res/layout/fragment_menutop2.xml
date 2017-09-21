@@ -7,7 +7,7 @@
   android:paddingLeft="100dp"
   android:paddingRight="50dp"
   android:background="@android:color/background_light"
-  tools:context="com.h2kresearch.iepread.MenutopFragment">
+  tools:context="com.h2kresearch.iepread.Menutop2Fragment">
 
   <!-- TODO: Update blank fragment layout -->
   <LinearLayout
@@ -19,7 +19,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
       <TextView
@@ -27,7 +27,7 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="의미/무의미 단어 읽기"
+          android:text="객관식 채점결과"
           android:textColor="#404040"
           android:textStyle="bold" />
 
@@ -36,7 +36,16 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="1"
-          android:text="읽기 유창성 검사"
+          android:text="주관식 채점결과"
+          android:textColor="#404040"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/textView13"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="통계결과"
           android:textColor="#404040"
           android:textStyle="bold" />
 
@@ -46,7 +55,7 @@
         android:id="@+id/imageView16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="1"
         app:srcCompat="@drawable/name" />
   </LinearLayout>
 
