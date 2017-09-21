@@ -1,12 +1,25 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.widget.TextView.BufferType.SPANNABLE;
 
 
 /**
@@ -29,6 +42,8 @@ public class ContentsFragment extends Fragment {
   private String mParam2;
 
   private OnFragmentInteractionListener mListener;
+
+  ArrayList selectedWords = new ArrayList();
 
   public ContentsFragment() {
     // Required empty public constructor
@@ -65,7 +80,19 @@ public class ContentsFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_contents, container, false);
+    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents, container, false);
+
+    // Set the content of the TextView
+    TextView mainText = (TextView) rootView.findViewById(R.id.textView23);
+    SpannableString mainContent = new SpannableString(getResources().getString(R.string.example));
+    mainText.setText(mainContent, SPANNABLE);
+
+    // Split the text in the TextView into words
+    getEachWord(mainText);
+
+    // Make the TextView clickable
+    mainText.setMovementMethod(new LinkMovementMethod());
+    return rootView;
   }
 
   // TODO: Rename method, update argument and hook method into UI event
@@ -107,4 +134,63 @@ public class ContentsFragment extends Fragment {
     // TODO: Update argument type and name
     void onFragmentInteraction(Uri uri);
   }
+
+  public class MyClickableSpan extends ClickableSpan {
+
+    @Override
+    public void onClick (View widget){
+      // We display a Toast. You could do anything you want here.
+      TextView tv = (TextView) widget;
+
+      SpannableString ss = (SpannableString) tv.getText();
+
+      if (selectedWords.contains("element"+tv.getSelectionStart())){
+        selectedWords.remove("element"+tv.getSelectionStart());
+        ss.setSpan(new BackgroundColorSpan(Color.TRANSPARENT), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+      } else {
+        selectedWords.add("element"+tv.getSelectionStart());
+        ss.setSpan(new BackgroundColorSpan(Color.CYAN), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+      }
+
+      //String s = tv.getText().subSequence(tv.getSelectionStart(), tv.getSelectionEnd()).toString();
+      //Toast.makeText(Test3Activity.this, s, Toast.LENGTH_SHORT).show();
+
+    }
+    @Override
+    public void updateDrawState (TextPaint ds){
+      ds.setColor(Color.BLACK);//set text color
+      ds.setUnderlineText(false); // set to false to remove underline
+    }
+  }
+
+  public void getEachWord(TextView textView){
+    Spannable spans = (Spannable)textView.getText();
+    Integer[] indices = getIndices(
+        textView.getText().toString().trim(), ' ');
+    int start = 0;
+    int end = 0;
+    // to cater last/only word loop will run equal to the length of indices.length
+    for (int i = 0; i <= indices.length; i++) {
+      ClickableSpan clickSpan = new MyClickableSpan();
+      // to cater last/only word
+      end = (i <indices.length ? indices[i] : spans.length());
+      spans.setSpan(clickSpan, start, end,
+          Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+      start = end + 1;
+    }
+    //Change the highlight color for selected text
+    textView.setHighlightColor(Color.TRANSPARENT);
+  }
+
+  public static Integer[] getIndices(String s, char c) {
+    int pos = s.indexOf(c, 0);
+    List<Integer> indices = new ArrayList<Integer>();
+    while (pos != -1) {
+      indices.add(pos);
+      pos = s.indexOf(c, pos + 1);
+    }
+    return (Integer[]) indices.toArray(new Integer[0]);
+  }
+
 }
+
