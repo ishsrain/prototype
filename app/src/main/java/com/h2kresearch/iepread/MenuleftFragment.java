@@ -91,6 +91,9 @@ public class MenuleftFragment extends Fragment {
     menu2Layout = (LinearLayout)rootView.findViewById(R.id.linearLayout14);
     menu3Layout = (LinearLayout)rootView.findViewById(R.id.linearLayout15);
 
+    menu1Layout.setBackgroundColor(Color.parseColor("#569af0"));
+    menu1Text.setTextColor(Color.WHITE);
+
     menu1.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {

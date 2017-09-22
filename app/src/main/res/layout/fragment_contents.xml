@@ -3,7 +3,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:paddingBottom="25dp"
+  android:paddingBottom="100dp"
   android:paddingLeft="100dp"
   android:paddingRight="50dp"
   android:background="@android:color/background_light"
@@ -46,7 +46,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_marginRight="80dp"
-          android:background="@drawable/linebackground"
+          android:lineSpacingMultiplier="1.5"
           android:text="@string/example"
           android:textColor="#404040"
           android:textSize="20sp" />

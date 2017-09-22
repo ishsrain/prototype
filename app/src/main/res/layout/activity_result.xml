@@ -61,8 +61,8 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_weight="1"
-          android:name="com.h2kresearch.iepread.ContentsFragment"
-          tools:layout="@layout/fragment_contents" />
+          android:name="com.h2kresearch.iepread.Contents2Fragment"
+          tools:layout="@layout/fragment_contents2" />
       </LinearLayout>
     </LinearLayout>
   </LinearLayout>

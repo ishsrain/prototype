@@ -35,7 +35,8 @@
       android:name=".Test2Activity"
       android:screenOrientation="landscape" />
     <activity android:name=".Test3Activity" />
-    <activity android:name=".ResultActivity"></activity>
+    <activity android:name=".ResultActivity" />
+    <activity android:name=".TestEndActivity"></activity>
   </application>
 
 </manifest>

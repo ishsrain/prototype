@@ -6,20 +6,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MenutopFragment.OnFragmentInteractionListener} interface
+ * {@link Contents2Fragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MenutopFragment#newInstance} factory method to
+ * Use the {@link Contents2Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MenutopFragment extends Fragment {
+public class Contents2Fragment extends Fragment {
 
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,10 +30,7 @@ public class MenutopFragment extends Fragment {
 
   private OnFragmentInteractionListener mListener;
 
-  ResultActivity activity;
-  private TextView menu1Text, menu2Text;
-
-  public MenutopFragment() {
+  public Contents2Fragment() {
     // Required empty public constructor
   }
 
@@ -45,11 +40,11 @@ public class MenutopFragment extends Fragment {
    *
    * @param param1 Parameter 1.
    * @param param2 Parameter 2.
-   * @return A new instance of fragment MenutopFragment.
+   * @return A new instance of fragment Contents2Fragment.
    */
   // TODO: Rename and change types and number of parameters
-  public static MenutopFragment newInstance(String param1, String param2) {
-    MenutopFragment fragment = new MenutopFragment();
+  public static Contents2Fragment newInstance(String param1, String param2) {
+    Contents2Fragment fragment = new Contents2Fragment();
     Bundle args = new Bundle();
     args.putString(ARG_PARAM1, param1);
     args.putString(ARG_PARAM2, param2);
@@ -70,28 +65,7 @@ public class MenutopFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menutop, container, false);
-
-    activity = (ResultActivity) getActivity();
-    menu1Text = (TextView)rootView.findViewById(R.id.textView3);
-    menu2Text = (TextView)rootView.findViewById(R.id.textView12);
-
-    menu1Text.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        activity.onContentsFragmentChanged(1);
-      }
-    });
-
-    menu2Text.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        activity.onContentsFragmentChanged(2);
-      }
-    });
-
-
-    return rootView;
+    return inflater.inflate(R.layout.fragment_contents2, container, false);
   }
 
   // TODO: Rename method, update argument and hook method into UI event

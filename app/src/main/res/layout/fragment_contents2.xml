@@ -1,0 +1,590 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingTop="50dp"
+  android:paddingBottom="50dp"
+  android:paddingLeft="50dp"
+  android:paddingRight="50dp"
+  android:background="@android:color/background_light"
+  tools:context="com.h2kresearch.iepread.Contents2Fragment">
+
+  <!-- TODO: Update blank fragment layout -->
+  <TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginBottom="10dp">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2" />
+        <TextView
+          android:id="@+id/textView16"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:paddingLeft="10dp"
+          android:text="O"
+          android:textColor="@android:color/black" />
+        <TextView
+          android:id="@+id/textView17"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:paddingLeft="10dp"
+          android:text="X"
+          android:textColor="@android:color/black" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2" />
+        <TextView
+          android:id="@+id/textView18"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:paddingLeft="10dp"
+          android:text="O"
+          android:textColor="@android:color/black" />
+        <TextView
+          android:id="@+id/textView19"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:paddingLeft="10dp"
+          android:text="X"
+          android:textColor="@android:color/black" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="25dp">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView19"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView14"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="1. 소나문"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox2"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView20"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView15"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="6. 선생님"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox3"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox4"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView23"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView24"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="25dp">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView19"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView14"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="2. 어린이"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox2"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView20"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView15"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="7. 메로니"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox3"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox4"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView23"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView24"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="25dp">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView19"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView14"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="3. 동물"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox2"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView20"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView15"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="8. 곰돌이"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox3"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox4"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView23"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView24"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="25dp">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView19"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView14"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="4. 타람쥐"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox2"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView20"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView15"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="9. 테이블"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox3"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox4"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView23"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView24"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="25dp">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView19"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView14"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="5. 가족"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox2"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView20"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/play" />
+        <TextView
+          android:id="@+id/textView15"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:text="10. 가외"
+          android:textColor="@android:color/black"
+          android:textSize="25sp" />
+        <CheckBox
+          android:id="@+id/checkBox3"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+        <CheckBox
+          android:id="@+id/checkBox4"
+          android:layout_width="0dp"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          app:buttonTint="@android:color/black" />
+      </LinearLayout>
+    </TableRow>
+    <TableRow
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView23"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:orientation="horizontal">
+        <ImageView
+          android:id="@+id/imageView24"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/line" />
+      </LinearLayout>
+    </TableRow>
+  </TableLayout>
+
+</FrameLayout>

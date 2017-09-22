@@ -26,7 +26,7 @@ public class Test3Activity extends AppCompatActivity {
   Thread thread;
 
   // Record Time (ms)
-  int msTime = 1500;
+  int msTime = 15000;
 
   // Record/Play File
   public static String RECORDED_FILE;
@@ -84,7 +84,7 @@ public class Test3Activity extends AppCompatActivity {
     nextButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+        Intent intent = new Intent(getBaseContext(), TestEndActivity.class);
         startActivity(intent);
       }
     });

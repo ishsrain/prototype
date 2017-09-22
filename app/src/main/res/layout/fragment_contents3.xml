@@ -1,0 +1,384 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingTop="25dp"
+  android:paddingBottom="50dp"
+  android:paddingLeft="100dp"
+  android:paddingRight="50dp"
+  android:background="@android:color/background_light"
+  tools:context="com.h2kresearch.iepread.Contents3Fragment">
+
+  <!-- TODO: Update blank fragment layout -->
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+      <TextView
+        android:id="@+id/textView24"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="모음 변별 (4/10)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="50dp"
+        android:orientation="horizontal">
+        <TextView
+          android:id="@+id/textView25"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="1"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView26"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="2"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView27"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="3"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView28"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="4"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView29"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="5"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView30"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="6"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView31"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="7"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView32"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="8"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView33"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="9"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView34"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="10"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+      </LinearLayout>
+      <TextView
+        android:id="@+id/textView20"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="자음 변별 (3/10)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="50dp"
+        android:orientation="horizontal">
+        <TextView
+          android:id="@+id/textView25"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="1"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView26"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="2"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView27"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="3"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView28"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="4"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView29"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="5"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView30"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="6"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView31"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="7"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView32"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="8"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView33"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="9"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView34"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="10"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+      </LinearLayout>
+      <TextView
+        android:id="@+id/textView21"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="이중 모음 변별 (2/7)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="50dp"
+        android:orientation="horizontal">
+        <TextView
+          android:id="@+id/textView25"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="1"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView26"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="2"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView27"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="3"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView28"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="4"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView29"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="5"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView30"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="6"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView31"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="7"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+      </LinearLayout>
+      <TextView
+        android:id="@+id/textView22"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="받침 글자 변별 (2/7)"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="50dp"
+        android:orientation="horizontal">
+        <TextView
+          android:id="@+id/textView25"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="1"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView26"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="2"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView27"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="3"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView28"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="4"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView29"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="5"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView30"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="6"
+          android:textColor="@color/colorAccent"
+          android:textSize="20sp" />
+        <TextView
+          android:id="@+id/textView31"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="7"
+          android:textColor="@android:color/black"
+          android:textSize="20sp" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" />
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+
+</FrameLayout>
