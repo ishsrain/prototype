@@ -29,12 +29,25 @@
       android:screenOrientation="landscape"
       android:windowSoftInputMode="adjustResize" />
     <activity
-      android:name=".TestActivity"
+      android:name=".Test1Vowel1Activity"
       android:screenOrientation="landscape" />
     <activity
-      android:name=".Test2Activity"
+      android:name=".Test1Vowel2Activity"
       android:screenOrientation="landscape" />
-    <activity android:name=".Test3Activity" />
+    <activity android:name=".Test2Consonant1Activity" />
+    <activity android:name=".Test2Consonant2Activity" />
+    <activity android:name=".Test3NoSupport1Activity" />
+    <activity android:name=".Test3NoSupport2Activity" />
+    <activity android:name=".Test4ComplexVowel1Activity" />
+    <activity android:name=".Test4ComplexVowel2Activity" />
+    <activity android:name=".Test5WordWithNoSupportActivity" />
+    <activity android:name=".Test6SimpleSupport1Activity" />
+    <activity android:name=".Test6SimpleSupport2Activity" />
+    <activity android:name=".Test7ComplexSupport1Activity" />
+    <activity android:name=".Test7ComplexSupport2Activity" />
+    <activity android:name=".Test8WordWithSupportActivity" />
+
+    <activity android:name=".Test9ReadingActivity" />
     <activity android:name=".ResultActivity" />
     <activity android:name=".TestEndActivity"></activity>
   </application>

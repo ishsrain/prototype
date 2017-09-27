@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
     android:elevation="10dp"
-    tools:context="com.h2kresearch.iepread.Test2Activity">
+    tools:context="com.h2kresearch.iepread.Test2Consonant2Activity">
 
   <ProgressBar
     android:id="@+id/progressBar"
@@ -71,9 +71,8 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/textcell"
         android:gravity="center_vertical"
-        android:text="소나문"
+        android:text="가"
         android:textAlignment="center"
         android:textColor="#404040"
         android:textSize="150sp"

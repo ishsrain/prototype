@@ -1,16 +1,14 @@
 package com.h2kresearch.iepread;
 
-import static java.lang.Thread.sleep;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -24,19 +22,18 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class Test2Activity extends AppCompatActivity {
+public class Test7ComplexSupport2Activity extends AppCompatActivity {
 
   TextView test;
   ProgressBar progressBar;
   Thread thread;
 
-  String[] testString = {"소나문", "소나무", "자전거", "자동차", "가지", "가재"};
+  String[] testString = {"앝", "았", "앜"};
   int indexString = 1;
 
   // Record Time (ms)
@@ -50,7 +47,7 @@ public class Test2Activity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_test2);
+    setContentView(R.layout.activity_test7complexsupport2);
 
     // Record
     File sdcard = Environment.getExternalStorageDirectory();
@@ -284,7 +281,7 @@ public class Test2Activity extends AppCompatActivity {
         test.setClickable(true);
         indexString++;
       } else {
-        Intent intent = new Intent(getBaseContext(), Test3Activity.class);
+        Intent intent = new Intent(getBaseContext(), Test8WordWithSupportActivity.class);
         startActivity(intent);
       }
     }

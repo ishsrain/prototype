@@ -153,7 +153,7 @@ public class ContentsFragment extends Fragment {
       }
 
       //String s = tv.getText().subSequence(tv.getSelectionStart(), tv.getSelectionEnd()).toString();
-      //Toast.makeText(Test3Activity.this, s, Toast.LENGTH_SHORT).show();
+      //Toast.makeText(Test9ReadingActivity.this, s, Toast.LENGTH_SHORT).show();
 
     }
     @Override

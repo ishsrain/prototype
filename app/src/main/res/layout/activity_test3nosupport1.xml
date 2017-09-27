@@ -5,10 +5,10 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@android:color/background_light"
-  tools:context="com.h2kresearch.iepread.TestActivity">
+  tools:context="com.h2kresearch.iepread.Test3NoSupport1Activity">
 
   <ProgressBar
-    android:id="@+id/progressBar3"
+    android:id="@+id/progressBar33"
     style="?android:attr/progressBarStyleHorizontal"
     android:layout_width="0dp"
     android:layout_height="10dp"
@@ -33,7 +33,7 @@
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/progressBar3">
+    app:layout_constraintTop_toBottomOf="@+id/progressBar33">
 
     <LinearLayout
       android:layout_width="match_parent"
@@ -41,7 +41,7 @@
       android:layout_weight="2"
       android:orientation="horizontal">
       <Button
-        android:id="@+id/button2"
+        android:id="@+id/nextButton"
         style="?android:attr/borderlessButtonStyle"
         android:textStyle="bold"
         android:layout_width="0dp"
@@ -74,30 +74,43 @@
       tools:layout_editor_absoluteY="8dp">
 
       <TextView
-        android:id="@+id/textView"
+        android:id="@+id/option1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:layout_marginRight="50dp"
         android:background="@drawable/roundcorner"
         android:gravity="center"
-        android:text="이"
+        android:text="너"
         android:textAlignment="center"
         android:textColor="#404040"
         android:textSize="150sp" />
 
       <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/option2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:layout_marginLeft="50dp"
         android:background="@drawable/roundcorner"
         android:gravity="center"
-        android:text="에"
+        android:text="기"
         android:textAlignment="center"
         android:textColor="#404040"
         android:textSize="150sp" />
+      <TextView
+        android:id="@+id/option3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="100dp"
+        android:background="@drawable/roundcorner"
+        android:gravity="center"
+        android:text="요"
+        android:textAlignment="center"
+        android:textColor="#404040"
+        android:textSize="150sp"
+        android:visibility="gone" />
 
     </LinearLayout>
 

@@ -1,39 +1,12 @@
 package com.h2kresearch.iepread;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
-import android.text.Layout;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.Toast;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
-import com.koushikdutta.ion.Response;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.concurrent.Future;
-import org.json.JSONObject;
-import org.json.JSONException;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -73,7 +46,7 @@ public class InfoActivity extends AppCompatActivity {
     buttonStart.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(getBaseContext(), TestActivity.class);
+        Intent intent = new Intent(getBaseContext(), Test1Vowel1Activity.class);
         startActivity(intent);
         //finish();
       }

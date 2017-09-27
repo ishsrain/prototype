@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
 
-public class Test3Activity extends AppCompatActivity {
+public class Test9ReadingActivity extends AppCompatActivity {
 
   TextView test;
   ProgressBar progressBar;
@@ -37,7 +35,7 @@ public class Test3Activity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_test3);
+    setContentView(R.layout.activity_test9reading);
 
     // Record
     File sdcard = Environment.getExternalStorageDirectory();

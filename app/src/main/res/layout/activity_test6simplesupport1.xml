@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@android:color/background_light"
+  tools:context="com.h2kresearch.iepread.Test6SimpleSupport1Activity">
+
+  <ProgressBar
+    android:id="@+id/progressBar33"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="0dp"
+    android:layout_height="10dp"
+    android:layout_weight="1"
+    android:max="10"
+    android:progress="1"
+    android:progressBackgroundTint="#a6a6a6"
+    android:progressTint="#a6a6a6"
+    android:scaleY="5"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <LinearLayout
+    android:id="@+id/linearLayout"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:paddingTop="40dp"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/progressBar33">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="2"
+      android:orientation="horizontal">
+      <Button
+        android:id="@+id/nextButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="9.5"
+        android:background="@android:color/background_light"
+        android:text="다음"
+        android:textAlignment="textEnd"
+        android:textColor="#404040"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="762dp" />
+      <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_weight="0.5"
+        app:srcCompat="@drawable/next" />
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="8"
+      android:paddingTop="75dp"
+      android:paddingBottom="75dp"
+      android:paddingLeft="100dp"
+      android:paddingRight="100dp"
+      android:orientation="horizontal"
+      tools:layout_editor_absoluteX="8dp"
+      tools:layout_editor_absoluteY="8dp">
+
+      <TextView
+        android:id="@+id/option1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/roundcorner"
+        android:gravity="center"
+        android:text="압"
+        android:textAlignment="center"
+        android:textColor="#404040"
+        android:textSize="150sp" />
+
+      <TextView
+        android:id="@+id/option2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/roundcorner"
+        android:gravity="center"
+        android:text="알"
+        android:textAlignment="center"
+        android:textColor="#404040"
+        android:textSize="150sp" />
+      <TextView
+        android:id="@+id/option3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="100dp"
+        android:background="@drawable/roundcorner"
+        android:gravity="center"
+        android:text="요"
+        android:textAlignment="center"
+        android:textColor="#404040"
+        android:textSize="150sp"
+        android:visibility="gone" />
+
+    </LinearLayout>
+
+  </LinearLayout>
+  <LinearLayout
+    android:id="@+id/linearLayout2"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:gravity="bottom|right"
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent">
+    <ImageView
+      android:id="@+id/imageView8"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/sound"
+      tools:layout_editor_absoluteX="8dp"
+      tools:layout_editor_absoluteY="8dp" />
+  </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
