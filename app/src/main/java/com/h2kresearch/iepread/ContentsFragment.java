@@ -166,7 +166,7 @@ public class ContentsFragment extends Fragment {
   public void getEachWord(TextView textView){
     Spannable spans = (Spannable)textView.getText();
     Integer[] indices = getIndices(
-        textView.getText().toString().trim(), ' ');
+        textView.getText().toString().replaceAll("(\r\n|\r|\n|\n\r)", " ").trim(), ' ');
     int start = 0;
     int end = 0;
     // to cater last/only word loop will run equal to the length of indices.length

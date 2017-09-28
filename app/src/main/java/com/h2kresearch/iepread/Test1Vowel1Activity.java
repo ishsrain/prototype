@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +54,9 @@ public class Test1Vowel1Activity extends AppCompatActivity {
   int indexString = 1;
   int threeQuestionStartIndex = 5; // 5 + 1 = 6번부터 세 문제가 시작됨
 
+  // for recording selected answers
+  int[] t1Answers;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -65,6 +69,9 @@ public class Test1Vowel1Activity extends AppCompatActivity {
     test1 = (TextView) findViewById(R.id.textView);
     test2 = (TextView) findViewById(R.id.textView2);
     test3 = (TextView) findViewById(R.id.textView3);
+
+    // for recording selected answers
+    t1Answers = new int[test1String.length];
 
     // for playing question audio
     playQuestionAudio(indexString);
@@ -85,7 +92,11 @@ public class Test1Vowel1Activity extends AppCompatActivity {
         if (indexString >= test1String.length) {
           // for playing question audio
           killMediaPlayer();
+
           Intent intent = new Intent(getBaseContext(), Test1Vowel2Activity.class);
+          // for recording selected answers
+          intent.putExtra("t1Answers", t1Answers);
+
           startActivity(intent);
         } else {
           button.setEnabled(false);
@@ -128,6 +139,10 @@ public class Test1Vowel1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
+
+          // for recording selected answers
+          t1Answers[indexString-1] = 1;
+          Log.d("t1Answers checking", "index: "+indexString+" t1Answers: "+t1Answers[indexString-1]);
         }
         return false;
       }
@@ -147,6 +162,10 @@ public class Test1Vowel1Activity extends AppCompatActivity {
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
 
+          // for recording selected answers
+          t1Answers[indexString-1] = 2;
+          Log.d("t1Answers checking", "index: "+indexString+" t1Answers: "+t1Answers[indexString-1]);
+
         }
         return false;
       }
@@ -165,6 +184,11 @@ public class Test1Vowel1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner_clicked));
           test3.setTextColor(Color.parseColor("#ffffff"));
+
+          // for recording selected answers
+          t1Answers[indexString-1] = 3;
+          Log.d("t1Answers checking", "index: "+indexString+" t1Answers: "+t1Answers[indexString-1]);
+
         }
         return false;
       }
