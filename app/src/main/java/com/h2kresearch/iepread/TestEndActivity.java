@@ -12,7 +12,7 @@ public class TestEndActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test_end);
 
-    startLoading(); //comment for test
+    startLoading(); //comment for test, another commit test
   }
   private void startLoading() {
     Handler handler = new Handler();
