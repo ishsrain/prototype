@@ -74,30 +74,30 @@
       tools:layout_editor_absoluteY="8dp">
 
       <TextView
-        android:id="@+id/option1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/roundcorner"
-        android:gravity="center"
-        android:text="압"
-        android:textAlignment="center"
-        android:textColor="#404040"
-        android:textSize="150sp" />
+          android:id="@+id/option1"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_marginRight="50dp"
+          android:layout_weight="0.5"
+          android:background="@drawable/roundcorner"
+          android:gravity="center"
+          android:text="암"
+          android:textAlignment="center"
+          android:textColor="#404040"
+          android:textSize="150sp" />
 
       <TextView
-        android:id="@+id/option2"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:layout_marginLeft="50dp"
-        android:background="@drawable/roundcorner"
-        android:gravity="center"
-        android:text="알"
-        android:textAlignment="center"
-        android:textColor="#404040"
-        android:textSize="150sp" />
+          android:id="@+id/option2"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_marginLeft="50dp"
+          android:layout_weight="0.5"
+          android:background="@drawable/roundcorner"
+          android:gravity="center"
+          android:text="앝"
+          android:textAlignment="center"
+          android:textColor="#404040"
+          android:textSize="150sp" />
       <TextView
         android:id="@+id/option3"
         android:layout_width="0dp"

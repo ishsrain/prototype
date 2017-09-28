@@ -2,11 +2,13 @@ package com.h2kresearch.iepread;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -26,6 +28,31 @@ public class Test4ComplexVowel1Activity extends AppCompatActivity {
   int indexString = 1;
   int threeQuestionStartIndex = 5; // 5 + 1 = 6번부터 세 문제가 시작됨
 
+  // for playing question audio
+  ImageView replayImage;
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void playQuestionAudio(int questionNumber) {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("t4_"+questionNumber, "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -39,12 +66,25 @@ public class Test4ComplexVowel1Activity extends AppCompatActivity {
     test2 = (TextView) findViewById(R.id.option2);
     test3 = (TextView) findViewById(R.id.option3);
 
+    // for playing question audio
+    playQuestionAudio(indexString);
+    replayImage = (ImageView) findViewById(R.id.imageView8);
+
+    replayImage.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        playQuestionAudio(indexString);
+      }
+    });
+
     button = (Button) findViewById(R.id.nextButton);
     button.setEnabled(false);
     button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         if (indexString >= test1String.length) {
+          // for playing question audio
+          killMediaPlayer();
           Intent intent = new Intent(getBaseContext(), Test4ComplexVowel2Activity.class);
           startActivity(intent);
         } else {
@@ -68,6 +108,9 @@ public class Test4ComplexVowel1Activity extends AppCompatActivity {
 
           indexString++;
           progressBar.setProgress(indexString);
+
+          // for playing question audio
+          playQuestionAudio(indexString);
         }
       }
     });

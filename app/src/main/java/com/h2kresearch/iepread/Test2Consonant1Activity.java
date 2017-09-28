@@ -2,11 +2,13 @@ package com.h2kresearch.iepread;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -23,6 +25,31 @@ public class Test2Consonant1Activity extends AppCompatActivity {
   String[] test2String = {"가", "카", "하", "다", "사", "하", "아", "싸", "짜", "다", "까", "바", "파", "마", "카", "다", "다", "바", "자"};
   String[] test3String = {"", "", "", "", "", "", "", "", "", "", "다", "파", "마", "다", "나", "하", "타", "파", "짜"}; // 얘는 11번 문제부터 보기가 주어짐
 
+  // for playing question audio
+  ImageView replayImage;
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void playQuestionAudio(int questionNumber) {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("t2_"+questionNumber, "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
   int indexString = 1;
   int threeQuestionStartIndex = 10; // 10 + 1 = 11번부터 세 문제가 시작됨
 
@@ -33,11 +60,22 @@ public class Test2Consonant1Activity extends AppCompatActivity {
 
     progressBar = (ProgressBar) findViewById(R.id.progressBar33);
     progressBar.setMax(test1String.length);
-    progressBar.setProgress(1);
+    progressBar.setProgress(indexString);
 
     test1 = (TextView) findViewById(R.id.option1);
     test2 = (TextView) findViewById(R.id.option2);
     test3 = (TextView) findViewById(R.id.option3);
+
+    // for playing question audio
+    playQuestionAudio(indexString);
+    replayImage = (ImageView) findViewById(R.id.imageView8);
+
+    replayImage.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        playQuestionAudio(indexString);
+      }
+    });
 
     button = (Button) findViewById(R.id.nextButton);
     button.setEnabled(false);
@@ -45,6 +83,8 @@ public class Test2Consonant1Activity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         if (indexString >= test1String.length) {
+          // for playing question audio
+          killMediaPlayer();
           Intent intent = new Intent(getBaseContext(), Test2Consonant2Activity.class);
           startActivity(intent);
         } else {
@@ -68,6 +108,9 @@ public class Test2Consonant1Activity extends AppCompatActivity {
 
           indexString++;
           progressBar.setProgress(indexString);
+
+          // for playing question audio
+          playQuestionAudio(indexString);
         }
       }
     });
