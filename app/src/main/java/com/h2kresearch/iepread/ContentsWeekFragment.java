@@ -88,15 +88,15 @@ public class ContentsWeekFragment extends Fragment {
     // Set the content of the TextView
     TextView week1 = (TextView) rootView.findViewById(R.id.textView37);
     TextView week2 = (TextView) rootView.findViewById(R.id.textView38);
-      TextView week3 = (TextView) rootView.findViewById(R.id.textView40);
-      TextView week4 = (TextView) rootView.findViewById(R.id.textView42);
+    TextView week3 = (TextView) rootView.findViewById(R.id.textView40);
+    TextView week4 = (TextView) rootView.findViewById(R.id.textView42);
 
-      week1.setText(weeklyContent[0] + "\n" + weeklyExam[0]);
-      week2.setText(weeklyContent[1] + "\n" + weeklyExam[1]);
-      week3.setText(weeklyContent[2] + "\n" + weeklyExam[2]);
-      week4.setText(weeklyContent[3] + "\n" + weeklyExam[3]);
+    week1.setText(weeklyContent[0] + "\n" + weeklyExam[0]);
+    week2.setText(weeklyContent[1] + "\n" + weeklyExam[1]);
+    week3.setText(weeklyContent[2] + "\n" + weeklyExam[2]);
+    week4.setText(weeklyContent[3] + "\n" + weeklyExam[3]);
 
-      return rootView;
+    return rootView;
 
     /*
     TextView currState = (TextView) rootView.findViewById(R.id.textView37);
