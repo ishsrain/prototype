@@ -27,11 +27,39 @@ public class ContentsWeekFragment extends Fragment {
 
   int currStateIndex = 0;
 
-  private static String[] weeklyContent = {
-          "교육내용: 단모음 /ㅣ/와 /ㅔ/ 소리-입모양-낱자 연결",
-          "교육내용: 단모음 /ㅏ/와 /ㅜ/ 소리-입모양-낱자 연결",
-          "교육내용: 단모음 /ㅗ/와 /ㅐ/ 소리-입모양-낱자 연결",
-          "교육내용: 단모음 /ㅓ/와 /ㅡ/ 소리-입모양-낱자 연결"
+  private static String[][][] weeklyContent = {
+          {
+                  {
+                          "교육내용: 단모음 /ㅣ/와 /ㅔ/ 소리-입모양-낱자 연결",
+                          "교육내용: 단모음 /ㅏ/와 /ㅜ/ 소리-입모양-낱자 연결",
+                          "교육내용: 단모음 /ㅗ/와 /ㅐ/ 소리-입모양-낱자 연결",
+                          "교육내용: 단모음 /ㅓ/와 /ㅡ/ 소리-입모양-낱자 연결"
+                  },
+                  {
+                          "교육내용: 단모음 /ㅚ/와 /ㅟ/ 소리-입모양-낱자 연결",
+                          "교육내용: 단모음 10개 발음연습",
+                          "교육내용: 단모음 10개 분리연습",
+                          "교육내용: 단모음 10개 변별연습"
+                  },
+                  {
+                          "교육내용: 자음 /ㅁ/, /ㅂ/, /ㅃ/, /ㅍ/ 소리-입모양-낱자 연결",
+                          "교육내용: 자음 /ㄱ/, /ㄲ/, /ㅋ/, /ㅇ/ 소리-입모양-낱자 연결",
+                          "교육내용: 자음 /ㄷ/, /ㄸ/, /ㅌ/, /ㄴ/ 소리-입모양-낱자 연결",
+                          "교육내용: 자음 /ㅈ/, /ㅉ/, /ㅊ/ 소리-입모양-낱자 연결"
+                  },
+                  {
+                          "교육내용: 자음 /ㅅ/와 /ㅆ/ 소리-입모양-낱자 연결",
+                          "교육내용: 자음 /ㅎ/와 /ㄹ/ 소리-입모양-낱자 연결",
+                          "교육내용: 자음 탐지/분리 연습",
+                          "교육내용: 자음 변별/발음 연습"
+                  },
+                  {
+                          "교육내용: 모음 /ㅑ/와 /ㅛ/ 소리-입모양-낱자 연결",
+                          "교육내용: 모음 /ㅕ/와 /ㅠ/ 소리-입모양-낱자 연결",
+                          "교육내용: 모음 /ㅒ/와 /ㅖ/ 소리-입모양-낱자 연결",
+                          "교육내용: 모음 종합 복습"
+                  }
+          }
   };
 
   private static String[] weeklyExam = {
@@ -91,10 +119,10 @@ public class ContentsWeekFragment extends Fragment {
     TextView week3 = (TextView) rootView.findViewById(R.id.textView40);
     TextView week4 = (TextView) rootView.findViewById(R.id.textView42);
 
-    week1.setText(weeklyContent[0] + "\n" + weeklyExam[0]);
-    week2.setText(weeklyContent[1] + "\n" + weeklyExam[1]);
-    week3.setText(weeklyContent[2] + "\n" + weeklyExam[2]);
-    week4.setText(weeklyContent[3] + "\n" + weeklyExam[3]);
+    week1.setText(weeklyContent[0][0][0] + "\n" + weeklyExam[0]);
+    week2.setText(weeklyContent[0][0][1] + "\n" + weeklyExam[1]);
+    week3.setText(weeklyContent[0][0][2] + "\n" + weeklyExam[2]);
+    week4.setText(weeklyContent[0][0][3] + "\n" + weeklyExam[3]);
 
     return rootView;
 
