@@ -13,28 +13,41 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Menutop3Fragment.OnFragmentInteractionListener} interface
+ * {@link ContentsWeekFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Menutop3Fragment#newInstance} factory method to
+ * Use the {@link ContentsWeekFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Menutop3Fragment extends Fragment {
+public class ContentsWeekFragment extends Fragment {
 
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
   private static final String ARG_PARAM1 = "param1";
   private static final String ARG_PARAM2 = "param2";
 
+  int currStateIndex = 0;
+
+  private static String[] weeklyContent = {
+          "교육내용: 단모음 /ㅣ/와 /ㅔ/ 소리-입모양-낱자 연결",
+          "교육내용: 단모음 /ㅏ/와 /ㅜ/ 소리-입모양-낱자 연결",
+          "교육내용: 단모음 /ㅗ/와 /ㅐ/ 소리-입모양-낱자 연결",
+          "교육내용: 단모음 /ㅓ/와 /ㅡ/ 소리-입모양-낱자 연결"
+  };
+
+  private static String[] weeklyExam = {
+          "평가: 단모음 /ㅣ/와 /ㅔ/ 의 음가를 정확히 파악하였는가?",
+          "평가: 단모음 /ㅏ/와 /ㅜ/ 의 음가를 정확히 파악하였는가?",
+          "평가: 단모음 /ㅗ/와 /ㅐ/ 의 음가를 정확히 파악하였는가?",
+          "평가: 단모음 /ㅓ/와 /ㅡ/ 의 음가를 정확히 파악하였는가?"
+  };
+
   // TODO: Rename and change types of parameters
   private String mParam1;
   private String mParam2;
 
-  ResultActivity activity;
-  private TextView menu1Text, menu2Text, menu3Text;
-
   private OnFragmentInteractionListener mListener;
 
-  public Menutop3Fragment() {
+  public ContentsWeekFragment() {
     // Required empty public constructor
   }
 
@@ -44,11 +57,11 @@ public class Menutop3Fragment extends Fragment {
    *
    * @param param1 Parameter 1.
    * @param param2 Parameter 2.
-   * @return A new instance of fragment MenutopFragment.
+   * @return A new instance of fragment Contents4Fragment.
    */
   // TODO: Rename and change types and number of parameters
-  public static Menutop3Fragment newInstance(String param1, String param2) {
-    Menutop3Fragment fragment = new Menutop3Fragment();
+  public static ContentsWeekFragment newInstance(String param1, String param2) {
+    ContentsWeekFragment fragment = new ContentsWeekFragment();
     Bundle args = new Bundle();
     args.putString(ARG_PARAM1, param1);
     args.putString(ARG_PARAM2, param2);
@@ -69,36 +82,34 @@ public class Menutop3Fragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menutop3, container, false);
 
-    activity = (ResultActivity) getActivity();
-    menu1Text = (TextView)rootView.findViewById(R.id.textView3);
-    menu2Text = (TextView)rootView.findViewById(R.id.textView12);
-    menu3Text = (TextView)rootView.findViewById(R.id.textView13);
+    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents_week, container, false);
 
-    menu1Text.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        activity.onContentsFragmentChanged(6);
-      }
-    });
+    // Set the content of the TextView
+    TextView week1 = (TextView) rootView.findViewById(R.id.textView37);
+    TextView week2 = (TextView) rootView.findViewById(R.id.textView38);
+      TextView week3 = (TextView) rootView.findViewById(R.id.textView40);
+      TextView week4 = (TextView) rootView.findViewById(R.id.textView42);
 
-    menu2Text.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        activity.onContentsFragmentChanged(7);
-      }
-    });
+      week1.setText(weeklyContent[0] + "\n" + weeklyExam[0]);
+      week2.setText(weeklyContent[1] + "\n" + weeklyExam[1]);
+      week3.setText(weeklyContent[2] + "\n" + weeklyExam[2]);
+      week4.setText(weeklyContent[3] + "\n" + weeklyExam[3]);
 
-    menu3Text.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        activity.onContentsFragmentChanged(8);
-      }
-    });
+      return rootView;
 
-    return rootView;
-    //return inflater.inflate(R.layout.fragment_menutop3, container, false);
+    /*
+    TextView currState = (TextView) rootView.findViewById(R.id.textView37);
+    SpannableString mainContent = new SpannableString(getResources().getString(R.string.example));
+    currState.setText(mainContent, SPANNABLE);
+
+    // Split the text in the TextView into words
+    // Make the TextView clickable
+
+    currState.setMovementMethod(new LinkMovementMethod());
+    */
+
+    //return inflater.inflate(R.layout.fragment_contents_week, container, false);
   }
 
   // TODO: Rename method, update argument and hook method into UI event
