@@ -9,7 +9,7 @@ import android.os.Bundle;
 public class ResultActivity extends AppCompatActivity
     implements MenuleftFragment.OnFragmentInteractionListener,
     MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener,
-    ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener{
+    ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
 
   MenutopFragment menutopFragment;
   Menutop2Fragment menutop2Fragment;
@@ -19,6 +19,8 @@ public class ResultActivity extends AppCompatActivity
   Contents2Fragment contents2Fragment;
   Contents3Fragment contents3Fragment;
   Contents4Fragment contents4Fragment;
+  ContentsMonthFragment contentsMFragment;
+  ContentsWeekFragment contentsWFragment;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,8 @@ public class ResultActivity extends AppCompatActivity
     contentsFragment = new ContentsFragment();
     contents3Fragment = new Contents3Fragment();
     contents4Fragment = new Contents4Fragment();
-
+    contentsMFragment = new ContentsMonthFragment();
+    contentsWFragment = new ContentsWeekFragment();
   }
 
   public void onMenutopFragmentChanged(int index) {
@@ -54,6 +57,12 @@ public class ResultActivity extends AppCompatActivity
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
     } else if(index == 2) {
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsFragment).commit();
+    } else if(index == 6) {
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit();
+    } else if(index == 7) {
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment).commit();
+    } else if(index == 8) {
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsWFragment).commit();
     }
   }
 

@@ -4,9 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import static android.widget.TextView.BufferType.SPANNABLE;
 
 
 /**
@@ -23,6 +28,27 @@ public class Contents4Fragment extends Fragment {
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
   private static final String ARG_PARAM1 = "param1";
   private static final String ARG_PARAM2 = "param2";
+
+  int currStateIndex = 1;
+
+  private static String[] currStateString = {
+          "1. 자음 모음의 소리값을 정확하게 파악하지 못함. \n2. 받침이 있는 글자에 특히 어려움을 겪음. \n3. 현재 읽기 수준은 1학년 평균 수준에 심각하게 미도달.",
+          "1. 모음 음가에 비해 자음 음가 성취도가 부족함. \n2. 받침이 있는 글자에 특히 어려움을 겪음. \n3. 현재 읽기 수준은 1학년 평균 수준에 미도달.",
+          "1. 단모음에 비해 이중모음의 성취도가 부족함. \n2. 자음의 음가는 정확히 알고 있음. \n3. 받침이 있는 글자에 특히 어려움을 겪음. \n4. 현재 읽기 수준은 1학년 평균 수준에 미도달.",
+          "1. 모음(이중모음 포함)과 자음(받침 포함)의 음가를 정확하게 알고 있음. \n2. 하지만 받침이 있는 글자 읽기를 어려워 함. \n3. 낱자-소리 대응이 빠르거나 자동화되지 못함. \n4. 현재 읽기 수준은 1학년 수준.",
+          "1. 모음과 자음의 음가를 정확하게 알고 있음. \n2. 간단한 받침이 있는 글자는 정확하게 읽어냄. \n3. 하지만 곁받침, 음운 변동 규칙을 어려워 함. \n4. 현재 읽기 수준은 1학년 수준.",
+          "1. 모음과 자음의 음가를 정확하게 알고 있음. \n2. 음운 변동 규칙도 정확히 알고 있지만 유창하게 읽지는 못함. \n3. 현재 읽기 수준은 2학년 평균 미도달."
+  };
+
+  private static String[] currGoalString = {
+          "1. 단모음의 음가를 정확하게 파악. \n2. 자음의 음가를 정확하게 파악. \n3. 이중모음의 음가를 파악.",
+          "1. 자음의 음가를 정확하게 파악. \n2. 이중모음의 음가를 정확하게 파악.",
+          "1. 이중모음의 음가를 정확하게 파악. \n2. 받침의 음가를 정확하게 파악.",
+          "1. 받침의 음가를 정확하게 파악. \n2. 정확한 해독.",
+          "1. 음운변동 규칙을 정확하게 파악. \n2. 겹받침의 발음을 정확하게 파악.",
+          "1. 유창성 훈련."
+  };
+
 
   // TODO: Rename and change types of parameters
   private String mParam1;
@@ -65,7 +91,28 @@ public class Contents4Fragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_contents4, container, false);
+    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents4, container, false);
+
+    // Set the content of the TextView
+    TextView currState = (TextView) rootView.findViewById(R.id.textView37);
+    TextView currGoal = (TextView) rootView.findViewById(R.id.textView38);
+
+    currState.setText(currStateString[currStateIndex]);
+    currGoal.setText(currGoalString[currStateIndex]);
+
+    /*
+    TextView currState = (TextView) rootView.findViewById(R.id.textView37);
+    SpannableString mainContent = new SpannableString(getResources().getString(R.string.example));
+    currState.setText(mainContent, SPANNABLE);
+
+    // Split the text in the TextView into words
+    // Make the TextView clickable
+
+    currState.setMovementMethod(new LinkMovementMethod());
+    */
+    return rootView;
+
+    //return inflater.inflate(R.layout.fragment_contents4, container, false);
   }
 
   // TODO: Rename method, update argument and hook method into UI event
