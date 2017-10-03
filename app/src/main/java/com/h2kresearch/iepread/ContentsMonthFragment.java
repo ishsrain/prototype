@@ -25,10 +25,10 @@ public class ContentsMonthFragment extends Fragment {
   private static final String ARG_PARAM1 = "param1";
   private static final String ARG_PARAM2 = "param2";
 
-  int rIndex = 0; //result
-  int mIndex = 0; //month
+  int diagnosisResult = 0; // 0은 모음(1단계)부터 가르쳐야 한다는 진단결과를 의미, 채점 결과를 통해 주어지는 값
+  int month = 0; // activity에 표현할 month, 사용자 인풋으로 주어지는 값
 
-  private static String[][] monthlyGoalString = {//앞 index: 결과, 뒤 index: 월
+  private static String[][] monthlyGoalString = {//앞 index: diagnosisResult, 뒤 index: month
           {"단모음 음가 파악", "단모음 음가 파악", "자음 음가 파악", "자음 음가 파악", "이중모음 음가 파악"},
           {"자음 음가 파악", "자음 음가 파악", "이중모음 음가 파악", "이중모음 음가 파악", "모음 종합 연습"},
           {"이중모음 음가 파악", "이중모음 음가 파악", "모음 종합 연습", "받침 음가 파악", "받침 음가 파악"},
@@ -221,10 +221,10 @@ public class ContentsMonthFragment extends Fragment {
     TextView mMethod = (TextView) rootView.findViewById(R.id.textView40);
     TextView mExam = (TextView) rootView.findViewById(R.id.textView42);
 
-    mGoal.setText(monthlyGoalString[0][mIndex]);
-    mContent.setText(monthlyContentString[0][mIndex]);
-    mMethod.setText(monthlyMethodString[0][mIndex]);
-    mExam.setText(monthlyExamString[0][mIndex]);
+    mGoal.setText(monthlyGoalString[diagnosisResult][0]); //첫 화면은 3월 IEP
+    mContent.setText(monthlyContentString[diagnosisResult][0]);
+    mMethod.setText(monthlyMethodString[diagnosisResult][0]);
+    mExam.setText(monthlyExamString[diagnosisResult][0]);
 
     return rootView;
 
