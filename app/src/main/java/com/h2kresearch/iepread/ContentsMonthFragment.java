@@ -26,9 +26,14 @@ public class ContentsMonthFragment extends Fragment {
   private static final String ARG_PARAM2 = "param2";
 
   int diagnosisResult = 0; // 0은 모음(1단계)부터 가르쳐야 한다는 진단결과를 의미, 채점 결과를 통해 주어지는 값
-  int month = 0; // activity에 표현할 month, 사용자 인풋으로 주어지는 값
+  int month = 1; // activity에 표현할 month, 사용자 인풋으로 주어지는 값
 
-  private static String[][] monthlyGoalString = {//앞 index: diagnosisResult, 뒤 index: month
+  TextView mGoal;
+  TextView mContent;
+  TextView mMethod;
+  TextView mExam;
+
+    private static String[][] monthlyGoalString = {//앞 index: diagnosisResult, 뒤 index: month
           {"단모음 음가 파악", "단모음 음가 파악", "자음 음가 파악", "자음 음가 파악", "이중모음 음가 파악"},
           {"자음 음가 파악", "자음 음가 파악", "이중모음 음가 파악", "이중모음 음가 파악", "모음 종합 연습"},
           {"이중모음 음가 파악", "이중모음 음가 파악", "모음 종합 연습", "받침 음가 파악", "받침 음가 파악"},
@@ -213,18 +218,22 @@ public class ContentsMonthFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
+    String sMonth = this.getArguments().getString("month");
+    month = Integer.parseInt(sMonth);
+    System.out.println(month);
+
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents_month, container, false);
 
     // Set the content of the TextView
-    TextView mGoal = (TextView) rootView.findViewById(R.id.textView37);
-    TextView mContent = (TextView) rootView.findViewById(R.id.textView38);
-    TextView mMethod = (TextView) rootView.findViewById(R.id.textView40);
-    TextView mExam = (TextView) rootView.findViewById(R.id.textView42);
+    mGoal = (TextView) rootView.findViewById(R.id.textView37);
+    mContent = (TextView) rootView.findViewById(R.id.textView38);
+    mMethod = (TextView) rootView.findViewById(R.id.textView40);
+    mExam = (TextView) rootView.findViewById(R.id.textView42);
 
-    mGoal.setText(monthlyGoalString[diagnosisResult][0]); //첫 화면은 3월 IEP
-    mContent.setText(monthlyContentString[diagnosisResult][0]);
-    mMethod.setText(monthlyMethodString[diagnosisResult][0]);
-    mExam.setText(monthlyExamString[diagnosisResult][0]);
+    mGoal.setText(monthlyGoalString[diagnosisResult][month]); //첫 화면은 3월 IEP
+    mContent.setText(monthlyContentString[diagnosisResult][month]);
+    mMethod.setText(monthlyMethodString[diagnosisResult][month]);
+    mExam.setText(monthlyExamString[diagnosisResult][month]);
 
     return rootView;
 
@@ -242,10 +251,22 @@ public class ContentsMonthFragment extends Fragment {
 //    return inflater.inflate(R.layout.fragment_contents_month, container, false);
   }
 
+  public void onMonthChanged() {
+      String sMonth = this.getArguments().getString("month");
+      month = Integer.parseInt(sMonth);
+      System.out.println(month);
+
+      mGoal.setText(monthlyGoalString[diagnosisResult][month]); //첫 화면은 3월 IEP
+      mContent.setText(monthlyContentString[diagnosisResult][month]);
+      mMethod.setText(monthlyMethodString[diagnosisResult][month]);
+      mExam.setText(monthlyExamString[diagnosisResult][month]);
+  }
+
   // TODO: Rename method, update argument and hook method into UI event
   public void onButtonPressed(Uri uri) {
     if (mListener != null) {
       mListener.onFragmentInteraction(uri);
+      System.out.println("clicked");
     }
   }
 
