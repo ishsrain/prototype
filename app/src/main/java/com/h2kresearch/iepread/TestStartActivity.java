@@ -5,14 +5,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class IntroActivity extends AppCompatActivity {
+public class TestStartActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_intro);
+    setContentView(R.layout.activity_test_start);
 
-    // Home Activity Call
     startLoading();
   }
 
@@ -21,12 +20,10 @@ public class IntroActivity extends AppCompatActivity {
     handler.postDelayed(new Runnable() {
       @Override
       public void run() {
-        //Intent intent = new Intent(getBaseContext(), Test1Vowel1Activity.class);
-        Intent intent = new Intent(getBaseContext(), InfoActivity.class);
-        //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+        Intent intent = new Intent(getBaseContext(), Test1Vowel1Activity.class);
         startActivity(intent);
         finish();
       }
-    }, 2000);
+    }, 3000);
   }
 }

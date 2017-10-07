@@ -46,7 +46,7 @@ public class InfoActivity extends AppCompatActivity {
     buttonStart.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(getBaseContext(), Test1Vowel1Activity.class);
+        Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
         startActivity(intent);
         //finish();
       }

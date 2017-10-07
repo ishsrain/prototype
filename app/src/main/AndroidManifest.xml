@@ -46,10 +46,10 @@
     <activity android:name=".Test7ComplexSupport1Activity" />
     <activity android:name=".Test7ComplexSupport2Activity" />
     <activity android:name=".Test8WordWithSupportActivity" />
-
     <activity android:name=".Test9ReadingActivity" />
     <activity android:name=".ResultActivity" />
-    <activity android:name=".TestEndActivity"></activity>
+    <activity android:name=".TestEndActivity" />
+    <activity android:name=".TestStartActivity"></activity>
   </application>
 
 </manifest>

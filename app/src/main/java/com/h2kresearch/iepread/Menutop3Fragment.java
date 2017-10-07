@@ -1,6 +1,7 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -75,10 +76,16 @@ public class Menutop3Fragment extends Fragment {
     menu1Text = (TextView)rootView.findViewById(R.id.textView3);
     menu2Text = (TextView)rootView.findViewById(R.id.textView12);
     menu3Text = (TextView)rootView.findViewById(R.id.textView13);
+    menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+    menu2Text.setTextColor(Color.BLACK);
+    menu3Text.setTextColor(Color.BLACK);
 
     menu1Text.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu2Text.setTextColor(Color.BLACK);
+        menu3Text.setTextColor(Color.BLACK);
         activity.onContentsFragmentChanged(6);
       }
     });
@@ -86,6 +93,9 @@ public class Menutop3Fragment extends Fragment {
     menu2Text.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        menu1Text.setTextColor(Color.BLACK);
+        menu2Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu3Text.setTextColor(Color.BLACK);
         activity.onContentsFragmentChanged(7);
       }
     });
@@ -93,6 +103,9 @@ public class Menutop3Fragment extends Fragment {
     menu3Text.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        menu1Text.setTextColor(Color.BLACK);
+        menu2Text.setTextColor(Color.BLACK);
+        menu3Text.setTextColor(Color.parseColor("#4a83c7"));
         activity.onContentsFragmentChanged(8);
       }
     });

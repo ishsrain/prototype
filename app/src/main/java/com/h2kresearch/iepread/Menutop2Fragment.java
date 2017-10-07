@@ -1,12 +1,15 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -29,6 +32,9 @@ public class Menutop2Fragment extends Fragment {
   private String mParam2;
 
   private OnFragmentInteractionListener mListener;
+
+  ResultActivity activity;
+  private TextView menu1Text, menu2Text, menu3Text;
 
   public Menutop2Fragment() {
     // Required empty public constructor
@@ -65,7 +71,48 @@ public class Menutop2Fragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_menutop2, container, false);
+    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menutop2, container, false);
+
+    activity = (ResultActivity) getActivity();
+    menu1Text = (TextView)rootView.findViewById(R.id.textView3);
+    menu2Text = (TextView)rootView.findViewById(R.id.textView12);
+    menu3Text = (TextView)rootView.findViewById(R.id.textView13);
+
+    menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+    menu2Text.setTextColor(Color.BLACK);
+    menu3Text.setTextColor(Color.BLACK);
+
+    menu1Text.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu2Text.setTextColor(Color.BLACK);
+        menu3Text.setTextColor(Color.BLACK);
+        //activity.onContentsFragmentChanged(1);
+      }
+    });
+
+    menu2Text.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        menu1Text.setTextColor(Color.BLACK);
+        menu2Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu3Text.setTextColor(Color.BLACK);
+        //activity.onContentsFragmentChanged(2);
+      }
+    });
+
+    menu3Text.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        menu1Text.setTextColor(Color.BLACK);
+        menu2Text.setTextColor(Color.BLACK);
+        menu3Text.setTextColor(Color.parseColor("#4a83c7"));
+        //activity.onContentsFragmentChanged(2);
+      }
+    });
+
+    return rootView;
   }
 
   // TODO: Rename method, update argument and hook method into UI event

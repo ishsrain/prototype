@@ -65,7 +65,7 @@
           android:layout_weight="1"
           android:layout_marginLeft="40dp"
           android:layout_marginRight="20dp"
-          android:gravity="right"
+          android:gravity="center_horizontal"
           android:orientation="vertical">
           <ImageView
             android:id="@+id/imageView3"
@@ -136,7 +136,7 @@
           android:layout_weight="1"
           android:layout_marginLeft="20dp"
           android:layout_marginRight="40dp"
-          android:gravity="right"
+          android:gravity="center_horizontal"
           android:orientation="vertical">
           <ImageView
             android:id="@+id/imageView4"

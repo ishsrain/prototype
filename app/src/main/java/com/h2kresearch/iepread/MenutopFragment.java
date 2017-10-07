@@ -1,9 +1,11 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -76,9 +78,14 @@ public class MenutopFragment extends Fragment {
     menu1Text = (TextView)rootView.findViewById(R.id.textView3);
     menu2Text = (TextView)rootView.findViewById(R.id.textView12);
 
+    menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+    menu2Text.setTextColor(Color.BLACK);
+
     menu1Text.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
+        menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu2Text.setTextColor(Color.BLACK);
         activity.onContentsFragmentChanged(1);
       }
     });
@@ -86,6 +93,8 @@ public class MenutopFragment extends Fragment {
     menu2Text.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
+        menu1Text.setTextColor(Color.BLACK);
+        menu2Text.setTextColor(Color.parseColor("#4a83c7"));
         activity.onContentsFragmentChanged(2);
       }
     });

@@ -46,6 +46,7 @@
   <string name="currentstate">또래에 비해 읽기 수준이 현저히 떨어집니다. 자음 모음의 소리값을 정확하게 알고 있지 못하며, 받침이 있는 글자에 특히 어려움을 겪고 있습니다. 현재 읽기 수준은 ‘1학년 평균 수준에 미도달’ 된 것으로 평가됩니다.</string>
   <string name="goal">모음의 음가를 정확하게 파악.\n- 단모음 10개와 이중 모음 11개의 음가를 정확하게 파악</string>
   <string name="testend">자, 이제 끝났어요\n선생님께 제출하세요!</string>
+  <string name="teststart">그럼 지금부터\n진단을 시작할게요!</string>
 
 
   <!-- TODO: Remove or change this placeholder text -->
