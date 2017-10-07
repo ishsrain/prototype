@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="오 리"
+        android:text="오리"
         android:textAlignment="center"
         android:textColor="#404040"
         android:textSize="150sp"
@@ -91,6 +91,13 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent">
+    <TextView
+      android:id="@+id/textView55"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="쉬운단어-보고말하기"
+      android:textColor="#A0A0A0" />
     <ImageView
       android:id="@+id/imageView10"
       android:layout_width="wrap_content"

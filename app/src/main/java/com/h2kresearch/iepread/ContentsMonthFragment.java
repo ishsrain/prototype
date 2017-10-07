@@ -1,11 +1,13 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -32,6 +34,8 @@ public class ContentsMonthFragment extends Fragment {
   TextView mContent;
   TextView mMethod;
   TextView mExam;
+
+  TextView month3, month4, month5, month6, month7;
 
     private static String[][] monthlyGoalString = {//앞 index: diagnosisResult, 뒤 index: month
           {"단모음 음가 파악", "단모음 음가 파악", "자음 음가 파악", "자음 음가 파악", "이중모음 음가 파악"},
@@ -218,9 +222,9 @@ public class ContentsMonthFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    String sMonth = this.getArguments().getString("month");
-    month = Integer.parseInt(sMonth);
-    System.out.println(month);
+//    String sMonth = this.getArguments().getString("month");
+//    month = Integer.parseInt(sMonth);
+//    System.out.println(month);
 
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents_month, container, false);
 
@@ -234,6 +238,72 @@ public class ContentsMonthFragment extends Fragment {
     mContent.setText(monthlyContentString[diagnosisResult][month]);
     mMethod.setText(monthlyMethodString[diagnosisResult][month]);
     mExam.setText(monthlyExamString[diagnosisResult][month]);
+
+    month3 = (TextView)rootView.findViewById(R.id.textView14);
+    month4 = (TextView)rootView.findViewById(R.id.textView15);
+    month5 = (TextView)rootView.findViewById(R.id.textView16);
+    month6 = (TextView)rootView.findViewById(R.id.textView17);
+    month7 = (TextView)rootView.findViewById(R.id.textView18);
+
+    month3.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month3.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.BLACK);
+        month5.setTextColor(Color.BLACK);
+        month6.setTextColor(Color.BLACK);
+        month7.setTextColor(Color.BLACK);
+        SetIEP(3);
+      }
+    });
+
+    month4.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month4.setTextColor(Color.parseColor("#4a83c7"));
+        month3.setTextColor(Color.BLACK);
+        month5.setTextColor(Color.BLACK);
+        month6.setTextColor(Color.BLACK);
+        month7.setTextColor(Color.BLACK);
+        SetIEP(4);
+      }
+    });
+
+    month5.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month5.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.BLACK);
+        month3.setTextColor(Color.BLACK);
+        month6.setTextColor(Color.BLACK);
+        month7.setTextColor(Color.BLACK);
+        SetIEP(5);
+      }
+    });
+
+    month6.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month6.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.BLACK);
+        month5.setTextColor(Color.BLACK);
+        month3.setTextColor(Color.BLACK);
+        month7.setTextColor(Color.BLACK);
+        SetIEP(6);
+      }
+    });
+
+    month7.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month7.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.BLACK);
+        month5.setTextColor(Color.BLACK);
+        month6.setTextColor(Color.BLACK);
+        month3.setTextColor(Color.BLACK);
+        SetIEP(7);
+      }
+    });
 
     return rootView;
 
@@ -249,6 +319,13 @@ public class ContentsMonthFragment extends Fragment {
     */
 
 //    return inflater.inflate(R.layout.fragment_contents_month, container, false);
+  }
+
+  public void SetIEP(int month){
+    mGoal.setText(monthlyGoalString[diagnosisResult][month-3]);
+    mContent.setText(monthlyContentString[diagnosisResult][month-3]);
+    mMethod.setText(monthlyMethodString[diagnosisResult][month-3]);
+    mExam.setText(monthlyExamString[diagnosisResult][month-3]);
   }
 
   public void onMonthChanged() {

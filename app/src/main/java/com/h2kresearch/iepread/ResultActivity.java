@@ -23,6 +23,8 @@ public class ResultActivity extends AppCompatActivity
   ContentsMonthFragment contentsMFragment;
   ContentsWeekFragment contentsWFragment;
 
+  int month = 3;
+
   //FragmentTransaction ft;
 
   @Override
@@ -46,92 +48,45 @@ public class ResultActivity extends AppCompatActivity
   }
 
   public void onMenutopFragmentChanged(int index) {
-    if(index == 1){
-      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutopFragment).commit();
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
-    } else if(index == 2) {
-      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop2Fragment).commit();
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit();
-    } else if(index == 3) {
-      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3Fragment).commit();
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit();
+    if(index == 1){ // 주관식 채점하기
+      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutopFragment).commit();  // 주관식 채점하기 메뉴
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit(); // 의미/무의미 단어 읽기 내용
+    } else if(index == 2) { // 채점결과 학인하기
+      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop2Fragment).commit(); // 채점결과 확인하기 메뉴
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit(); // 객관식 채점결과 내용
+    } else if(index == 3) { // IEP 확인하기
+      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3Fragment).commit(); // IEP 확인하기 메뉴
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit(); // 학기별 교육내용 내용
     }
   }
 
   public void onContentsFragmentChanged(int index) {
-    if(index == 1){
+    if(index == 1){ // 의미/무의미 단어 읽기
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
-    } else if(index == 2) {
+    } else if(index == 2) { // 앍기 유창성 검사
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsFragment).commit();
-    } else if(index == 6) {
-      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3Fragment).commit();
+    } else if(index == 3) { // 채점 결과 확인하기
+
+    } else if(index == 4) { // 학기별 교육 내용
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit();
-    } else if(index == 7) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3MonthFragment).commit();
-        Bundle bundle = new Bundle();
-        bundle.putString("month", "0");
-        if (contentsMFragment.getArguments() == null){
-            contentsMFragment.setArguments(bundle);
-        } else {
-            contentsMFragment.getArguments().putAll(bundle);
-        }
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment).commit();
-    } else if(index == 8) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsWFragment).commit();
-    } else if(index == 9) {
-        //3월 IEP fragment 출력
-        Bundle bundle = new Bundle();
-        bundle.putString("month", "0");
-        if (contentsMFragment.getArguments() == null){
-            contentsMFragment.setArguments(bundle);
-        } else {
-            contentsMFragment.getArguments().putAll(bundle);
-        }
-        contentsMFragment.onMonthChanged();
-    }  else if(index == 10) {
-        //4월 IEP fragment 출력
-        Bundle bundle = new Bundle();
-        bundle.putString("month", "1");
-        if (contentsMFragment.getArguments() == null){
-            contentsMFragment.setArguments(bundle);
-        } else {
-            contentsMFragment.getArguments().putAll(bundle);
-        }
-        contentsMFragment.onMonthChanged();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment, "TAG_MONTH").commit();
-    } else if(index == 11) {
-        //5월 IEP fragment 출력
-        Bundle bundle = new Bundle();
-        bundle.putString("month", "2");
-        if (contentsMFragment.getArguments() == null){
-            contentsMFragment.setArguments(bundle);
-        } else {
-            contentsMFragment.getArguments().putAll(bundle);
-        }
-        contentsMFragment.onMonthChanged();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment, "TAG_MONTH").commit();
-    } else if(index == 12) {
-        //6월 IEP fragment 출력
-        Bundle bundle = new Bundle();
-        bundle.putString("month", "3");
-        if (contentsMFragment.getArguments() == null){
-            contentsMFragment.setArguments(bundle);
-        } else {
-            contentsMFragment.getArguments().putAll(bundle);
-        }
-        contentsMFragment.onMonthChanged();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment, "TAG_MONTH").commit();
-    } else if(index == 13) {
-        //7월 IEP fragment 출력
-        Bundle bundle = new Bundle();
-        bundle.putString("month", "4");
-        if (contentsMFragment.getArguments() == null){
-            contentsMFragment.setArguments(bundle);
-        } else {
-            contentsMFragment.getArguments().putAll(bundle);
-        }
-        contentsMFragment.onMonthChanged();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment, "TAG_MONTH").commit();
+    } else if(index == 5) { // 월별 교육 내용
+      Bundle bundle = new Bundle();
+      bundle.putInt("month", month);
+      if (contentsMFragment.getArguments() == null){
+        contentsMFragment.setArguments(bundle);
+      } else {
+        contentsMFragment.getArguments().putAll(bundle);
+      }
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment).commit();
+    } else if(index == 6) { // 주별 교육 내용
+      Bundle bundle = new Bundle();
+      bundle.putInt("month", month);
+      if (contentsWFragment.getArguments() == null){
+        contentsWFragment.setArguments(bundle);
+      } else {
+        contentsWFragment.getArguments().putAll(bundle);
+      }
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsWFragment).commit();
     }
 
   }

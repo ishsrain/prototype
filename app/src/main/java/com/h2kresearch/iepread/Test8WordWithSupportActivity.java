@@ -33,7 +33,7 @@ public class Test8WordWithSupportActivity extends AppCompatActivity {
   ProgressBar progressBar;
   Thread thread;
 
-  String[] testString = {"사 람", "공 간", "위 안", "의 술", "왜 관", "축 구", "잠 옷", "굶 다"};
+  String[] testString = {"사람", "공간", "위안", "의술", "왜관", "축구", "잠옷", "굶다"};
   int indexString = 1;
 
   // Record Time (ms)

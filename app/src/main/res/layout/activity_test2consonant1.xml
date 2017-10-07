@@ -35,38 +35,28 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/progressBar33">
 
-    <LinearLayout
+    <Button
+      android:id="@+id/nextButton"
+      style="?android:attr/borderlessButtonStyle"
+      android:textStyle="bold"
       android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="2"
-      android:orientation="horizontal">
-      <Button
-        android:id="@+id/nextButton"
-        style="?android:attr/borderlessButtonStyle"
-        android:textStyle="bold"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_weight="9.5"
-        android:background="@android:color/background_light"
-        android:text="다음"
-        android:textAlignment="textEnd"
-        android:textColor="#404040"
-        android:textSize="22sp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="762dp" />
-      <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_weight="0.5"
-        app:srcCompat="@drawable/next" />
-    </LinearLayout>
+      android:layout_height="70dp"
+      android:layout_weight="0"
+      android:drawablePadding="10dp"
+      android:drawableRight="@drawable/next_small"
+      android:scaleType="centerInside"
+      android:text="다음"
+      android:textAlignment="textEnd"
+      android:textColor="#404040"
+      android:textSize="22sp"
+      tools:layout_editor_absoluteX="8dp"
+      tools:layout_editor_absoluteY="762dp" />
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_weight="8"
       android:paddingTop="75dp"
-      android:paddingBottom="75dp"
+      android:paddingBottom="25dp"
       android:paddingLeft="100dp"
       android:paddingRight="100dp"
       android:orientation="horizontal"
@@ -118,18 +108,28 @@
   <LinearLayout
     android:id="@+id/linearLayout2"
     android:layout_width="0dp"
-    android:layout_height="100dp"
+    android:layout_height="150dp"
     android:layout_weight="1"
+    android:paddingBottom="25dp"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
     android:gravity="bottom|right"
     android:orientation="horizontal"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent">
-    <ImageView
-      android:id="@+id/imageView8"
+    <TextView
+      android:id="@+id/textView48"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:srcCompat="@drawable/sound"
+      android:layout_weight="1"
+      android:text="자음-듣고고르기"
+      android:textColor="#A0A0A0" />
+    <ImageView
+      android:id="@+id/imageView8"
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      app:srcCompat="@drawable/playbutton"
       tools:layout_editor_absoluteX="8dp"
       tools:layout_editor_absoluteY="8dp" />
   </LinearLayout>

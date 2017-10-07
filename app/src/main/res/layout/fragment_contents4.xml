@@ -14,6 +14,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <Space
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1" />
+    <TextView
+      android:id="@+id/textView45"
+      android:layout_width="match_parent"
+      android:layout_height="5dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginBottom="20dp" />
     <TextView
       android:id="@+id/textView36"
       android:textStyle="bold"
@@ -23,14 +33,13 @@
       android:layout_marginLeft="25dp"
       android:gravity="center_vertical"
       android:text="현행수준"
-      android:textColor="@android:color/black"
-      android:textSize="25sp" />
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <TextView
       android:id="@+id/textView37"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="3"
-      android:layout_marginRight="25dp"
+      android:layout_weight="7"
       android:paddingTop="25dp"
       android:paddingBottom="25dp"
       android:paddingLeft="25dp"
@@ -38,8 +47,8 @@
       android:background="#f2f2f2"
       android:lineSpacingMultiplier="1.5"
       android:text="@string/currentstate"
-      android:textColor="@android:color/black"
-      android:textSize="20sp" />
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <TextView
       android:id="@+id/textView35"
       android:textStyle="bold"
@@ -49,14 +58,13 @@
       android:layout_marginLeft="25dp"
       android:gravity="center_vertical"
       android:text="학기목표"
-      android:textColor="@android:color/black"
-      android:textSize="25sp" />
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <TextView
       android:id="@+id/textView38"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="3"
-      android:layout_marginRight="25dp"
+      android:layout_weight="7"
       android:paddingTop="25dp"
       android:paddingBottom="25dp"
       android:paddingLeft="25dp"
@@ -64,8 +72,8 @@
       android:background="#f2f2f2"
       android:lineSpacingMultiplier="1.5"
       android:text="@string/goal"
-      android:textColor="@android:color/black"
-      android:textSize="20sp" />
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <Space
       android:layout_width="match_parent"
       android:layout_height="0dp"

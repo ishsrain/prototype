@@ -33,7 +33,7 @@ public class Test5WordWithNoSupportActivity extends AppCompatActivity {
   ProgressBar progressBar;
   Thread thread;
 
-  String[] testString = {"오 리", "사 자", "왜 가 리", "예 수", "워 디", "효 너", "외 자", "퓨 며"};
+  String[] testString = {"오리", "사자", "왜가리", "예수", "워디", "효너", "외자", "퓨며"};
   int indexString = 1;
 
   // Record Time (ms)

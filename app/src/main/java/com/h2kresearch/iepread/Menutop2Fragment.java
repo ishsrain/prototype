@@ -88,7 +88,7 @@ public class Menutop2Fragment extends Fragment {
         menu1Text.setTextColor(Color.parseColor("#4a83c7"));
         menu2Text.setTextColor(Color.BLACK);
         menu3Text.setTextColor(Color.BLACK);
-        //activity.onContentsFragmentChanged(1);
+        activity.onContentsFragmentChanged(3);
       }
     });
 
@@ -98,7 +98,7 @@ public class Menutop2Fragment extends Fragment {
         menu1Text.setTextColor(Color.BLACK);
         menu2Text.setTextColor(Color.parseColor("#4a83c7"));
         menu3Text.setTextColor(Color.BLACK);
-        //activity.onContentsFragmentChanged(2);
+        activity.onContentsFragmentChanged(3);
       }
     });
 
@@ -108,7 +108,7 @@ public class Menutop2Fragment extends Fragment {
         menu1Text.setTextColor(Color.BLACK);
         menu2Text.setTextColor(Color.BLACK);
         menu3Text.setTextColor(Color.parseColor("#4a83c7"));
-        //activity.onContentsFragmentChanged(2);
+        activity.onContentsFragmentChanged(3);
       }
     });
 

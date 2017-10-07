@@ -14,6 +14,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:orientation="horizontal">
+
+      <TextView
+        android:id="@+id/textView14"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="3월"
+        android:textColor="#404040"
+        android:textSize="25sp" />
+      <TextView
+        android:id="@+id/textView15"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="4월"
+        android:textColor="#404040"
+        android:textSize="25sp" />
+
+      <TextView
+        android:id="@+id/textView16"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="5월"
+        android:textColor="#404040"
+        android:textSize="25sp" />
+
+      <TextView
+        android:id="@+id/textView17"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="6월"
+        android:textColor="#404040"
+        android:textSize="25sp" />
+
+      <TextView
+        android:id="@+id/textView18"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="7월"
+        android:textColor="#404040"
+        android:textSize="25sp" />
+    </LinearLayout>
+    <TextView
+      android:id="@+id/textView50"
+      android:layout_width="match_parent"
+      android:layout_height="5dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginBottom="20dp"
+      android:background="#404040" />
     <TextView
       android:id="@+id/textView36"
       android:textStyle="bold"
@@ -23,23 +85,22 @@
       android:layout_marginLeft="25dp"
       android:gravity="center_vertical"
       android:text="교육목표"
-      android:textColor="@android:color/black"
-      android:textSize="25sp" />
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <TextView
       android:id="@+id/textView37"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="2"
-      android:layout_marginRight="25dp"
+      android:layout_weight="3"
       android:paddingTop="25dp"
       android:paddingBottom="25dp"
       android:paddingLeft="25dp"
       android:paddingRight="25dp"
       android:background="#f2f2f2"
       android:lineSpacingMultiplier="1.5"
-      android:text="@string/currentstate"
-      android:textColor="@android:color/black"
-      android:textSize="20sp" />
+      android:text="@string/goal"
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <TextView
       android:id="@+id/textView35"
       android:textStyle="bold"
@@ -49,14 +110,13 @@
       android:layout_marginLeft="25dp"
       android:gravity="center_vertical"
       android:text="교육내용"
-      android:textColor="@android:color/black"
-      android:textSize="25sp" />
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <TextView
       android:id="@+id/textView38"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="2"
-      android:layout_marginRight="25dp"
+      android:layout_weight="3"
       android:paddingTop="25dp"
       android:paddingBottom="25dp"
       android:paddingLeft="25dp"
@@ -64,66 +124,64 @@
       android:background="#f2f2f2"
       android:lineSpacingMultiplier="1.5"
       android:text="@string/goal"
-      android:textColor="@android:color/black"
-      android:textSize="20sp" />
+      android:textColor="#404040"
+      android:textSize="18sp" />
     <TextView
-        android:id="@+id/textView39"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="25dp"
-        android:gravity="center_vertical"
-        android:text="교육방법"
-        android:textColor="@android:color/black"
-        android:textSize="25sp" />
-    <TextView
-        android:id="@+id/textView40"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:layout_marginRight="25dp"
-        android:paddingTop="25dp"
-        android:paddingBottom="25dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:background="#f2f2f2"
-        android:lineSpacingMultiplier="1.5"
-        android:text="@string/goal"
-        android:textColor="@android:color/black"
-        android:textSize="20sp" />
-      <TextView
-          android:id="@+id/textView41"
-          android:textStyle="bold"
-          android:layout_width="match_parent"
-          android:layout_height="0dp"
-          android:layout_weight="1"
-          android:layout_marginLeft="25dp"
-          android:gravity="center_vertical"
-          android:text="평가준거"
-          android:textColor="@android:color/black"
-          android:textSize="25sp" />
-
-      <TextView
-          android:id="@+id/textView42"
-          android:layout_width="match_parent"
-          android:layout_height="0dp"
-          android:layout_marginRight="25dp"
-          android:layout_weight="2"
-          android:background="#f2f2f2"
-          android:lineSpacingMultiplier="1.5"
-          android:paddingBottom="25dp"
-          android:paddingLeft="25dp"
-          android:paddingRight="25dp"
-          android:paddingTop="25dp"
-          android:text="@string/goal"
-          android:textColor="@android:color/black"
-          android:textSize="20sp" />
-
-      <Space
+      android:id="@+id/textView39"
+      android:textStyle="bold"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="0.37" />
+      android:layout_weight="1"
+      android:layout_marginLeft="25dp"
+      android:gravity="center_vertical"
+      android:text="교육방법"
+      android:textColor="#404040"
+      android:textSize="18sp" />
+    <TextView
+      android:id="@+id/textView40"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="3"
+      android:paddingTop="25dp"
+      android:paddingBottom="25dp"
+      android:paddingLeft="25dp"
+      android:paddingRight="25dp"
+      android:background="#f2f2f2"
+      android:lineSpacingMultiplier="1.5"
+      android:text="@string/goal"
+      android:textColor="#404040"
+      android:textSize="18sp" />
+    <TextView
+      android:id="@+id/textView41"
+      android:textStyle="bold"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:layout_marginLeft="25dp"
+      android:gravity="center_vertical"
+      android:text="평가준거"
+      android:textColor="#404040"
+      android:textSize="18sp" />
+
+    <TextView
+      android:id="@+id/textView42"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="3"
+      android:paddingTop="25dp"
+      android:paddingBottom="25dp"
+      android:paddingLeft="25dp"
+      android:paddingRight="25dp"
+      android:background="#f2f2f2"
+      android:lineSpacingMultiplier="1.5"
+      android:text="@string/goal"
+      android:textColor="#404040"
+      android:textSize="18sp" />
+
+    <Space
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1.18" />
   </LinearLayout>
 
 </FrameLayout>
