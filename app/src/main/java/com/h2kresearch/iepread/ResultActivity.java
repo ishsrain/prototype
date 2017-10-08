@@ -3,9 +3,10 @@ package com.h2kresearch.iepread;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 public class ResultActivity extends AppCompatActivity
-    implements MenuleftFragment.OnFragmentInteractionListener,
+    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener,
     MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener, Menutop_fragment_month.OnFragmentInteractionListener,
     ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
 
@@ -24,6 +25,9 @@ public class ResultActivity extends AppCompatActivity
   ContentsWeekFragment contentsWFragment;
 
   int month = 3;
+
+  // 주관식 채점 결과 수신
+  int[] grades;
 
   //FragmentTransaction ft;
 
@@ -94,5 +98,12 @@ public class ResultActivity extends AppCompatActivity
   @Override
   public void onFragmentInteraction(Uri uri){
 
+  }
+
+  @Override
+  public void onGradeSet(int[] gradeResults){
+    // 주관식 채점 결과 수신
+    grades = gradeResults;
+    Log.d("grades length", "length: "+grades.length+" sample grades[0]: "+grades[0]+" sample grades[1]: "+grades[1]);
   }
 }
