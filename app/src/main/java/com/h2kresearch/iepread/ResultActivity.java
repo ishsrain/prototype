@@ -1,15 +1,15 @@
 package com.h2kresearch.iepread;
 
-import android.app.Fragment;
 import android.net.Uri;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class ResultActivity extends AppCompatActivity
     implements MenuleftFragment.OnFragmentInteractionListener,
     MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener, Menutop_fragment_month.OnFragmentInteractionListener,
     ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
+
+
 
   MenutopFragment menutopFragment;
   Menutop2Fragment menutop2Fragment;

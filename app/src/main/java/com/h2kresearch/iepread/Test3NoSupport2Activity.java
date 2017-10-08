@@ -44,6 +44,11 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
   MediaPlayer player;
   MediaRecorder recorder;
 
+  // for recording selected answers
+  int[] t1Answers;
+  int[] t2Answers;
+  int[] t3Answers;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -281,7 +286,22 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
         test.setClickable(true);
         indexString++;
       } else {
+        // for recording selected answers
+        Intent pre_intent = getIntent();
+        t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+        t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+        t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+
         Intent intent = new Intent(getBaseContext(), Test4ComplexVowel1Activity.class);
+
+        intent.putExtra("t1Answers", t1Answers);
+        intent.putExtra("t2Answers", t2Answers);
+        intent.putExtra("t3Answers", t3Answers);
+
+        Log.d("t1Answers length", "length: "+t1Answers.length+" sample t1Answers[0]: "+t1Answers[0]+" sample t1Answers[1]: "+t1Answers[1]);
+        Log.d("t2Answers length", "length: "+t2Answers.length+" sample t2Answers[0]: "+t2Answers[0]+" sample t2Answers[1]: "+t2Answers[1]);
+        Log.d("t3Answers length", "length: "+t3Answers.length+" sample t3Answers[0]: "+t3Answers[0]+" sample t3Answers[1]: "+t3Answers[1]);
+
         startActivity(intent);
       }
     }

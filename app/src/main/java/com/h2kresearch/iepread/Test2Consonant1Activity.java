@@ -53,6 +53,10 @@ public class Test2Consonant1Activity extends AppCompatActivity {
   int indexString = 1;
   int threeQuestionStartIndex = 10; // 10 + 1 = 11번부터 세 문제가 시작됨
 
+  // for recording selected answers
+  int[] t1Answers;
+  int[] t2Answers;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -65,6 +69,9 @@ public class Test2Consonant1Activity extends AppCompatActivity {
     test1 = (TextView) findViewById(R.id.option1);
     test2 = (TextView) findViewById(R.id.option2);
     test3 = (TextView) findViewById(R.id.option3);
+
+    // for recording selected answers
+    t2Answers = new int[test1String.length];
 
     // for playing question audio
     playQuestionAudio(indexString);
@@ -85,7 +92,16 @@ public class Test2Consonant1Activity extends AppCompatActivity {
         if (indexString >= test1String.length) {
           // for playing question audio
           killMediaPlayer();
+
+          // for playing question audio
+          Intent pre_intent = getIntent();
+          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+
           Intent intent = new Intent(getBaseContext(), Test2Consonant2Activity.class);
+
+          intent.putExtra("t1Answers", t1Answers);
+          intent.putExtra("t2Answers", t2Answers);
+
           startActivity(intent);
         } else {
           button.setEnabled(false);
@@ -128,6 +144,9 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
+
+          // for recording selected answers
+          t2Answers[indexString-1] = 1;
         }
         return false;
       }
@@ -147,6 +166,9 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
 
+          // for recording selected answers
+          t2Answers[indexString-1] = 2;
+
         }
         return false;
       }
@@ -165,6 +187,9 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner_clicked));
           test3.setTextColor(Color.parseColor("#ffffff"));
+
+          // for recording selected answers
+          t2Answers[indexString-1] = 3;
         }
         return false;
       }

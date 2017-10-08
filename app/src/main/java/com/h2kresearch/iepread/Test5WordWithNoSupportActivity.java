@@ -39,6 +39,12 @@ public class Test5WordWithNoSupportActivity extends AppCompatActivity {
   // Record Time (ms)
   int msTime = 1500;
 
+  // for recording selected answers
+  int[] t1Answers;
+  int[] t2Answers;
+  int[] t3Answers;
+  int[] t4Answers;
+
   // Record/Play File
   public static String RECORDED_FILE;
   MediaPlayer player;
@@ -281,7 +287,21 @@ public class Test5WordWithNoSupportActivity extends AppCompatActivity {
         test.setClickable(true);
         indexString++;
       } else {
+
+        // for recording selected answers
+        Intent pre_intent = getIntent();
+        t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+        t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+        t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+        t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+
         Intent intent = new Intent(getBaseContext(), Test6SimpleSupport1Activity.class);
+
+        intent.putExtra("t1Answers", t1Answers);
+        intent.putExtra("t2Answers", t2Answers);
+        intent.putExtra("t3Answers", t3Answers);
+        intent.putExtra("t4Answers", t4Answers);
+
         startActivity(intent);
       }
     }

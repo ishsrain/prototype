@@ -44,6 +44,10 @@ public class Test2Consonant2Activity extends AppCompatActivity {
   MediaPlayer player;
   MediaRecorder recorder;
 
+  // for recording selected answers
+  int[] t1Answers;
+  int[] t2Answers;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -281,7 +285,16 @@ public class Test2Consonant2Activity extends AppCompatActivity {
         test.setClickable(true);
         indexString++;
       } else {
+        // for playing question audio
+        Intent pre_intent = getIntent();
+        t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+        t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+
         Intent intent = new Intent(getBaseContext(), Test3NoSupport1Activity.class);
+
+        intent.putExtra("t1Answers", t1Answers);
+        intent.putExtra("t2Answers", t2Answers);
+
         startActivity(intent);
       }
     }

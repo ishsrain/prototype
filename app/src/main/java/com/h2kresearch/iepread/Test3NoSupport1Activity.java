@@ -33,6 +33,11 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
   MediaPlayer mediaPlayer;
   int resourceNumber;
 
+  // for recording selected answers
+  int[] t1Answers;
+  int[] t2Answers;
+  int[] t3Answers;
+
   private void playQuestionAudio(int questionNumber) {
     killMediaPlayer();
 
@@ -66,6 +71,9 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
     test2 = (TextView) findViewById(R.id.option2);
     test3 = (TextView) findViewById(R.id.option3);
 
+    // for recording selected answers
+    t3Answers = new int[test1String.length];
+
     // for playing question audio
     playQuestionAudio(indexString);
     replayImage = (ImageView) findViewById(R.id.imageView8);
@@ -85,7 +93,18 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
         if (indexString >= test1String.length) {
           // for playing question audio
           killMediaPlayer();
+
+          // for recording selected answers
+          Intent pre_intent = getIntent();
+          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+
           Intent intent = new Intent(getBaseContext(), Test3NoSupport2Activity.class);
+
+          intent.putExtra("t1Answers", t1Answers);
+          intent.putExtra("t2Answers", t2Answers);
+          intent.putExtra("t3Answers", t3Answers);
+
           startActivity(intent);
         } else {
           button.setEnabled(false);
@@ -128,6 +147,9 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
+
+          // for recording selected answers
+          t3Answers[indexString-1] = 1;
         }
         return false;
       }
@@ -147,6 +169,9 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
 
+          // for recording selected answers
+          t3Answers[indexString-1] = 2;
+
         }
         return false;
       }
@@ -165,6 +190,9 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner_clicked));
           test3.setTextColor(Color.parseColor("#ffffff"));
+
+          // for recording selected answers
+          t3Answers[indexString-1] = 3;
         }
         return false;
       }
