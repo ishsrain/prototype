@@ -11,6 +11,9 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,8 +33,20 @@ import java.net.URL;
 
 public class Test1Vowel2Activity extends AppCompatActivity {
 
+  public static final int THREAD_STOP = 0;
+  public static final int THREAD_START = 1;
+
+  int recordState = RECORD_READY;
+  public static final int RECORD_READY = 1;
+  public static final int RECORD_START = 2;
+  public static final int RECORD_STOP = 3;
+  public static final int PLAY_START = 4;
+  public static final int PLAY_STOP = 5;
+
   TextView test;
-  ProgressBar progressBar;
+  Button next, retry;
+  ImageView recordButton;
+  ProgressBar progressBar, timeBar;
   Thread thread;
 
   String[] testString = {"아", "이", "우"};
@@ -58,44 +73,154 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     File file = new File(sdcard, "recorded.mp4");
     RECORDED_FILE = file.getAbsolutePath();
 
-    // TextView
-    test = (TextView) findViewById(R.id.textView9);
-    test.setLetterSpacing(0.3f);
-    test.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        test.setClickable(false);
-
-        thread = new Thread(new Runnable() {
-          @Override
-          public void run() {
-
-            // Progress Bar Working
-            for (int i = 0; i < msTime; i++) {
-              progressBar.setProgress(i);
-              try {
-                Thread.sleep(1);
-              } catch (InterruptedException e) {
-                e.printStackTrace();
-              }
-            }
-
-            // Progress Bar Init
-            progressBar.setProgress(0);
-
-            // TextView Change
-        handler.sendEmptyMessage(0);
-          }
-        });
-
-        thread.start();
-        recordFunction();
-      }
-    });
-
     // ProgressBar
     progressBar = (ProgressBar) findViewById(R.id.progressBar);
     progressBar.setMax(msTime);
+
+    // Retry Button
+    retry = (Button) findViewById(R.id.button5);
+    retry.setVisibility(View.INVISIBLE);
+    retry.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        recordState = RECORD_READY;
+        handler.sendEmptyMessage(RECORD_READY);
+      }
+    });
+
+    // Next Button
+    next = (Button) findViewById(R.id.button3);
+    next.setVisibility(View.INVISIBLE);
+    next.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        test.setText(testString[indexString]);
+//        test.setClickable(true);
+        indexString++;
+        recordState = RECORD_READY;
+        handler.sendEmptyMessage(RECORD_READY);
+      }
+    });
+
+    // TextView
+    test = (TextView) findViewById(R.id.textView9);
+    test.setLetterSpacing(0.3f);
+
+    // TimeBar
+    timeBar = (ProgressBar) findViewById(R.id.progressBar6);
+    timeBar.setMax(msTime);
+
+    // Record Button
+    handler.sendEmptyMessage(RECORD_READY);
+    recordButton = (ImageView) findViewById(R.id.imageView10);
+    recordButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+
+        if(thread != null) {
+          // Thread Stop
+          ButtonStateChange(THREAD_STOP);
+        }
+        else {
+          thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+              try {
+                // Progress Bar Working
+                for (int i = 0; i < msTime; i++) {
+                  timeBar.setProgress(i);
+                  Thread.sleep(1);
+                }
+                // Thread Stop
+                ButtonStateChange(THREAD_STOP);
+              } catch (InterruptedException e) {}
+            }
+          });
+
+          // Thread Start
+          ButtonStateChange(THREAD_START);
+          thread.start();
+          //recordFunction();
+        }
+      }
+    });
+
+  }
+
+  private void RecordStart() {
+    try {
+      if (recorder != null) {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+      }
+      recorder = new MediaRecorder();
+      recorder.setOutputFile(RECORDED_FILE);
+      recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+      recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+      recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+      recorder.setMaxDuration(3 * 1000);
+      recorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
+        @Override
+        public void onInfo(MediaRecorder mr, int what, int extra) {
+          if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
+            if (recorder == null) {
+              return;
+            }
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+            Toast.makeText(getApplicationContext(), "3초가 지나 녹음이 중지되었습니다", Toast.LENGTH_LONG).show();
+          }
+        }
+      });
+      recorder.prepare();
+//      Toast.makeText(getApplicationContext(), "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
+      recorder.start();
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
+    }
+  }
+
+  private void RecordStop() {
+    try {
+      if (recorder != null) {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+      }
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
+    }
+  }
+
+  private void PlayStart() {
+    try {
+      if (player != null) {
+        player.stop();
+        player.release();
+        player = null;
+      }
+      player = new MediaPlayer();
+      player.setDataSource(RECORDED_FILE);
+      player.prepare();
+//      Toast.makeText(getApplicationContext(), "녹음된 파일을 재생합니다.", Toast.LENGTH_LONG).show();
+      player.start();
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
+    }
+  }
+
+  private void PlayStop() {
+    try {
+      if (player != null) {
+        player.stop();
+        player.release();
+        player = null;
+      }
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
+    }
   }
 
   private void recordFunction() {
@@ -277,24 +402,87 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     }
   }
 
+  public void ButtonStateChange(int input){
+    if(input == THREAD_START) {
+      if(recordState == RECORD_READY) {
+        // Record START
+        recordState = RECORD_START;
+        handler.sendEmptyMessage(RECORD_STOP);
+        RecordStart();
+      } else if(recordState == RECORD_STOP){
+        // Play START
+        recordState = PLAY_START;
+        handler.sendEmptyMessage(RECORD_STOP);
+        PlayStart();
+      } else if(recordState == PLAY_STOP) {
+        // Play START
+        recordState = PLAY_START;
+        handler.sendEmptyMessage(RECORD_STOP);
+        PlayStart();
+      }
+    } else if(input == THREAD_STOP) {
+      // Kill Thread
+      thread.interrupt();
+      thread = null;
+
+      if (recordState == RECORD_START) {
+        // Record Stop
+        recordState = RECORD_STOP;
+        handler.sendEmptyMessage(PLAY_START);
+        RecordStop();
+      } else if (recordState == PLAY_START) {
+        // Play Stop
+        recordState = PLAY_STOP;
+        handler.sendEmptyMessage(PLAY_START);
+        PlayStop();
+      }
+    }
+  }
+
   // Handler
   Handler handler = new Handler() {
     public void handleMessage(Message msg) {
-      if (indexString < testString.length) {
-        test.setText(testString[indexString]);
-        test.setClickable(true);
-        indexString++;
-      } else {
-        // for recording selected answers
-        Intent pre_intent = getIntent();
-        t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+        try {
+          if (msg.what == RECORD_READY || msg.what == RECORD_START) {
+            timeBar.setProgress(0);
+            retry.setVisibility(View.INVISIBLE);
+            next.setVisibility(View.INVISIBLE);
+            recordButton.setImageResource(R.drawable.record);
+            recordButton.setEnabled(false);
+            Thread.sleep(100);
+            recordButton.setEnabled(true);
+          } else if (msg.what == RECORD_STOP || msg.what == PLAY_STOP) {
+            timeBar.setProgress(0);
+            recordButton.setImageResource(R.drawable.stop);
+            recordButton.setEnabled(false);
+            Thread.sleep(100);
+            recordButton.setEnabled(true);
+          } else if (msg.what == PLAY_START) {
+            timeBar.setProgress(0);
+            retry.setVisibility(View.VISIBLE);
+            next.setVisibility(View.VISIBLE);
+            recordButton.setImageResource(R.drawable.replay);
+            recordButton.setEnabled(false);
+            Thread.sleep(100);
+            recordButton.setEnabled(true);
+          }
 
-        Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
-
-        intent.putExtra("t1Answers", t1Answers);
-
-        startActivity(intent);
-      }
+          //      if (indexString < testString.length) {
+          //        test.setText(testString[indexString]);
+          //        test.setClickable(true);
+          //        indexString++;
+          //      } else {
+          //        // for recording selected answers
+          //        Intent pre_intent = getIntent();
+          //        t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+          //
+          //        Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
+          //
+          //        intent.putExtra("t1Answers", t1Answers);
+          //
+          //        startActivity(intent);
+          //      }
+        } catch (InterruptedException e) {}
     }
   };
 }
