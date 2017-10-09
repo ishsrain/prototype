@@ -127,19 +127,30 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q1_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q1_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q1_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
+
           </LinearLayout>
 
           <LinearLayout
@@ -164,19 +175,30 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q1_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q1_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q1_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
+
           </LinearLayout>
         </TableRow>
 
@@ -207,19 +229,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q1_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q1_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q1_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -311,19 +343,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q2_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q2_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q2_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -348,19 +390,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q2_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q2_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q2_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -391,19 +443,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q2_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q2_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q2_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -495,19 +557,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q3_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q3_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q3_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -532,19 +604,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q3_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q3_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q3_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -575,19 +657,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q3_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q3_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q3_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -679,19 +771,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q4_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q4_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q4_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -716,19 +818,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q4_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q4_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q4_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -759,19 +871,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q4_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q4_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q4_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -863,19 +985,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q5_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -900,19 +1032,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q5_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -943,19 +1085,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q5_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -980,19 +1132,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q5_4"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_4_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_4_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1023,19 +1185,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q5_5"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_5_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_5_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1060,19 +1232,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q5_6"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_6_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_6_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1103,19 +1285,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q5_7"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_7_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_7_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1140,19 +1332,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q5_8"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q5_8_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q5_8_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1206,19 +1408,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q6_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q6_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q6_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1243,19 +1455,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q6_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q6_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q6_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1286,19 +1508,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q6_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q6_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q6_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1390,19 +1622,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q7_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q7_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q7_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1427,19 +1669,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q7_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q7_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q7_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1470,19 +1722,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q7_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q7_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q7_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1575,19 +1837,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q8_1"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_1_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_1_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1612,19 +1884,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q8_2"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_2_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_2_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1655,19 +1937,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q8_3"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_3_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_3_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1692,19 +1984,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q8_4"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_4_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_4_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1735,19 +2037,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q8_5"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_5_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_5_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1772,19 +2084,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q8_6"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_6_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_6_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 
@@ -1815,19 +2137,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <RadioGroup
+                android:id="@+id/q8_7"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_7_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_7_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
 
           <LinearLayout
@@ -1852,19 +2184,29 @@
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <RadioGroup
+                android:id="@+id/q8_8"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight="1"
-                app:buttonTint="@android:color/black" />
+              <RadioButton
+                  android:id="@+id/q8_8_1"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="1"
+                  android:buttonTint="@android:color/black" />
+
+              <RadioButton
+                  android:id="@+id/q8_8_2"
+                  android:layout_width="20dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:text="0"
+                  android:buttonTint="@android:color/black" />
+            </RadioGroup>
           </LinearLayout>
         </TableRow>
 

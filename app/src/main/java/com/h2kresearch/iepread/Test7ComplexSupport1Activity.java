@@ -74,6 +74,9 @@ public class Test7ComplexSupport1Activity extends AppCompatActivity {
     test2 = (TextView) findViewById(R.id.option2);
     test3 = (TextView) findViewById(R.id.option3);
 
+    // for recording selected answers
+    t7Answers = new int[test1String.length];
+
     // for playing question audio
     playQuestionAudio(indexString);
     replayImage = (ImageView) findViewById(R.id.imageView8);

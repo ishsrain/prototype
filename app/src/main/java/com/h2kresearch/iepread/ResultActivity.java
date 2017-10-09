@@ -1,9 +1,7 @@
 package com.h2kresearch.iepread;
 
-import android.app.Fragment;
+import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,7 +25,40 @@ public class ResultActivity extends AppCompatActivity
   int month = 3;
 
   // 주관식 채점 결과 수신
-  int[] grades;
+  int[][] grades;
+
+  // 객관식 학생 선택 답안 수신
+  int[] t1Answers;
+  int[] t2Answers;
+  int[] t3Answers;
+  int[] t4Answers;
+  int[] t6Answers;
+  int[] t7Answers;
+
+  int[] t1RightAnswers = {1, 2, 1, 1, 2, 3, 1, 1, 2, 1};
+  int[] t2RightAnswers = {2, 1, 1, 1, 2, 2, 1, 2, 1, 1, 2, 3, 3, 1, 2, 1, 1, 2, 3};
+  int[] t3RightAnswers = {1, 1, 2, 1, 1, 2, 2, 1, 3, 1, 2, 1, 3, 1};
+  int[] t4RightAnswers = {2, 1, 2, 2, 2, 1, 3, 3, 2, 1, 2};
+  int[] t6RightAnswers = {1, 2, 1, 1, 3, 1, 3};
+  int[] t7RightAnswers = {2, 2, 1, 1, 2, 3, 1};
+
+  // 객관식 점수
+  int t1Score = 0;
+  int t2Score = 0;
+  int t3Score = 0;
+  int t4Score = 0;
+  int t6Score = 0;
+  int t7Score = 0;
+
+  // 주관식 점수
+  int t1Score2 = 0;
+  int t2Score2 = 0;
+  int t3Score2 = 0;
+  int t4Score2 = 0;
+  int t5Score2 = 0;
+  int t6Score2 = 0;
+  int t7Score2 = 0;
+  int t8Score2 = 0;
 
   //FragmentTransaction ft;
 
@@ -47,6 +78,53 @@ public class ResultActivity extends AppCompatActivity
     contentsMFragment = new ContentsMonthFragment();
     contentsWFragment = new ContentsWeekFragment();
 
+    // 객관식 채점 결과 수신
+    Intent pre_intent = getIntent();
+    t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+    t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+    t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+    t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+    t6Answers = pre_intent.getIntArrayExtra("t6Answers");
+    t7Answers = pre_intent.getIntArrayExtra("t7Answers");
+
+    // 객관식 점수 계산
+    for(int i=0; i<t1Answers.length; i++){
+      if(t1Answers[i] == t1RightAnswers[i]){
+        t1Score += 1;
+      }
+    }
+
+    for(int i=0; i<t2Answers.length; i++){
+      if(t2Answers[i] == t2RightAnswers[i]){
+        t2Score += 1;
+      }
+    }
+
+    for(int i=0; i<t3Answers.length; i++){
+      if(t3Answers[i] == t3RightAnswers[i]){
+        t3Score += 1;
+      }
+    }
+
+    for(int i=0; i<t4Answers.length; i++){
+      if(t4Answers[i] == t4RightAnswers[i]){
+        t4Score += 1;
+      }
+    }
+
+    for(int i=0; i<t6Answers.length; i++){
+      if(t6Answers[i] == t6RightAnswers[i]){
+        t6Score += 1;
+      }
+    }
+
+    for(int i=0; i<t7Answers.length; i++){
+      if(t7Answers[i] == t7RightAnswers[i]){
+        t7Score += 1;
+      }
+    }
+
+    Log.d("multiple grades sample", "t1score: "+t1Score+" t2score: "+t2Score+"t3score: "+t3Score);
     //ft = getSupportFragmentManager().beginTransaction();
   }
 
@@ -100,9 +178,27 @@ public class ResultActivity extends AppCompatActivity
   }
 
   @Override
-  public void onGradeSet(int[] gradeResults){
+  public void onGradeSet(int[][] gradeResults){
     // 주관식 채점 결과 수신
     grades = gradeResults;
-    Log.d("grades length", "length: "+grades.length+" sample grades[0]: "+grades[0]+" sample grades[1]: "+grades[1]);
+    t1Score2 = sum(grades[0]);
+    t2Score2 = sum(grades[1]);
+    t3Score2 = sum(grades[2]);
+    t4Score2 = sum(grades[3]);
+    t5Score2 = sum(grades[4]);
+    t6Score2 = sum(grades[5]);
+    t7Score2 = sum(grades[6]);
+    t8Score2 = sum(grades[7]);
+
+    Log.d("voice grades sample", "t1score2: "+t1Score2+" t2score2: "+t2Score2+"t3score2: "+t3Score2);
+  }
+
+  public int sum(int[] array) {
+    int sum = 0;
+
+    for (int i = 0; i < array.length; i++)
+      sum += array[i];
+
+    return sum;
   }
 }
