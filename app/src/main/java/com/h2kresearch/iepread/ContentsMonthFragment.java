@@ -28,14 +28,10 @@ public class ContentsMonthFragment extends Fragment {
   private static final String ARG_PARAM2 = "param2";
 
   int diagnosisResult = 0; // 0은 모음(1단계)부터 가르쳐야 한다는 진단결과를 의미, 채점 결과를 통해 주어지는 값
-  int month = 1; // activity에 표현할 month, 사용자 인풋으로 주어지는 값
+  int inputMonth = 0; // activity에 표현할 month, 사용자 인풋으로 주어지는 값
 
-  TextView mGoal;
-  TextView mContent;
-  TextView mMethod;
-  TextView mExam;
-
-  TextView month3, month4, month5, month6, month7;
+  TextView month3, month4, month5, month6, month7; // Menu
+  TextView goalText, contentText, methodText, examText; // Contents
 
     private static String[][] monthlyGoalString = {//앞 index: diagnosisResult, 뒤 index: month
           {"단모음 음가 파악", "단모음 음가 파악", "자음 음가 파악", "자음 음가 파악", "이중모음 음가 파악"},
@@ -229,30 +225,31 @@ public class ContentsMonthFragment extends Fragment {
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents_month, container, false);
 
     // Set the content of the TextView
-    mGoal = (TextView) rootView.findViewById(R.id.textView37);
-    mContent = (TextView) rootView.findViewById(R.id.textView38);
-    mMethod = (TextView) rootView.findViewById(R.id.textView40);
-    mExam = (TextView) rootView.findViewById(R.id.textView42);
+    goalText = (TextView) rootView.findViewById(R.id.textView37);
+    contentText = (TextView) rootView.findViewById(R.id.textView38);
+    methodText = (TextView) rootView.findViewById(R.id.textView40);
+    examText = (TextView) rootView.findViewById(R.id.textView42);
 
-    mGoal.setText(monthlyGoalString[diagnosisResult][month]); //첫 화면은 3월 IEP
-    mContent.setText(monthlyContentString[diagnosisResult][month]);
-    mMethod.setText(monthlyMethodString[diagnosisResult][month]);
-    mExam.setText(monthlyExamString[diagnosisResult][month]);
+    goalText.setText(monthlyGoalString[diagnosisResult][inputMonth]); //첫 화면은 3월 IEP
+    contentText.setText(monthlyContentString[diagnosisResult][inputMonth]);
+    methodText.setText(monthlyMethodString[diagnosisResult][inputMonth]);
+    examText.setText(monthlyExamString[diagnosisResult][inputMonth]);
 
     month3 = (TextView)rootView.findViewById(R.id.textView14);
     month4 = (TextView)rootView.findViewById(R.id.textView15);
     month5 = (TextView)rootView.findViewById(R.id.textView16);
     month6 = (TextView)rootView.findViewById(R.id.textView17);
     month7 = (TextView)rootView.findViewById(R.id.textView18);
+    month3.setTextColor(Color.parseColor("#4a83c7"));
 
     month3.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         month3.setTextColor(Color.parseColor("#4a83c7"));
-        month4.setTextColor(Color.BLACK);
-        month5.setTextColor(Color.BLACK);
-        month6.setTextColor(Color.BLACK);
-        month7.setTextColor(Color.BLACK);
+        month4.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
         SetIEP(3);
       }
     });
@@ -261,10 +258,10 @@ public class ContentsMonthFragment extends Fragment {
       @Override
       public void onClick(View view) {
         month4.setTextColor(Color.parseColor("#4a83c7"));
-        month3.setTextColor(Color.BLACK);
-        month5.setTextColor(Color.BLACK);
-        month6.setTextColor(Color.BLACK);
-        month7.setTextColor(Color.BLACK);
+        month3.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
         SetIEP(4);
       }
     });
@@ -273,10 +270,10 @@ public class ContentsMonthFragment extends Fragment {
       @Override
       public void onClick(View view) {
         month5.setTextColor(Color.parseColor("#4a83c7"));
-        month4.setTextColor(Color.BLACK);
-        month3.setTextColor(Color.BLACK);
-        month6.setTextColor(Color.BLACK);
-        month7.setTextColor(Color.BLACK);
+        month4.setTextColor(Color.parseColor("#404040"));
+        month3.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
         SetIEP(5);
       }
     });
@@ -285,10 +282,10 @@ public class ContentsMonthFragment extends Fragment {
       @Override
       public void onClick(View view) {
         month6.setTextColor(Color.parseColor("#4a83c7"));
-        month4.setTextColor(Color.BLACK);
-        month5.setTextColor(Color.BLACK);
-        month3.setTextColor(Color.BLACK);
-        month7.setTextColor(Color.BLACK);
+        month4.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month3.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
         SetIEP(6);
       }
     });
@@ -297,10 +294,10 @@ public class ContentsMonthFragment extends Fragment {
       @Override
       public void onClick(View view) {
         month7.setTextColor(Color.parseColor("#4a83c7"));
-        month4.setTextColor(Color.BLACK);
-        month5.setTextColor(Color.BLACK);
-        month6.setTextColor(Color.BLACK);
-        month3.setTextColor(Color.BLACK);
+        month4.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month3.setTextColor(Color.parseColor("#404040"));
         SetIEP(7);
       }
     });
@@ -322,21 +319,10 @@ public class ContentsMonthFragment extends Fragment {
   }
 
   public void SetIEP(int month){
-    mGoal.setText(monthlyGoalString[diagnosisResult][month-3]);
-    mContent.setText(monthlyContentString[diagnosisResult][month-3]);
-    mMethod.setText(monthlyMethodString[diagnosisResult][month-3]);
-    mExam.setText(monthlyExamString[diagnosisResult][month-3]);
-  }
-
-  public void onMonthChanged() {
-      String sMonth = this.getArguments().getString("month");
-      month = Integer.parseInt(sMonth);
-      System.out.println(month);
-
-      mGoal.setText(monthlyGoalString[diagnosisResult][month]); //첫 화면은 3월 IEP
-      mContent.setText(monthlyContentString[diagnosisResult][month]);
-      mMethod.setText(monthlyMethodString[diagnosisResult][month]);
-      mExam.setText(monthlyExamString[diagnosisResult][month]);
+    goalText.setText(monthlyGoalString[diagnosisResult][month-3]);
+    contentText.setText(monthlyContentString[diagnosisResult][month-3]);
+    methodText.setText(monthlyMethodString[diagnosisResult][month-3]);
+    examText.setText(monthlyExamString[diagnosisResult][month-3]);
   }
 
   // TODO: Rename method, update argument and hook method into UI event

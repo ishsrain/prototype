@@ -27,7 +27,7 @@
     <activity
       android:name=".InfoActivity"
       android:screenOrientation="landscape"
-      android:windowSoftInputMode="adjustResize" />
+      android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
     <activity
       android:name=".Test1Vowel1Activity"
       android:screenOrientation="landscape" />

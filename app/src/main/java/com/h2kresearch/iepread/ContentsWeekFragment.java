@@ -1,11 +1,13 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -26,7 +28,10 @@ public class ContentsWeekFragment extends Fragment {
   private static final String ARG_PARAM2 = "param2";
 
   int diagnosisResult = 0; // 0은 모음(1단계)부터 가르쳐야 한다는 진단결과를 의미, 채점 결과를 통해 주어지는 값
-  int month = 0; // activity에 표현할 month, 사용자 인풋으로 주어지는 값
+  int inputMonth = 0; // activity에 표현할 month, 사용자 인풋으로 주어지는 값
+
+  TextView month3, month4, month5, month6, month7; // Menu
+  TextView week1, week2, week3, week4; // Content
 
   private static String[][][] weeklyContent = { //1st index: diagnosisResult, 2nd index: month, 3rd index: week
           {
@@ -457,15 +462,82 @@ public class ContentsWeekFragment extends Fragment {
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents_week, container, false);
 
     // Set the content of the TextView
-    TextView week1 = (TextView) rootView.findViewById(R.id.textView37);
-    TextView week2 = (TextView) rootView.findViewById(R.id.textView38);
-    TextView week3 = (TextView) rootView.findViewById(R.id.textView40);
-    TextView week4 = (TextView) rootView.findViewById(R.id.textView42);
+    week1 = (TextView) rootView.findViewById(R.id.textView37);
+    week2 = (TextView) rootView.findViewById(R.id.textView38);
+    week3 = (TextView) rootView.findViewById(R.id.textView40);
+    week4 = (TextView) rootView.findViewById(R.id.textView42);
 
-    week1.setText(weeklyContent[diagnosisResult][month][0] + "\n" + weeklyExam[diagnosisResult][month][0]); // 첫화면은 3월 IEP 1주차
-    week2.setText(weeklyContent[diagnosisResult][month][1] + "\n" + weeklyExam[diagnosisResult][month][1]); // 2주차
-    week3.setText(weeklyContent[diagnosisResult][month][2] + "\n" + weeklyExam[diagnosisResult][month][2]); // 3주차
-    week4.setText(weeklyContent[diagnosisResult][month][3] + "\n" + weeklyExam[diagnosisResult][month][3]); // 4주차
+    week1.setText(weeklyContent[diagnosisResult][inputMonth][0] + "\n" + weeklyExam[diagnosisResult][inputMonth][0]); // 첫화면은 3월 IEP 1주차
+    week2.setText(weeklyContent[diagnosisResult][inputMonth][1] + "\n" + weeklyExam[diagnosisResult][inputMonth][1]); // 2주차
+    week3.setText(weeklyContent[diagnosisResult][inputMonth][2] + "\n" + weeklyExam[diagnosisResult][inputMonth][2]); // 3주차
+    week4.setText(weeklyContent[diagnosisResult][inputMonth][3] + "\n" + weeklyExam[diagnosisResult][inputMonth][3]); // 4주차
+
+    month3 = (TextView)rootView.findViewById(R.id.textView14);
+    month4 = (TextView)rootView.findViewById(R.id.textView15);
+    month5 = (TextView)rootView.findViewById(R.id.textView16);
+    month6 = (TextView)rootView.findViewById(R.id.textView17);
+    month7 = (TextView)rootView.findViewById(R.id.textView18);
+    month3.setTextColor(Color.parseColor("#4a83c7"));
+
+    month3.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month3.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
+        SetIEP(3);
+      }
+    });
+
+    month4.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month4.setTextColor(Color.parseColor("#4a83c7"));
+        month3.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
+        SetIEP(4);
+      }
+    });
+
+    month5.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month5.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.parseColor("#404040"));
+        month3.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
+        SetIEP(5);
+      }
+    });
+
+    month6.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month6.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month3.setTextColor(Color.parseColor("#404040"));
+        month7.setTextColor(Color.parseColor("#404040"));
+        SetIEP(6);
+      }
+    });
+
+    month7.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        month7.setTextColor(Color.parseColor("#4a83c7"));
+        month4.setTextColor(Color.parseColor("#404040"));
+        month5.setTextColor(Color.parseColor("#404040"));
+        month6.setTextColor(Color.parseColor("#404040"));
+        month3.setTextColor(Color.parseColor("#404040"));
+        SetIEP(7);
+      }
+    });
 
     return rootView;
 
@@ -481,6 +553,13 @@ public class ContentsWeekFragment extends Fragment {
     */
 
     //return inflater.inflate(R.layout.fragment_contents_week, container, false);
+  }
+
+  public void SetIEP(int month){
+    week1.setText(weeklyContent[diagnosisResult][month-3][0] + "\n" + weeklyExam[diagnosisResult][month-3][0]); // 첫화면은 3월 IEP 1주차
+    week2.setText(weeklyContent[diagnosisResult][month-3][1] + "\n" + weeklyExam[diagnosisResult][month-3][1]); // 2주차
+    week3.setText(weeklyContent[diagnosisResult][month-3][2] + "\n" + weeklyExam[diagnosisResult][month-3][2]); // 3주차
+    week4.setText(weeklyContent[diagnosisResult][month-3][3] + "\n" + weeklyExam[diagnosisResult][month-3][3]); // 4주차
   }
 
   // TODO: Rename method, update argument and hook method into UI event

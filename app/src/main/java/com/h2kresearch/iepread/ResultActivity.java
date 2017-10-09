@@ -8,13 +8,12 @@ import android.os.Bundle;
 
 public class ResultActivity extends AppCompatActivity
     implements MenuleftFragment.OnFragmentInteractionListener,
-    MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener, Menutop_fragment_month.OnFragmentInteractionListener,
+    MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener,
     ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
 
   MenutopFragment menutopFragment;
   Menutop2Fragment menutop2Fragment;
   Menutop3Fragment menutop3Fragment;
-  Menutop_fragment_month menutop3MonthFragment;
 
   ContentsFragment contentsFragment;
   Contents2Fragment contents2Fragment;
@@ -35,7 +34,6 @@ public class ResultActivity extends AppCompatActivity
     menutopFragment = (MenutopFragment)getSupportFragmentManager().findFragmentById(R.id.fragment9);
     menutop2Fragment = new Menutop2Fragment();
     menutop3Fragment = new Menutop3Fragment();
-    menutop3MonthFragment = new Menutop_fragment_month();
 
     contents2Fragment = (Contents2Fragment)getSupportFragmentManager().findFragmentById(R.id.fragment10);
     contentsFragment = new ContentsFragment();
