@@ -458,6 +458,7 @@ public class ContentsWeekFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
+    diagnosisResult = this.getArguments().getInt("diagnosisResult");
 
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents_week, container, false);
 

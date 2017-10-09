@@ -25,6 +25,15 @@ public class ResultActivity extends AppCompatActivity
 
   int month = 3;
 
+  // 진단 결과
+  int diagnosisResult = 0;
+
+  // 주관식 채점 여부
+  int subjectiveCompleted = 0;
+
+  // 진단 커트라인
+  double cutThreshold = 0.8;
+
   // 주관식 채점 결과 수신
   int[][] grades;
 
@@ -60,8 +69,6 @@ public class ResultActivity extends AppCompatActivity
   int t6Score2 = 0;
   int t7Score2 = 0;
   int t8Score2 = 0;
-
-  //FragmentTransaction ft;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +156,14 @@ public class ResultActivity extends AppCompatActivity
     Log.d("multiple grades sample", "t1score: "+t1Score+" t2score: "+t2Score+"t3score: "+t3Score);
     Log.d("answers delivered", "t1Answers: "+t1Answers.length+" t2Answers: "+t2Answers.length);
     //ft = getSupportFragmentManager().beginTransaction();
+
+    //test
+    /*t1Score = t1RightAnswers.length;
+    t2Score = t2RightAnswers.length;
+    t3Score = t3RightAnswers.length;
+    t4Score = t4RightAnswers.length - 5;
+    t6Score = t6RightAnswers.length;
+    t7Score = t7RightAnswers.length;*/
   }
 
   public void onMenutopFragmentChanged(int index) {
@@ -188,8 +203,18 @@ public class ResultActivity extends AppCompatActivity
 
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit(); // 객관식 채점결과 내용
     } else if(index == 3) { // IEP 확인하기
-      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3Fragment).commit(); // IEP 확인하기 메뉴
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit(); // 학기별 교육내용 내용
+        Bundle bundle = new Bundle();
+        bundle.putInt("diagnosisResult", diagnosisResult);
+        if(contents4Fragment.getArguments() == null){
+            contents4Fragment.setArguments(bundle);
+        } else {
+            contents4Fragment.getArguments().putAll(bundle);
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3Fragment).commit(); // IEP 확인하기 메뉴
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit(); // 학기별 교육내용 내용
+      if(subjectiveCompleted != 1) { // 주관식 채점이 안된 상태로 IEP를 확인하려고 할 때
+          Log.d("IEP error", "보고 말하기 채점을 완료해주세요.");
+      }
     }
   }
 
@@ -229,10 +254,17 @@ public class ResultActivity extends AppCompatActivity
 
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit();
     } else if(index == 4) { // 학기별 교육 내용
+      Bundle bundle = new Bundle();
+      bundle.putInt("diagnosisResult", diagnosisResult);
+      if(contents4Fragment.getArguments() == null){
+        contents4Fragment.setArguments(bundle);
+      } else {
+        contents4Fragment.getArguments().putAll(bundle);
+      }
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit();
     } else if(index == 5) { // 월별 교육 내용
       Bundle bundle = new Bundle();
-      bundle.putInt("month", month);
+      bundle.putInt("diagnosisResult", diagnosisResult);
       if (contentsMFragment.getArguments() == null){
         contentsMFragment.setArguments(bundle);
       } else {
@@ -241,7 +273,7 @@ public class ResultActivity extends AppCompatActivity
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment).commit();
     } else if(index == 6) { // 주별 교육 내용
       Bundle bundle = new Bundle();
-      bundle.putInt("month", month);
+      bundle.putInt("diagnosisResult", diagnosisResult);
       if (contentsWFragment.getArguments() == null){
         contentsWFragment.setArguments(bundle);
       } else {
@@ -275,7 +307,6 @@ public class ResultActivity extends AppCompatActivity
       }
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents5Fragment).commit();
     }
-
   }
 
   @Override
@@ -295,6 +326,28 @@ public class ResultActivity extends AppCompatActivity
     t6Score2 = sum(grades[5]);
     t7Score2 = sum(grades[6]);
     t8Score2 = sum(grades[7]);
+
+    if (((double) t1Score + t1Score2)/(t1RightAnswers.length + 3) < cutThreshold) { // 쉬운모음
+        diagnosisResult = 0; // IEP 1단계
+    } else if (((double) t2Score + t2Score2)/(t2RightAnswers.length + 3) < cutThreshold) { // 자음
+        diagnosisResult = 1; // IEP 2단계
+    } else if (((double) t3Score + t3Score2)/(t3RightAnswers.length + 3) < cutThreshold) { // 쉬운음절
+        diagnosisResult = 1; // IEP 2단계
+    } else if (((double) t4Score + t4Score2)/(t4RightAnswers.length + 3) < cutThreshold) { // 복잡한모음
+        diagnosisResult = 2; // IEP 3단계
+    } else if ((double) t5Score2 / 8 < cutThreshold) { // 쉬운단어
+        diagnosisResult = 2; // IEP 3단계
+    } else if (((double) t6Score + t6Score2)/(t6RightAnswers.length + 3) < cutThreshold) { // 쉬운받침
+        diagnosisResult = 3; // IEP 4단계
+    } else if (((double) t7Score + t7Score2)/(t7RightAnswers.length + 3) < cutThreshold) { // 복잡한받침
+        diagnosisResult = 3; // IEP 4단계
+    } else if ((double) t8Score2 / 8 < cutThreshold) { // 복잡한단어
+        diagnosisResult = 4; // IEP 5단계
+    } else { // 읽기유창성
+        diagnosisResult = 5; // IEP 6단계
+    }
+
+    subjectiveCompleted = 1; //주관식 채점 완료
 
     Log.d("voice grades sample", "t1score2: "+t1Score2+" t2score2: "+t2Score2+"t3score2: "+t3Score2);
   }

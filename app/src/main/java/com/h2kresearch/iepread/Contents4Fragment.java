@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,9 @@ public class Contents4Fragment extends Fragment {
   private static final String ARG_PARAM1 = "param1";
   private static final String ARG_PARAM2 = "param2";
 
-  int currStateIndex = 1;
+  //int currStateIndex = 1;
+
+  int diagnosisResult = 0;
 
   private static String[] currStateString = {
           "1. 자음 모음의 소리값을 정확하게 파악하지 못함. \n2. 받침이 있는 글자에 특히 어려움을 겪음. \n3. 현재 읽기 수준은 1학년 평균 수준에 심각하게 미도달.",
@@ -91,14 +94,20 @@ public class Contents4Fragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
+    //String inDiagnosisResult = this.getArguments().getString("diagnosisResult");
+    //diagnosisResult = Integer.parseInt(inDiagnosisResult);
+    diagnosisResult = this.getArguments().getInt("diagnosisResult");
+
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents4, container, false);
 
     // Set the content of the TextView
     TextView currState = (TextView) rootView.findViewById(R.id.textView37);
     TextView currGoal = (TextView) rootView.findViewById(R.id.textView38);
 
-    currState.setText(currStateString[currStateIndex]);
-    currGoal.setText(currGoalString[currStateIndex]);
+    //currState.setText(currStateString[currStateIndex]);
+    //currGoal.setText(currGoalString[currStateIndex]);
+    currState.setText(currStateString[diagnosisResult]);
+    currGoal.setText(currGoalString[diagnosisResult]);
 
     /*
     TextView currState = (TextView) rootView.findViewById(R.id.textView37);

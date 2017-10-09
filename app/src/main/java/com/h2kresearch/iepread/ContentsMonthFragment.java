@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -218,9 +219,8 @@ public class ContentsMonthFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-//    String sMonth = this.getArguments().getString("month");
-//    month = Integer.parseInt(sMonth);
-//    System.out.println(month);
+    //String inDiagnosisResult = this.getArguments().getString("diagnosisResult");
+    diagnosisResult = this.getArguments().getInt("diagnosisResult");
 
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents_month, container, false);
 
