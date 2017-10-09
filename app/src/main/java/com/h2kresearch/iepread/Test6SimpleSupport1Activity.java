@@ -28,6 +28,13 @@ public class Test6SimpleSupport1Activity extends AppCompatActivity {
   int indexString = 1;
   int threeQuestionStartIndex = 4; // 4 + 1 = 5번부터 세 문제가 시작됨
 
+  // for recording selected answers
+  int[] t1Answers;
+  int[] t2Answers;
+  int[] t3Answers;
+  int[] t4Answers;
+  int[] t6Answers;
+
   // for playing question audio
   ImageView replayImage;
   MediaPlayer mediaPlayer;
@@ -66,6 +73,9 @@ public class Test6SimpleSupport1Activity extends AppCompatActivity {
     test2 = (TextView) findViewById(R.id.option2);
     test3 = (TextView) findViewById(R.id.option3);
 
+    // for recording selected answers
+    t6Answers = new int[test1String.length];
+
     // for playing question audio
     playQuestionAudio(indexString);
     replayImage = (ImageView) findViewById(R.id.imageView8);
@@ -85,7 +95,22 @@ public class Test6SimpleSupport1Activity extends AppCompatActivity {
         if (indexString >= test1String.length) {
           // for playing question audio
           killMediaPlayer();
+
+          // for recording selected answers
+          Intent pre_intent = getIntent();
+          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+          t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+          t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+
           Intent intent = new Intent(getBaseContext(), Test6SimpleSupport2Activity.class);
+
+          intent.putExtra("t1Answers", t1Answers);
+          intent.putExtra("t2Answers", t2Answers);
+          intent.putExtra("t3Answers", t3Answers);
+          intent.putExtra("t4Answers", t4Answers);
+          intent.putExtra("t6Answers", t6Answers);
+
           startActivity(intent);
         } else {
           button.setEnabled(false);
@@ -128,6 +153,9 @@ public class Test6SimpleSupport1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
+
+          // for recording selected answers
+          t6Answers[indexString-1] = 1;
         }
         return false;
       }
@@ -147,6 +175,9 @@ public class Test6SimpleSupport1Activity extends AppCompatActivity {
           test3.setBackground(getDrawable(R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
 
+          // for recording selected answers
+          t6Answers[indexString-1] = 2;
+
         }
         return false;
       }
@@ -165,6 +196,9 @@ public class Test6SimpleSupport1Activity extends AppCompatActivity {
           test2.setTextColor(Color.parseColor("#404040"));
           test3.setBackground(getDrawable(R.drawable.roundcorner_clicked));
           test3.setTextColor(Color.parseColor("#ffffff"));
+
+          // for recording selected answers
+          t6Answers[indexString-1] = 3;
         }
         return false;
       }

@@ -30,6 +30,13 @@ public class Contents2Fragment extends Fragment {
 
   private OnFragmentInteractionListener mListener;
 
+  // 주관식 채점 결과 전송
+  int[] testInts = new int[5];
+  private OnGradeListener gradeAllListener;
+  public interface OnGradeListener{
+    void onGradeSet(int[] gradeResults);
+  }
+
   public Contents2Fragment() {
     // Required empty public constructor
   }
@@ -84,12 +91,21 @@ public class Contents2Fragment extends Fragment {
       throw new RuntimeException(context.toString()
           + " must implement OnFragmentInteractionListener");
     }
+
+    if (context instanceof OnGradeListener) {
+      gradeAllListener = (OnGradeListener) context;
+    } else {
+      throw new RuntimeException(context.toString()
+              + " must implement OnFragmentInteractionListener");
+    }
   }
 
   @Override
   public void onDetach() {
+    gradeAllListener.onGradeSet(testInts);
     super.onDetach();
     mListener = null;
+    gradeAllListener = null;
   }
 
   /**

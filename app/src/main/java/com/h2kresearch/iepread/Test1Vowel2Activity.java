@@ -1,21 +1,20 @@
 package com.h2kresearch.iepread;
 
-import static java.lang.Thread.sleep;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -24,7 +23,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -46,6 +44,9 @@ public class Test1Vowel2Activity extends AppCompatActivity {
   public static String RECORDED_FILE;
   MediaPlayer player;
   MediaRecorder recorder;
+
+  // for recording selected answers
+  int[] t1Answers;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -284,7 +285,14 @@ public class Test1Vowel2Activity extends AppCompatActivity {
         test.setClickable(true);
         indexString++;
       } else {
+        // for recording selected answers
+        Intent pre_intent = getIntent();
+        t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+
         Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
+
+        intent.putExtra("t1Answers", t1Answers);
+
         startActivity(intent);
       }
     }
