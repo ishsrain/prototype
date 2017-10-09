@@ -56,6 +56,7 @@ public class Test1Vowel2Activity extends AppCompatActivity {
   int msTime = 1500;
 
   // Record/Play File
+  File sdcard;
   public static String RECORDED_FILE;
   MediaPlayer player;
   MediaRecorder recorder;
@@ -69,13 +70,11 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     setContentView(R.layout.activity_test1vowel2);
 
     // Record
-    File sdcard = Environment.getExternalStorageDirectory();
-    File file = new File(sdcard, "recorded.mp4");
-    RECORDED_FILE = file.getAbsolutePath();
+    sdcard = Environment.getExternalStorageDirectory();
 
     // ProgressBar
     progressBar = (ProgressBar) findViewById(R.id.progressBar);
-    progressBar.setMax(msTime);
+    progressBar.setMax(testString.length);
 
     // Retry Button
     retry = (Button) findViewById(R.id.button5);
@@ -94,11 +93,20 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     next.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-        test.setText(testString[indexString]);
-//        test.setClickable(true);
-        indexString++;
-        recordState = RECORD_READY;
-        handler.sendEmptyMessage(RECORD_READY);
+        if (indexString < testString.length) {
+          test.setText(testString[indexString]);
+          indexString++;
+          progressBar.setProgress(indexString);
+          recordState = RECORD_READY;
+          handler.sendEmptyMessage(RECORD_READY);
+        } else {
+          // for recording selected answers
+          Intent pre_intent = getIntent();
+          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+          Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
+          intent.putExtra("t1Answers", t1Answers);
+          startActivity(intent);
+        }
       }
     });
 
@@ -140,7 +148,6 @@ public class Test1Vowel2Activity extends AppCompatActivity {
           // Thread Start
           ButtonStateChange(THREAD_START);
           thread.start();
-          //recordFunction();
         }
       }
     });
@@ -155,6 +162,10 @@ public class Test1Vowel2Activity extends AppCompatActivity {
         recorder = null;
       }
       recorder = new MediaRecorder();
+
+      File file = new File(sdcard, "q1_"+ Integer.toString(indexString)+".mp4");
+      RECORDED_FILE = file.getAbsolutePath();
+      //Log.d("Recoded File Path", RECORDED_FILE);
       recorder.setOutputFile(RECORDED_FILE);
       recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
       recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -442,47 +453,31 @@ public class Test1Vowel2Activity extends AppCompatActivity {
   // Handler
   Handler handler = new Handler() {
     public void handleMessage(Message msg) {
-        try {
-          if (msg.what == RECORD_READY || msg.what == RECORD_START) {
-            timeBar.setProgress(0);
-            retry.setVisibility(View.INVISIBLE);
-            next.setVisibility(View.INVISIBLE);
-            recordButton.setImageResource(R.drawable.record);
-            recordButton.setEnabled(false);
-            Thread.sleep(100);
-            recordButton.setEnabled(true);
-          } else if (msg.what == RECORD_STOP || msg.what == PLAY_STOP) {
-            timeBar.setProgress(0);
-            recordButton.setImageResource(R.drawable.stop);
-            recordButton.setEnabled(false);
-            Thread.sleep(100);
-            recordButton.setEnabled(true);
-          } else if (msg.what == PLAY_START) {
-            timeBar.setProgress(0);
-            retry.setVisibility(View.VISIBLE);
-            next.setVisibility(View.VISIBLE);
-            recordButton.setImageResource(R.drawable.replay);
-            recordButton.setEnabled(false);
-            Thread.sleep(100);
-            recordButton.setEnabled(true);
-          }
-
-          //      if (indexString < testString.length) {
-          //        test.setText(testString[indexString]);
-          //        test.setClickable(true);
-          //        indexString++;
-          //      } else {
-          //        // for recording selected answers
-          //        Intent pre_intent = getIntent();
-          //        t1Answers = pre_intent.getIntArrayExtra("t1Answers");
-          //
-          //        Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
-          //
-          //        intent.putExtra("t1Answers", t1Answers);
-          //
-          //        startActivity(intent);
-          //      }
-        } catch (InterruptedException e) {}
+      try {
+        if (msg.what == RECORD_READY || msg.what == RECORD_START) {
+          timeBar.setProgress(0);
+          retry.setVisibility(View.INVISIBLE);
+          next.setVisibility(View.INVISIBLE);
+          recordButton.setImageResource(R.drawable.record);
+          recordButton.setEnabled(false);
+          Thread.sleep(100);
+          recordButton.setEnabled(true);
+        } else if (msg.what == RECORD_STOP || msg.what == PLAY_STOP) {
+          timeBar.setProgress(0);
+          recordButton.setImageResource(R.drawable.stop);
+          recordButton.setEnabled(false);
+          Thread.sleep(100);
+          recordButton.setEnabled(true);
+        } else if (msg.what == PLAY_START) {
+          timeBar.setProgress(0);
+          retry.setVisibility(View.VISIBLE);
+          next.setVisibility(View.VISIBLE);
+          recordButton.setImageResource(R.drawable.replay);
+          recordButton.setEnabled(false);
+          Thread.sleep(100);
+          recordButton.setEnabled(true);
+        }
+      } catch (InterruptedException e) {}
     }
   };
 }
