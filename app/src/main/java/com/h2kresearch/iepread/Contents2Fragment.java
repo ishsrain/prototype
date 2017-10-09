@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 
 /**
@@ -31,10 +33,20 @@ public class Contents2Fragment extends Fragment {
   private OnFragmentInteractionListener mListener;
 
   // 주관식 채점 결과 전송
-  int[] testInts = new int[5];
+  View v;
+  RadioGroup rg;
+  RadioButton rb;
+  int id;
+  int rg_id;
+  int rb_id;
+  int numQuestion;
+  int numTest;
+  int iter;
+  int[][] results = new int[8][8];
+
   private OnGradeListener gradeAllListener;
   public interface OnGradeListener{
-    void onGradeSet(int[] gradeResults);
+    void onGradeSet(int[][] gradeResults);
   }
 
   public Contents2Fragment() {
@@ -72,7 +84,8 @@ public class Contents2Fragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_contents2, container, false);
+    v = inflater.inflate(R.layout.fragment_contents2, container, false);
+    return v;
   }
 
   // TODO: Rename method, update argument and hook method into UI event
@@ -102,10 +115,42 @@ public class Contents2Fragment extends Fragment {
 
   @Override
   public void onDetach() {
-    gradeAllListener.onGradeSet(testInts);
+    setGradeResult();
+    gradeAllListener.onGradeSet(results);
     super.onDetach();
     mListener = null;
     gradeAllListener = null;
+  }
+
+  public void setGradeResult(){
+
+    for(numTest=1; numTest<9; numTest++){
+      if(numTest == 5 || numTest == 8){
+        numQuestion = 8;
+      } else{
+        numQuestion = 3;
+      }
+
+      for(iter=0; iter<numQuestion; iter++){
+        rg_id = v.getResources().getIdentifier("q"+Integer.toString(numTest)+"_"+Integer.toString(iter+1), "id", getActivity().getPackageName());
+        rg = (RadioGroup) v.findViewById(rg_id);
+        rb_id = rg.getCheckedRadioButtonId();
+        rb = (RadioButton) v.findViewById(rb_id);
+        if (rb != null){
+          results[numTest-1][iter] = Integer.parseInt(rb.getText().toString());
+        }
+        //Log.d("success rate1", "numTest: "+numTest+" numQuestion: "+(iter+1));
+        //Log.d("success rate2", "sample[0][0]: "+results[0][0]);
+      }
+    }
+
+
+    //rg = (RadioGroup) v.findViewById(R.id.q1_1);
+    //id = rg.getCheckedRadioButtonId();
+    //rb = (RadioButton) v.findViewById(id);
+    //q1results[0] = Integer.parseInt(rb.getText().toString());
+    //Log.d("results", "sample[1][1]: "+results[0][0]+" sample[2][1]: "+results[1][0]);
+
   }
 
   /**
