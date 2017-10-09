@@ -87,6 +87,26 @@ public class ResultActivity extends AppCompatActivity
     t6Answers = pre_intent.getIntArrayExtra("t6Answers");
     t7Answers = pre_intent.getIntArrayExtra("t7Answers");
 
+    // for test purposes
+    if(t1Answers == null){
+      t1Answers = new int[t1RightAnswers.length];
+    }
+    if(t2Answers == null){
+      t2Answers = new int[t2RightAnswers.length];
+    }
+    if(t3Answers == null){
+      t3Answers = new int[t3RightAnswers.length];
+    }
+    if(t4Answers == null){
+      t4Answers = new int[t4RightAnswers.length];
+    }
+    if(t6Answers == null){
+      t6Answers = new int[t6RightAnswers.length];
+    }
+    if(t7Answers == null){
+      t7Answers = new int[t7RightAnswers.length];
+    }
+
     // 객관식 점수 계산
     for(int i=0; i<t1Answers.length; i++){
       if(t1Answers[i] == t1RightAnswers[i]){

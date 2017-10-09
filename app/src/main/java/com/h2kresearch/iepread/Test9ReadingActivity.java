@@ -50,6 +50,8 @@ public class Test9ReadingActivity extends AppCompatActivity {
     File file = new File(sdcard, "recorded.mp4");
     RECORDED_FILE = file.getAbsolutePath();
 
+    Log.d("Acutall file path", RECORDED_FILE);
+
     // TextView
     test = (TextView) findViewById(R.id.textView10);
     test.setOnClickListener(new View.OnClickListener() {

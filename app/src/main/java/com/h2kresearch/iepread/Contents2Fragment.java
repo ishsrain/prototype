@@ -1,14 +1,21 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import java.io.File;
+import java.io.IOException;
 
 
 /**
@@ -42,6 +49,31 @@ public class Contents2Fragment extends Fragment {
   int numTest;
   int iter;
   int[][] results = new int[8][8];
+
+  // 녹음 파일 재생하기
+  String RECORDED_FILE;
+  MediaPlayer mediaPlayer;
+  ImageView playButton;
+
+  private void playRecoredAudio(String path) throws IOException {
+    killMediaPlayer();
+
+    mediaPlayer = new MediaPlayer();
+    mediaPlayer.setDataSource(path);
+    //mediaPlayer.setLooping(false);
+    mediaPlayer.prepare();
+    mediaPlayer.start();
+  }
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
 
   private OnGradeListener gradeAllListener;
   public interface OnGradeListener{
@@ -84,6 +116,21 @@ public class Contents2Fragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     v = inflater.inflate(R.layout.fragment_contents2, container, false);
+
+    playButton = (ImageView) v.findViewById(R.id.play1_1);
+    playButton.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View view) {
+        File sdcard = Environment.getExternalStorageDirectory();
+        Log.d("recorded file path", sdcard+"/recorded.mp4");
+        try {
+          playRecoredAudio(sdcard+"/recorded.mp4");
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    });
+
     return v;
   }
 
