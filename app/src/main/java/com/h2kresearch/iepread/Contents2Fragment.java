@@ -36,7 +36,6 @@ public class Contents2Fragment extends Fragment {
   View v;
   RadioGroup rg;
   RadioButton rb;
-  int id;
   int rg_id;
   int rb_id;
   int numQuestion;
