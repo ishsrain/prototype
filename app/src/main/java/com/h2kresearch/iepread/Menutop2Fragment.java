@@ -98,7 +98,7 @@ public class Menutop2Fragment extends Fragment {
         menu1Text.setTextColor(Color.BLACK);
         menu2Text.setTextColor(Color.parseColor("#4a83c7"));
         menu3Text.setTextColor(Color.BLACK);
-        activity.onContentsFragmentChanged(3);
+        activity.onContentsFragmentChanged(7);
       }
     });
 

@@ -7,7 +7,7 @@
   android:paddingLeft="100dp"
   android:paddingRight="50dp"
   android:background="@android:color/background_light"
-  tools:context="com.h2kresearch.iepread.Contents3Fragment">
+  tools:context="com.h2kresearch.iepread.Contents5Fragment">
 
   <!-- TODO: Update blank fragment layout -->
   <ScrollView
@@ -62,68 +62,41 @@
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/testResult1_4"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="4"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult1_5"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="5"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult1_6"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="6"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult1_7"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="7"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult1_8"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="8"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult1_9"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="9"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult1_10"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="10"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
+
       </LinearLayout>
 
       <TextView
@@ -138,8 +111,8 @@
 
       <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="25dp"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="75dp"
           android:layout_marginLeft="50dp"
           android:orientation="horizontal">
 
@@ -149,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="1"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
@@ -158,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="2"
-            android:textColor="@color/colorAccent"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -170,157 +143,35 @@
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/testResult2_4"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="4"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult2_5"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="5"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult2_6"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="6"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult2_7"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="7"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult2_8"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="8"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult2_9"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="9"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="10"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-      </LinearLayout>
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_marginBottom="75dp"
-          android:layout_marginLeft="50dp"
-          android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/testResult2_11"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="11"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_12"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="12"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_13"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="13"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_14"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="14"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_15"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="15"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="16"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_17"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="17"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_18"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="18"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult2_19"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="19"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
         <Space
             android:layout_width="0dp"
@@ -342,7 +193,7 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_marginBottom="25dp"
+          android:layout_marginBottom="75dp"
           android:layout_marginLeft="50dp"
           android:orientation="horizontal">
 
@@ -352,7 +203,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="1"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
@@ -361,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="2"
-            android:textColor="@color/colorAccent"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -373,112 +224,20 @@
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/testResult3_4"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="4"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult3_5"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="5"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult3_6"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="6"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult3_7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="7"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult3_8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="8"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult3_9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="9"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult3_10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="10"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-      </LinearLayout>
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
-        android:layout_marginLeft="50dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/testResult3_11"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="11"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult3_12"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="12"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult3_13"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="13"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult3_14"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="14"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
         <Space
             android:layout_width="0dp"
@@ -496,17 +255,10 @@
             android:layout_weight="1" />
 
         <Space
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1" />
-        <Space
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1" />
-        <Space
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
       </LinearLayout>
 
       <TextView
@@ -522,7 +274,7 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_marginBottom="25dp"
+          android:layout_marginBottom="75dp"
           android:layout_marginLeft="50dp"
           android:orientation="horizontal">
 
@@ -532,7 +284,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="1"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
@@ -541,7 +293,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="2"
-            android:textColor="@color/colorAccent"
+            android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -553,17 +305,98 @@
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/testName5"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="25dp"
+          android:text="복잡한 모음 (2/7)"
+          android:textColor="@android:color/black"
+          android:textSize="20sp"
+          android:textStyle="bold" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="75dp"
+          android:layout_marginLeft="50dp"
+          android:orientation="horizontal">
+
         <TextView
-            android:id="@+id/testResult4_4"
+            android:id="@+id/testResult5_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="4"
+            android:text="1"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/testResult5_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/testResult4_5"
+            android:id="@+id/testResult5_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/testResult5_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/testResult5_5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -572,65 +405,30 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/testResult4_6"
+            android:id="@+id/testResult5_6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="6"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/testResult4_7"
+            android:id="@+id/testResult5_7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="7"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/testResult4_8"
+            android:id="@+id/testResult5_8"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="8"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult4_9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="9"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult4_10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="10"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-      </LinearLayout>
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
-        android:layout_marginLeft="50dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/testResult4_11"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="11"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <Space
@@ -643,38 +441,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Space
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1" />
-        <Space
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1" />
-        <Space
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="1" />
       </LinearLayout>
 
       <TextView
@@ -700,7 +466,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="1"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
@@ -721,41 +487,20 @@
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/testResult6_4"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="4"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult6_5"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="5"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/testResult6_6"
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="6"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/testResult6_7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="7"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_weight="1" />
 
         <Space
             android:layout_width="0dp"
@@ -771,6 +516,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
       </LinearLayout>
 
       <TextView
@@ -796,7 +547,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="1"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
@@ -817,26 +568,107 @@
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/testName8"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="25dp"
+          android:text="복잡한 모음 (2/7)"
+          android:textColor="@android:color/black"
+          android:textSize="20sp"
+          android:textStyle="bold" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="75dp"
+          android:layout_marginLeft="50dp"
+          android:orientation="horizontal">
+
         <TextView
-            android:id="@+id/testResult7_4"
+            android:id="@+id/testResult8_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/testResult8_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/testResult8_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/testResult8_4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="4"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/testResult7_5"
+            android:id="@+id/testResult8_5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="5"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/testResult7_6"
+            android:id="@+id/testResult8_6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -845,12 +677,21 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/testResult7_7"
+            android:id="@+id/testResult8_7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="7"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/testResult8_8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="8"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
         <Space
@@ -863,11 +704,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
       </LinearLayout>
+
     </LinearLayout>
   </ScrollView>
 

@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 public class ResultActivity extends AppCompatActivity
-    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener,
+    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener, Contents5Fragment.OnFragmentInteractionListener,
     MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener,
     ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
 
@@ -19,6 +19,7 @@ public class ResultActivity extends AppCompatActivity
   Contents2Fragment contents2Fragment;
   Contents3Fragment contents3Fragment;
   Contents4Fragment contents4Fragment;
+  Contents5Fragment contents5Fragment;
   ContentsMonthFragment contentsMFragment;
   ContentsWeekFragment contentsWFragment;
 
@@ -75,6 +76,7 @@ public class ResultActivity extends AppCompatActivity
     contentsFragment = new ContentsFragment();
     contents3Fragment = new Contents3Fragment();
     contents4Fragment = new Contents4Fragment();
+    contents5Fragment = new Contents5Fragment();
     contentsMFragment = new ContentsMonthFragment();
     contentsWFragment = new ContentsWeekFragment();
 
@@ -145,6 +147,7 @@ public class ResultActivity extends AppCompatActivity
     }
 
     Log.d("multiple grades sample", "t1score: "+t1Score+" t2score: "+t2Score+"t3score: "+t3Score);
+    Log.d("answers delivered", "t1Answers: "+t1Answers.length+" t2Answers: "+t2Answers.length);
     //ft = getSupportFragmentManager().beginTransaction();
   }
 
@@ -154,6 +157,35 @@ public class ResultActivity extends AppCompatActivity
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit(); // 의미/무의미 단어 읽기 내용
     } else if(index == 2) { // 채점결과 학인하기
       getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop2Fragment).commit(); // 채점결과 확인하기 메뉴
+
+      Bundle bundleWithTestResults = new Bundle();
+      bundleWithTestResults.putInt("t1Score", t1Score);
+      bundleWithTestResults.putInt("t2Score", t2Score);
+      bundleWithTestResults.putInt("t3Score", t3Score);
+      bundleWithTestResults.putInt("t4Score", t4Score);
+      bundleWithTestResults.putInt("t6Score", t6Score);
+      bundleWithTestResults.putInt("t7Score", t7Score);
+
+      bundleWithTestResults.putIntArray("t1Answers", t1Answers);
+      bundleWithTestResults.putIntArray("t2Answers", t2Answers);
+      bundleWithTestResults.putIntArray("t3Answers", t3Answers);
+      bundleWithTestResults.putIntArray("t4Answers", t4Answers);
+      bundleWithTestResults.putIntArray("t6Answers", t6Answers);
+      bundleWithTestResults.putIntArray("t7Answers", t7Answers);
+
+      bundleWithTestResults.putIntArray("t1RightAnswers", t1RightAnswers);
+      bundleWithTestResults.putIntArray("t2RightAnswers", t2RightAnswers);
+      bundleWithTestResults.putIntArray("t3RightAnswers", t3RightAnswers);
+      bundleWithTestResults.putIntArray("t4RightAnswers", t4RightAnswers);
+      bundleWithTestResults.putIntArray("t6RightAnswers", t6RightAnswers);
+      bundleWithTestResults.putIntArray("t7RightAnswers", t7RightAnswers);
+
+      if (contents3Fragment.getArguments() == null){
+        contents3Fragment.setArguments(bundleWithTestResults);
+      } else {
+        contents3Fragment.getArguments().putAll(bundleWithTestResults);
+      }
+
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit(); // 객관식 채점결과 내용
     } else if(index == 3) { // IEP 확인하기
       getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3Fragment).commit(); // IEP 확인하기 메뉴
@@ -166,8 +198,36 @@ public class ResultActivity extends AppCompatActivity
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
     } else if(index == 2) { // 앍기 유창성 검사
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsFragment).commit();
-    } else if(index == 3) { // 채점 결과 확인하기
+    } else if(index == 3) { // 객관식 채점 결과 확인하기
+      Bundle bundleWithTestResults = new Bundle();
+      bundleWithTestResults.putInt("t1Score", t1Score);
+      bundleWithTestResults.putInt("t2Score", t2Score);
+      bundleWithTestResults.putInt("t3Score", t3Score);
+      bundleWithTestResults.putInt("t4Score", t4Score);
+      bundleWithTestResults.putInt("t6Score", t6Score);
+      bundleWithTestResults.putInt("t7Score", t7Score);
 
+      bundleWithTestResults.putIntArray("t1Answers", t1Answers);
+      bundleWithTestResults.putIntArray("t2Answers", t2Answers);
+      bundleWithTestResults.putIntArray("t3Answers", t3Answers);
+      bundleWithTestResults.putIntArray("t4Answers", t4Answers);
+      bundleWithTestResults.putIntArray("t6Answers", t6Answers);
+      bundleWithTestResults.putIntArray("t7Answers", t7Answers);
+
+      bundleWithTestResults.putIntArray("t1RightAnswers", t1RightAnswers);
+      bundleWithTestResults.putIntArray("t2RightAnswers", t2RightAnswers);
+      bundleWithTestResults.putIntArray("t3RightAnswers", t3RightAnswers);
+      bundleWithTestResults.putIntArray("t4RightAnswers", t4RightAnswers);
+      bundleWithTestResults.putIntArray("t6RightAnswers", t6RightAnswers);
+      bundleWithTestResults.putIntArray("t7RightAnswers", t7RightAnswers);
+
+      if (contents3Fragment.getArguments() == null){
+        contents3Fragment.setArguments(bundleWithTestResults);
+      } else {
+        contents3Fragment.getArguments().putAll(bundleWithTestResults);
+      }
+
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit();
     } else if(index == 4) { // 학기별 교육 내용
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit();
     } else if(index == 5) { // 월별 교육 내용
@@ -188,6 +248,32 @@ public class ResultActivity extends AppCompatActivity
         contentsWFragment.getArguments().putAll(bundle);
       }
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsWFragment).commit();
+    } else if(index == 7) { // 주관식 채점 결과 확인하기
+      Bundle bundleWithTestResults = new Bundle();
+      bundleWithTestResults.putIntArray("t1Answers", grades[0]);
+      bundleWithTestResults.putIntArray("t2Answers", grades[1]);
+      bundleWithTestResults.putIntArray("t3Answers", grades[2]);
+      bundleWithTestResults.putIntArray("t4Answers", grades[3]);
+      bundleWithTestResults.putIntArray("t5Answers", grades[4]);
+      bundleWithTestResults.putIntArray("t6Answers", grades[5]);
+      bundleWithTestResults.putIntArray("t7Answers", grades[6]);
+      bundleWithTestResults.putIntArray("t8Answers", grades[7]);
+
+      bundleWithTestResults.putInt("t1Score", t1Score2);
+      bundleWithTestResults.putInt("t2Score", t2Score2);
+      bundleWithTestResults.putInt("t3Score", t3Score2);
+      bundleWithTestResults.putInt("t4Score", t4Score2);
+      bundleWithTestResults.putInt("t5Score", t5Score2);
+      bundleWithTestResults.putInt("t6Score", t6Score2);
+      bundleWithTestResults.putInt("t7Score", t7Score2);
+      bundleWithTestResults.putInt("t8Score", t8Score2);
+
+      if (contents5Fragment.getArguments() == null){
+        contents5Fragment.setArguments(bundleWithTestResults);
+      } else {
+        contents5Fragment.getArguments().putAll(bundleWithTestResults);
+      }
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents5Fragment).commit();
     }
 
   }
