@@ -191,7 +191,7 @@ public class ContentsFragment extends Fragment {
       } else {
         mistakenWords += 1;
         selectedWords.add("element"+tv.getSelectionStart());
-        ss.setSpan(new BackgroundColorSpan(Color.CYAN), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(new BackgroundColorSpan(Color.RED), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       }
 
       Log.d("mistakenwords", " "+mistakenWords);
@@ -245,7 +245,7 @@ public class ContentsFragment extends Fragment {
       end = (i <indices.length ? indices[i] : spans.length());
 
       if (selectedWords.contains("element"+start)) {
-        spans.setSpan(new BackgroundColorSpan(Color.CYAN), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spans.setSpan(new BackgroundColorSpan(Color.RED), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
       } else {
         spans.setSpan(clickSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
       }
