@@ -34,11 +34,31 @@ public class Test1Vowel1Activity extends AppCompatActivity {
   private void playQuestionAudio(int questionNumber) {
     killMediaPlayer();
 
-    resourceNumber = getResources().getIdentifier("t1_"+questionNumber, "raw", getPackageName());
+    resourceNumber = getResources().getIdentifier("t1_" + questionNumber, "raw", getPackageName());
 
     mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
     mediaPlayer.setLooping(false);
     mediaPlayer.start();
+  }
+
+  private void playInstructionAudio() {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("i_t1_1", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+
+    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            resourceNumber = getResources().getIdentifier("t1_1", "raw", getPackageName());
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+            mediaPlayer.setLooping(false);
+            mediaPlayer.start();
+        }
+    });
   }
 
   private void killMediaPlayer() {
@@ -74,7 +94,8 @@ public class Test1Vowel1Activity extends AppCompatActivity {
     t1Answers = new int[test1String.length];
 
     // for playing question audio
-    playQuestionAudio(indexString);
+    playInstructionAudio();
+    //playQuestionAudio(indexString);
     replayImage = (ImageView) findViewById(R.id.imageView8);
 
     replayImage.setOnClickListener(new View.OnClickListener() {

@@ -61,13 +61,28 @@ public class Test1Vowel2Activity extends AppCompatActivity {
   MediaPlayer player;
   MediaRecorder recorder;
 
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
   // for recording selected answers
   int[] t1Answers;
+
+  private void playInstructionAudio() {
+
+    resourceNumber = getResources().getIdentifier("i_t1_2", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test1vowel2);
+
+    playInstructionAudio();
 
     // Record
     sdcard = Environment.getExternalStorageDirectory();
