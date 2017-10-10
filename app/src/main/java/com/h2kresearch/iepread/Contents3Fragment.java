@@ -121,17 +121,17 @@ public class Contents3Fragment extends Fragment {
     v = inflater.inflate(R.layout.fragment_contents3, container, false);
 
     testName = (TextView) v.findViewById(R.id.testName1);
-    testName.setText("쉬운 모음 ("+t1Score+"/"+t1Answers.length+")");
+    testName.setText("1. 쉬운 모음 ("+t1Score+"/"+t1Answers.length+")");
     testName = (TextView) v.findViewById(R.id.testName2);
-    testName.setText("자음 ("+t2Score+"/"+t2Answers.length+")");
+    testName.setText("2. 자음 ("+t2Score+"/"+t2Answers.length+")");
     testName = (TextView) v.findViewById(R.id.testName3);
-    testName.setText("쉬운 음절 ("+t3Score+"/"+t3Answers.length+")");
+    testName.setText("3. 쉬운 음절 ("+t3Score+"/"+t3Answers.length+")");
     testName = (TextView) v.findViewById(R.id.testName4);
-    testName.setText("복잡한 모음 ("+t4Score+"/"+t4Answers.length+")");
+    testName.setText("4. 복잡한 모음 ("+t4Score+"/"+t4Answers.length+")");
     testName = (TextView) v.findViewById(R.id.testName6);
-    testName.setText("쉬운 받침 ("+t6Score+"/"+t6Answers.length+")");
+    testName.setText("6. 쉬운 받침 ("+t6Score+"/"+t6Answers.length+")");
     testName = (TextView) v.findViewById(R.id.testName7);
-    testName.setText("복잡한 받침 ("+t7Score+"/"+t7Answers.length+")");
+    testName.setText("7. 복잡한 받침 ("+t7Score+"/"+t7Answers.length+")");
 
     for(iter=0; iter<t1Answers.length; iter++){
       testResultID = v.getResources().getIdentifier("testResult1_"+Integer.toString(iter+1), "id", getActivity().getPackageName());
