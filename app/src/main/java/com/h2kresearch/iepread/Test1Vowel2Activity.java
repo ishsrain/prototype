@@ -76,6 +76,16 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     mediaPlayer.start();
   }
 
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -108,6 +118,7 @@ public class Test1Vowel2Activity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         if (indexString < testString.length) {
+          killMediaPlayer();
           test.setText(testString[indexString]);
           indexString++;
           progressBar.setProgress(indexString);
@@ -115,6 +126,7 @@ public class Test1Vowel2Activity extends AppCompatActivity {
           handler.sendEmptyMessage(RECORD_READY);
         } else {
           // for recording selected answers
+          killMediaPlayer();
           Intent pre_intent = getIntent();
           t1Answers = pre_intent.getIntArrayExtra("t1Answers");
           Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
@@ -144,6 +156,7 @@ public class Test1Vowel2Activity extends AppCompatActivity {
           ButtonStateChange(THREAD_STOP);
         }
         else {
+          killMediaPlayer();
           thread = new Thread(new Runnable() {
             @Override
             public void run() {
