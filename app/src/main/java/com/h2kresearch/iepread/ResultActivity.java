@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 public class ResultActivity extends AppCompatActivity
-    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener, Contents5Fragment.OnFragmentInteractionListener,
+    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener, Contents5Fragment.OnFragmentInteractionListener, Contents6Fragment.OnFragmentInteractionListener,
     MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener,
     ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
 
@@ -22,6 +22,7 @@ public class ResultActivity extends AppCompatActivity
   Contents5Fragment contents5Fragment;
   ContentsMonthFragment contentsMFragment;
   ContentsWeekFragment contentsWFragment;
+  Contents6Fragment contents6Fragment;
 
   int month = 3;
 
@@ -84,8 +85,10 @@ public class ResultActivity extends AppCompatActivity
     contents3Fragment = new Contents3Fragment();
     contents4Fragment = new Contents4Fragment();
     contents5Fragment = new Contents5Fragment();
+    contents6Fragment = new Contents6Fragment();
     contentsMFragment = new ContentsMonthFragment();
     contentsWFragment = new ContentsWeekFragment();
+
 
     // 객관식 채점 결과 수신
     Intent pre_intent = getIntent();
@@ -310,6 +313,24 @@ public class ResultActivity extends AppCompatActivity
         contents5Fragment.getArguments().putAll(bundleWithTestResults);
       }
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents5Fragment).commit();
+    } else if(index == 8) { // 최종 결과 확인하기
+      Bundle bundleWithTestResults = new Bundle();
+
+      bundleWithTestResults.putInt("t1ScoreFinal", t1Score + t1Score2);
+      bundleWithTestResults.putInt("t2ScoreFinal", t2Score + t2Score2);
+      bundleWithTestResults.putInt("t3ScoreFinal", t3Score + t3Score2);
+      bundleWithTestResults.putInt("t4ScoreFinal", t4Score + t4Score2);
+      bundleWithTestResults.putInt("t5ScoreFinal", t5Score2);
+      bundleWithTestResults.putInt("t6ScoreFinal", t6Score + t6Score2);
+      bundleWithTestResults.putInt("t7ScoreFinal", t7Score + t7Score2);
+      bundleWithTestResults.putInt("t8ScoreFinal", t8Score2);
+
+      if (contents6Fragment.getArguments() == null){
+        contents6Fragment.setArguments(bundleWithTestResults);
+      } else {
+        contents6Fragment.getArguments().putAll(bundleWithTestResults);
+      }
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents6Fragment).commit();
     }
   }
 
