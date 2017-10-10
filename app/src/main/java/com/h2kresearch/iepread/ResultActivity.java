@@ -222,6 +222,10 @@ public class ResultActivity extends AppCompatActivity
   }
 
   public void onContentsFragmentChanged(int index) {
+    if(index == 0){
+      Intent intent = new Intent(getBaseContext(), SendActivity.class);
+      startActivity(intent);
+    }
     if(index == 1){ // 의미/무의미 단어 읽기
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
     } else if(index == 2) { // 앍기 유창성 검사

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -37,6 +38,7 @@ public class Menutop2Fragment extends Fragment {
   ResultActivity activity;
   private TextView menu1Text, menu2Text, menu3Text;
   private String menu1Str, menu2Str, menu3Str;
+  Button send;
 
   public Menutop2Fragment() {
     // Required empty public constructor
@@ -127,6 +129,14 @@ public class Menutop2Fragment extends Fragment {
         menu3Text.setTextColor(Color.parseColor("#4a83c7"));
         menu3Text.setText(Html.fromHtml("<u>"+menu3Str+"</u>"));
         activity.onContentsFragmentChanged(8);
+      }
+    });
+
+    send = (Button) rootView.findViewById(R.id.button);
+    send.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        activity.onContentsFragmentChanged(0);
       }
     });
 
