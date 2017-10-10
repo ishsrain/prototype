@@ -47,6 +47,7 @@
   <string name="goal">모음의 음가를 정확하게 파악.\n- 단모음 10개와 이중 모음 11개의 음가를 정확하게 파악</string>
   <string name="testend">자, 이제 끝났어요\n선생님께 제출하세요!</string>
   <string name="teststart">그럼 지금부터\n진단을 시작할게요!</string>
+  <string name="thanks">베타서비스에 참여해주셔서 감사합니다.\n더욱 나은 서비스로 보답하겠습니다.</string>
 
 
   <!-- TODO: Remove or change this placeholder text -->
