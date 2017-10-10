@@ -105,33 +105,83 @@
     </LinearLayout>
 
   </LinearLayout>
+
   <LinearLayout
-    android:id="@+id/linearLayout2"
-    android:layout_width="0dp"
-    android:layout_height="150dp"
-    android:layout_weight="1"
-    android:paddingBottom="25dp"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
-    android:gravity="bottom|right"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent">
-    <TextView
-      android:id="@+id/textView58"
-      android:layout_width="wrap_content"
+      android:id="@+id/linearLayout2"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:text="복잡한받침-듣고고르기"
-      android:textColor="#A0A0A0" />
-    <ImageView
-      android:id="@+id/imageView8"
-      android:layout_width="100dp"
-      android:layout_height="100dp"
-      app:srcCompat="@drawable/playbutton"
-      tools:layout_editor_absoluteX="8dp"
-      tools:layout_editor_absoluteY="8dp" />
+      android:layout_marginBottom="-1dp"
+      android:gravity="bottom|right"
+      android:orientation="vertical"
+      android:paddingBottom="25dp"
+      android:paddingLeft="50dp"
+      android:paddingRight="50dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+      <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="4" />
+
+      <ImageView
+          android:id="@+id/imageView8"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          app:srcCompat="@drawable/playbutton" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="복잡한받침-듣고고르기"
+        android:textColor="#A0A0A0" />
   </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
+
+
+    <!--
+    <LinearLayout
+      android:id="@+id/linearLayout2"
+      android:layout_width="0dp"
+      android:layout_height="150dp"
+      android:layout_weight="1"
+      android:paddingBottom="25dp"
+      android:paddingLeft="50dp"
+      android:paddingRight="50dp"
+      android:gravity="bottom|right"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent">
+      <TextView
+        android:id="@+id/textView58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="복잡한받침-듣고고르기"
+        android:textColor="#A0A0A0" />
+      <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/playbutton"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
+    </LinearLayout>
+
+  </android.support.constraint.ConstraintLayout>
+  -->

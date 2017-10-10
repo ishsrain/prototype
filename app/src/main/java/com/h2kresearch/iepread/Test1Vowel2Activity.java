@@ -74,7 +74,6 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
     mediaPlayer.setLooping(false);
     mediaPlayer.start();
-
   }
 
   @Override
