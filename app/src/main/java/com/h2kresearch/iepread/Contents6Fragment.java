@@ -52,6 +52,10 @@ public class Contents6Fragment extends Fragment {
 
   ProgressBar progressBar;
 
+  int numTotalWords = 0;
+  int numMistakenWords = 0;
+  int proficiency = 0;
+
   public Contents6Fragment() {
     // Required empty public constructor
   }
@@ -89,6 +93,8 @@ public class Contents6Fragment extends Fragment {
       t6ScoreFinal = getArguments().getInt("t6ScoreFinal");
       t7ScoreFinal = getArguments().getInt("t7ScoreFinal");
       t8ScoreFinal = getArguments().getInt("t8ScoreFinal");
+      numTotalWords = getArguments().getInt("totalWords");
+      numMistakenWords = getArguments().getInt("mistakenWords");
     }
   }
 
@@ -114,6 +120,10 @@ public class Contents6Fragment extends Fragment {
     testName.setText("7. 복잡한 받침 ("+t7ScoreFinal+"/10)");
     testName = (TextView) v.findViewById(R.id.testName8);
     testName.setText("8. 복잡한 단어 ("+t8ScoreFinal+"/8)");
+    testName = (TextView) v.findViewById(R.id.testName9);
+    int numAccurateWords = numTotalWords - numMistakenWords;
+    testName.setText("9. 읽기 유창성 ("+ numAccurateWords +"/" + numTotalWords + ")");
+
 
     testResult = (TextView) v.findViewById(R.id.textView25);
     testResult.setText("정답률: " + t1ScoreFinal * 100/13 + "%");
@@ -155,7 +165,13 @@ public class Contents6Fragment extends Fragment {
     progressBar = (ProgressBar) v.findViewById(R.id.progressBar11);
     progressBar.setProgress(t8ScoreFinal);
 
-    return v;
+    testResult = (TextView) v.findViewById(R.id.textView33);
+    testResult.setText("정답률: " + numAccurateWords * 100/numTotalWords + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar12);
+    progressBar.setProgress(numAccurateWords);
+
+
+      return v;
   }
 
   // TODO: Rename method, update argument and hook method into UI event

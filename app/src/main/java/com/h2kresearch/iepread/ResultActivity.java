@@ -343,6 +343,8 @@ public class ResultActivity extends AppCompatActivity
       bundleWithTestResults.putInt("t6ScoreFinal", t6Score + t6Score2);
       bundleWithTestResults.putInt("t7ScoreFinal", t7Score + t7Score2);
       bundleWithTestResults.putInt("t8ScoreFinal", t8Score2);
+      bundleWithTestResults.putInt("totalWords", numTotalWords);
+      bundleWithTestResults.putInt("mistakenWords", numMistakenWords);
 
       if (contents6Fragment.getArguments() == null){
         contents6Fragment.setArguments(bundleWithTestResults);
