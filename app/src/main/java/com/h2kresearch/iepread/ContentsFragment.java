@@ -12,10 +12,12 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +45,17 @@ public class ContentsFragment extends Fragment {
 
   private OnFragmentInteractionListener mListener;
 
-  ArrayList selectedWords = new ArrayList();
+  // 읽기 유창성 검사 결과 기록 및 전송
+  ArrayList<String> selectedWords = new ArrayList();
+  int totalWords = 0;
+  int mistakenWords = 0;
+
+  TextView mainText;
+
+  private OnReadingGradeListener readingGradeListener;
+  public interface OnReadingGradeListener{
+    void onReadingGradeSet(int totalWords, int mistakenWords, ArrayList selectedWords);
+  }
 
   public ContentsFragment() {
     // Required empty public constructor
@@ -73,6 +85,10 @@ public class ContentsFragment extends Fragment {
     if (getArguments() != null) {
       mParam1 = getArguments().getString(ARG_PARAM1);
       mParam2 = getArguments().getString(ARG_PARAM2);
+
+      if(getArguments().getStringArrayList("indSelectedWords") != null){
+        selectedWords = getArguments().getStringArrayList("indSelectedWords");
+      }
     }
   }
 
@@ -83,12 +99,13 @@ public class ContentsFragment extends Fragment {
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents, container, false);
 
     // Set the content of the TextView
-    TextView mainText = (TextView) rootView.findViewById(R.id.textView23);
+    mainText = (TextView) rootView.findViewById(R.id.textView23);
     SpannableString mainContent = new SpannableString(getResources().getString(R.string.example));
     mainText.setText(mainContent, SPANNABLE);
 
     // Split the text in the TextView into words
     getEachWord(mainText);
+    setEachWordWithHighLight(mainText);
 
     // Make the TextView clickable
     mainText.setMovementMethod(new LinkMovementMethod());
@@ -111,11 +128,34 @@ public class ContentsFragment extends Fragment {
       throw new RuntimeException(context.toString()
           + " must implement OnFragmentInteractionListener");
     }
+
+    if (context instanceof OnReadingGradeListener) {
+      readingGradeListener = (OnReadingGradeListener) context;
+    } else {
+      throw new RuntimeException(context.toString()
+              + " must implement OnReadingGradeListener");
+    }
+
+
+    if (getArguments() != null) {
+      if(getArguments().getStringArrayList("indSelectedWords") != null){
+        //selectedWords = getArguments().getStringArrayList("indSelectedWords");
+        //setEachWordWithHighLight(mainText);
+      }
+    }
+    Log.d("SelectedWordsInC", ""+selectedWords.size());
+    Log.d("SelectedWordsInC", ""+selectedWords.size());
+    Log.d("SelectedWordsInC", ""+selectedWords.size());
+
+
+
   }
 
   @Override
   public void onDetach() {
     super.onDetach();
+    readingGradeListener.onReadingGradeSet(totalWords, mistakenWords, selectedWords);
+    readingGradeListener = null;
     mListener = null;
   }
 
@@ -145,12 +185,19 @@ public class ContentsFragment extends Fragment {
       SpannableString ss = (SpannableString) tv.getText();
 
       if (selectedWords.contains("element"+tv.getSelectionStart())){
+        mistakenWords -= 1;
         selectedWords.remove("element"+tv.getSelectionStart());
         ss.setSpan(new BackgroundColorSpan(Color.TRANSPARENT), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       } else {
+        mistakenWords += 1;
         selectedWords.add("element"+tv.getSelectionStart());
         ss.setSpan(new BackgroundColorSpan(Color.CYAN), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
       }
+
+      Log.d("mistakenwords", " "+mistakenWords);
+      Log.d("mistakenwords", " "+totalWords);
+      Log.d("mistakenwords", " "+mistakenWords);
+      Log.d("mistakenwords", " "+totalWords);
 
       //String s = tv.getText().subSequence(tv.getSelectionStart(), tv.getSelectionEnd()).toString();
       //Toast.makeText(Test9ReadingActivity.this, s, Toast.LENGTH_SHORT).show();
@@ -169,18 +216,55 @@ public class ContentsFragment extends Fragment {
         textView.getText().toString().replaceAll("(\r\n|\r|\n|\n\r)", " ").trim(), ' ');
     int start = 0;
     int end = 0;
+    totalWords = indices.length + 1;
     // to cater last/only word loop will run equal to the length of indices.length
     for (int i = 0; i <= indices.length; i++) {
       ClickableSpan clickSpan = new MyClickableSpan();
       // to cater last/only word
       end = (i <indices.length ? indices[i] : spans.length());
-      spans.setSpan(clickSpan, start, end,
-          Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+      spans.setSpan(clickSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
       start = end + 1;
     }
     //Change the highlight color for selected text
     textView.setHighlightColor(Color.TRANSPARENT);
+    Log.d("getEachWord", "called called called");
   }
+
+  public void setEachWordWithHighLight(TextView textView){
+    Spannable spans = (Spannable)textView.getText();
+    Integer[] indices = getIndices(
+            textView.getText().toString().replaceAll("(\r\n|\r|\n|\n\r)", " ").trim(), ' ');
+    int start = 0;
+    int end = 0;
+    // to cater last/only word loop will run equal to the length of indices.length
+    for (int i = 0; i <= indices.length; i++) {
+      ClickableSpan clickSpan = new MyClickableSpan();
+      // to cater last/only word
+      end = (i <indices.length ? indices[i] : spans.length());
+
+      if (selectedWords.contains("element"+start)) {
+        spans.setSpan(new BackgroundColorSpan(Color.CYAN), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+      } else {
+        spans.setSpan(clickSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+      }
+      start = end + 1;
+    }
+    //Change the highlight color for selected text
+    //textView.setHighlightColor(Color.TRANSPARENT);
+  }
+  /*
+if (selectedWords.contains("element"+tv.getSelectionStart())){
+    mistakenWords -= 1;
+    selectedWords.remove("element"+tv.getSelectionStart());
+    ss.setSpan(new BackgroundColorSpan(Color.TRANSPARENT), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+  } else {
+    mistakenWords += 1;
+    selectedWords.add("element"+tv.getSelectionStart());
+    ss.setSpan(new BackgroundColorSpan(Color.CYAN), tv.getSelectionStart(), tv.getSelectionEnd(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+  }
+*/
 
   public static Integer[] getIndices(String s, char c) {
     int pos = s.indexOf(c, 0);

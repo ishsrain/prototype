@@ -23,8 +23,8 @@ public class IntroActivity extends AppCompatActivity {
       public void run() {
         //Intent intent = new Intent(getBaseContext(), Test1Vowel1Activity.class);
         //Intent intent = new Intent(getBaseContext(), InfoActivity.class);
-        //Intent intent = new Intent(getBaseContext(), Test9ReadingActivity.class);
-        Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+        Intent intent = new Intent(getBaseContext(), Test9ReadingActivity.class);
+        //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
         startActivity(intent);
         finish();
       }

@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class ResultActivity extends AppCompatActivity
-    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener, Contents5Fragment.OnFragmentInteractionListener,
+    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener, Contents5Fragment.OnFragmentInteractionListener, ContentsFragment.OnReadingGradeListener,
     MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener,
     ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
 
@@ -69,6 +71,12 @@ public class ResultActivity extends AppCompatActivity
   int t6Score2 = 0;
   int t7Score2 = 0;
   int t8Score2 = 0;
+
+  // 읽기 유창성 점수
+  int numTotalWords;
+  int numMistakenWords;
+  double readingProficiencyScore;
+  ArrayList<String> indSelectedWords;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -225,7 +233,19 @@ public class ResultActivity extends AppCompatActivity
     }
     if(index == 1){ // 의미/무의미 단어 읽기
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
-    } else if(index == 2) { // 앍기 유창성 검사
+    } else if(index == 2) { // 읽기 유창성 검사
+
+      if(indSelectedWords != null){
+        Bundle bundleWithSelectedIdx = new Bundle();
+        bundleWithSelectedIdx.putStringArrayList("indSelectedWords", indSelectedWords);
+
+        if (contentsFragment.getArguments() == null){
+          contentsFragment.setArguments(bundleWithSelectedIdx);
+        } else {
+          contentsFragment.getArguments().putAll(bundleWithSelectedIdx);
+        }
+      }
+
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsFragment).commit();
     } else if(index == 3) { // 객관식 채점 결과 확인하기
       Bundle bundleWithTestResults = new Bundle();
@@ -316,6 +336,18 @@ public class ResultActivity extends AppCompatActivity
   @Override
   public void onFragmentInteraction(Uri uri){
 
+  }
+
+  // 읽기 유창성 채점 결과 수신
+  @Override
+  public void onReadingGradeSet(int totalWords, int mistakenWords, ArrayList selectedWords){
+    numTotalWords = totalWords;
+    numMistakenWords = mistakenWords;
+    readingProficiencyScore = (double) 100*(numTotalWords-numMistakenWords)/numTotalWords;
+    indSelectedWords = selectedWords;
+
+    Log.d("readingProficiency", ""+readingProficiencyScore);
+    Log.d("indSelectedWords", ""+indSelectedWords.size());
   }
 
   @Override
