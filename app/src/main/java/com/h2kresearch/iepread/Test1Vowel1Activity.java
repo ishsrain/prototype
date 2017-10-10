@@ -116,6 +116,8 @@ public class Test1Vowel1Activity extends AppCompatActivity {
 
           Intent intent = new Intent(getBaseContext(), Test1Vowel2Activity.class);
           // for recording selected answers
+          //Log.d("intent",getIntent().getStringExtra("info"));
+          intent.putExtra("info",getIntent().getStringExtra("info"));
           intent.putExtra("t1Answers", t1Answers);
 
           startActivity(intent);

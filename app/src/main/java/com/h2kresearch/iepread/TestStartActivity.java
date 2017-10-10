@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class TestStartActivity extends AppCompatActivity {
 
@@ -21,6 +22,8 @@ public class TestStartActivity extends AppCompatActivity {
       @Override
       public void run() {
         Intent intent = new Intent(getBaseContext(), Test1Vowel1Activity.class);
+
+        intent.putExtra("info",getIntent().getStringExtra("info"));
         startActivity(intent);
         finish();
       }

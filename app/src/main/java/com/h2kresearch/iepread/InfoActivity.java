@@ -1,12 +1,18 @@
 package com.h2kresearch.iepread;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -46,7 +52,33 @@ public class InfoActivity extends AppCompatActivity {
     buttonStart.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        // Current Time
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyyMMdd_HH24mmss");
+        String time = sdfNow.format(new Date(System.currentTimeMillis()));
+
+        // Make Folder
+        String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            +"/IEPRead/"+teacherName.getText()+"/"+studentName.getText()+"/"+time;
+        File dir = new File(filePath);
+        dir.mkdirs();
+
+        // Set JSONObject
+        JSONObject info;
+        info = new JSONObject();
+        try {
+          info.put("teacherName", teacherName.getText());
+          info.put("teacherEmail", teacherEmail.getText());
+          info.put("studentName", studentName.getText());
+          info.put("studentNumber", studentNumber.getText());
+          info.put("filePath",filePath);
+        } catch (JSONException e) {
+          e.printStackTrace();
+        }
+        //System.out.println("info:"+info);
+
         Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
+
+        intent.putExtra("info", info.toString());
         startActivity(intent);
         //finish();
       }
