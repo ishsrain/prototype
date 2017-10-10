@@ -36,6 +36,7 @@ public class MenutopFragment extends Fragment {
 
   ResultActivity activity;
   private TextView menu1Text, menu2Text;
+  private String menu1Str, menu2Str;
 
   public MenutopFragment() {
     // Required empty public constructor
@@ -78,14 +79,21 @@ public class MenutopFragment extends Fragment {
     menu1Text = (TextView)rootView.findViewById(R.id.textView3);
     menu2Text = (TextView)rootView.findViewById(R.id.textView12);
 
+    menu1Str = menu1Text.getText()+"";
+    menu2Str = menu2Text.getText()+"";
+
     menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+    menu1Text.setText(Html.fromHtml("<u>"+menu1Str+"</u>"));
     menu2Text.setTextColor(Color.BLACK);
+    menu2Text.setText(menu2Str);
 
     menu1Text.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu1Text.setText(Html.fromHtml("<u>"+menu1Str+"</u>"));
         menu2Text.setTextColor(Color.BLACK);
+        menu2Text.setText(menu2Str);
         activity.onContentsFragmentChanged(1);
       }
     });
@@ -94,7 +102,9 @@ public class MenutopFragment extends Fragment {
       @Override
       public void onClick(View view) {
         menu1Text.setTextColor(Color.BLACK);
+        menu1Text.setText(menu1Str);
         menu2Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu2Text.setText(Html.fromHtml("<u>"+menu2Str+"</u>"));
         activity.onContentsFragmentChanged(2);
       }
     });

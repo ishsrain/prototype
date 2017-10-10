@@ -31,40 +31,42 @@
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal">
-        <Button
-          android:id="@+id/button"
-          style="?android:attr/borderlessButtonStyle"
-          android:textStyle="bold"
-          android:layout_width="0dp"
-          android:layout_height="70dp"
-          android:layout_weight="9.5"
-          android:background="#fbe78f"
-          android:gravity="center_vertical"
-          android:text="다음"
-          android:textAlignment="textEnd"
-          android:textColor="#404040"
-          android:textSize="22sp" />
-        <ImageView
-          android:id="@+id/imageView"
-          android:layout_width="0dp"
-          android:layout_height="70dp"
-          android:layout_weight="0.5"
-          app:srcCompat="@drawable/next" />
-      </LinearLayout>
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="1.5"
+        android:gravity="bottom"
         android:orientation="horizontal">
         <LinearLayout
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
           android:layout_marginLeft="40dp"
-          android:layout_marginRight="20dp"
+          android:gravity="bottom|center_horizontal"
+          android:orientation="horizontal">
+          <TextView
+            android:id="@+id/textView20"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="정보 기입 페이지"
+            android:textColor="#404040"
+            android:textSize="18sp" />
+        </LinearLayout>
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginRight="40dp" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="horizontal">
+        <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:layout_marginLeft="40dp"
           android:gravity="center_horizontal"
           android:orientation="vertical">
           <ImageView
@@ -134,7 +136,6 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
-          android:layout_marginLeft="20dp"
           android:layout_marginRight="40dp"
           android:gravity="center_horizontal"
           android:orientation="vertical">
@@ -199,6 +200,35 @@
             android:layout_width="400dp"
             android:layout_height="40dp"
             app:srcCompat="@drawable/login_bottom" />
+        </LinearLayout>
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+        <Space
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginLeft="40dp" />
+        <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:layout_marginRight="40dp"
+          android:gravity="center_horizontal"
+          android:orientation="horizontal">
+          <Button
+            android:id="@+id/button"
+            android:textStyle="bold"
+            android:layout_width="400dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/roundcorner_info"
+            android:text="전  송"
+            android:textColor="#fbe78f"
+            android:textSize="22sp" />
         </LinearLayout>
       </LinearLayout>
 

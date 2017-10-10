@@ -1,6 +1,7 @@
 package com.h2kresearch.iepread;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -99,6 +100,9 @@ public class Contents4Fragment extends Fragment {
     diagnosisResult = this.getArguments().getInt("diagnosisResult");
 
     ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_contents4, container, false);
+
+    TextView sem1 = (TextView)rootView.findViewById(R.id.textView21);
+    sem1.setTextColor(Color.parseColor("#4a83c7"));
 
     // Set the content of the TextView
     TextView currState = (TextView) rootView.findViewById(R.id.textView37);

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +36,7 @@ public class Menutop2Fragment extends Fragment {
 
   ResultActivity activity;
   private TextView menu1Text, menu2Text, menu3Text;
+  private String menu1Str, menu2Str, menu3Str;
 
   public Menutop2Fragment() {
     // Required empty public constructor
@@ -78,16 +80,26 @@ public class Menutop2Fragment extends Fragment {
     menu2Text = (TextView)rootView.findViewById(R.id.textView12);
     menu3Text = (TextView)rootView.findViewById(R.id.textView13);
 
+    menu1Str = menu1Text.getText()+"";
+    menu2Str = menu2Text.getText()+"";
+    menu3Str = menu3Text.getText()+"";
+
     menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+    menu1Text.setText(Html.fromHtml("<u>"+menu1Str+"</u>"));
     menu2Text.setTextColor(Color.BLACK);
+    menu2Text.setText(menu2Str);
     menu3Text.setTextColor(Color.BLACK);
+    menu3Text.setText(menu3Str);
 
     menu1Text.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         menu1Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu1Text.setText(Html.fromHtml("<u>"+menu1Str+"</u>"));
         menu2Text.setTextColor(Color.BLACK);
+        menu2Text.setText(menu2Str);
         menu3Text.setTextColor(Color.BLACK);
+        menu3Text.setText(menu3Str);
         activity.onContentsFragmentChanged(3);
       }
     });
@@ -96,8 +108,11 @@ public class Menutop2Fragment extends Fragment {
       @Override
       public void onClick(View view) {
         menu1Text.setTextColor(Color.BLACK);
+        menu1Text.setText(menu1Str);
         menu2Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu2Text.setText(Html.fromHtml("<u>"+menu2Str+"</u>"));
         menu3Text.setTextColor(Color.BLACK);
+        menu3Text.setText(menu3Str);
         activity.onContentsFragmentChanged(7);
       }
     });
@@ -106,8 +121,11 @@ public class Menutop2Fragment extends Fragment {
       @Override
       public void onClick(View view) {
         menu1Text.setTextColor(Color.BLACK);
+        menu1Text.setText(menu1Str);
         menu2Text.setTextColor(Color.BLACK);
+        menu2Text.setText(menu2Str);
         menu3Text.setTextColor(Color.parseColor("#4a83c7"));
+        menu3Text.setText(Html.fromHtml("<u>"+menu3Str+"</u>"));
         activity.onContentsFragmentChanged(3);
       }
     });
