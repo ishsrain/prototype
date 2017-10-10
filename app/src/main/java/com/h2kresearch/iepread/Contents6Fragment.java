@@ -5,9 +5,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
@@ -47,6 +49,8 @@ public class Contents6Fragment extends Fragment {
   int t6ScoreFinal = 0;
   int t7ScoreFinal = 0;
   int t8ScoreFinal = 0;
+
+  ProgressBar progressBar;
 
   public Contents6Fragment() {
     // Required empty public constructor
@@ -92,24 +96,64 @@ public class Contents6Fragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    v = inflater.inflate(R.layout.fragment_contents3, container, false);
+    v = inflater.inflate(R.layout.fragment_contents6, container, false);
 
     testName = (TextView) v.findViewById(R.id.testName1);
-    testName.setText("1. 쉬운 모음 : "+ t1ScoreFinal + "/ 13");
+    testName.setText("1. 쉬운 모음 ("+t1ScoreFinal+"/13)");
     testName = (TextView) v.findViewById(R.id.testName2);
-    testName.setText("2. 자음 : "+ t2ScoreFinal + "/ 22");
+    testName.setText("2. 자음 ("+t2ScoreFinal+"/23)");
     testName = (TextView) v.findViewById(R.id.testName3);
-    testName.setText("3. 쉬운 음절 : "+ t3ScoreFinal+ "/ 17");
+    testName.setText("3. 쉬운 음절 ("+t3ScoreFinal+"/17)");
     testName = (TextView) v.findViewById(R.id.testName4);
-    testName.setText("4. 복잡한 모음 : "+ t4ScoreFinal + "/ 14");
+    testName.setText("4. 복잡한 모음 ("+t4ScoreFinal+"/14)");
     testName = (TextView) v.findViewById(R.id.testName5);
-    testName.setText("5. 쉬운 단어 : "+ t5ScoreFinal + "/ 8");
+    testName.setText("5. 쉬운 단어 ("+t5ScoreFinal+"/8)");
     testName = (TextView) v.findViewById(R.id.testName6);
-    testName.setText("6. 쉬운 받침 : " + t6ScoreFinal + "/ 10");
+    testName.setText("6. 쉬운 받침 ("+t6ScoreFinal+"/10)");
     testName = (TextView) v.findViewById(R.id.testName7);
-    testName.setText("7. 복잡한 받침 : "+ t7ScoreFinal + "/ 10");
+    testName.setText("7. 복잡한 받침 ("+t7ScoreFinal+"/10)");
     testName = (TextView) v.findViewById(R.id.testName8);
-    testName.setText("8. 복잡한 단어 : " + t8ScoreFinal + "/ 8");
+    testName.setText("8. 복잡한 단어 ("+t8ScoreFinal+"/8)");
+
+    testResult = (TextView) v.findViewById(R.id.textView25);
+    testResult.setText("정답률: " + t1ScoreFinal * 100/13 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar4);
+    progressBar.setProgress(t1ScoreFinal);
+
+    testResult = (TextView) v.findViewById(R.id.textView26);
+    testResult.setText("정답률: " + t2ScoreFinal * 100/23 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar5);
+    progressBar.setProgress(t2ScoreFinal);
+
+    testResult = (TextView) v.findViewById(R.id.textView27);
+    testResult.setText("정답률: " + t3ScoreFinal * 100/17 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar6);
+    progressBar.setProgress(t3ScoreFinal);
+
+    testResult = (TextView) v.findViewById(R.id.textView28);
+    testResult.setText("정답률: " + t4ScoreFinal * 100/14 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar7);
+    progressBar.setProgress(t4ScoreFinal);
+
+    testResult = (TextView) v.findViewById(R.id.textView29);
+    testResult.setText("정답률: " + t5ScoreFinal * 100/8 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar8);
+    progressBar.setProgress(t5ScoreFinal);
+
+    testResult = (TextView) v.findViewById(R.id.textView30);
+    testResult.setText("정답률: " + t6ScoreFinal * 100/10 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar9);
+    progressBar.setProgress(t6ScoreFinal);
+
+    testResult = (TextView) v.findViewById(R.id.textView31);
+    testResult.setText("정답률: " + t7ScoreFinal * 100/10 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar10);
+    progressBar.setProgress(t7ScoreFinal);
+
+    testResult = (TextView) v.findViewById(R.id.textView32);
+    testResult.setText("정답률: " + t8ScoreFinal * 100/8 + "%");
+    progressBar = (ProgressBar) v.findViewById(R.id.progressBar11);
+    progressBar.setProgress(t8ScoreFinal);
 
     return v;
   }
