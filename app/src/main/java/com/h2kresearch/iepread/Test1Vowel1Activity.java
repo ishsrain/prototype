@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Test1Vowel1Activity extends AppCompatActivity {
 
@@ -25,6 +28,7 @@ public class Test1Vowel1Activity extends AppCompatActivity {
   String[] test1String = {"아", "우", "우", "오", "오", "이", "유", "으", "아", "여"};
   String[] test2String = {"우", "이", "이", "아", "어", "오", "으", "우", "야", "오"};
   String[] test3String = {"", "", "", "", "", "요", "우", "아", "어", "어"}; // 얘는 6번 문제부터 보기가 주어짐
+  int[] t1RightAnswers = {1, 2, 1, 1, 2, 3, 1, 1, 2, 1};
 
   // for playing question audio
   ImageView replayImage;
@@ -114,12 +118,41 @@ public class Test1Vowel1Activity extends AppCompatActivity {
           // for playing question audio
           killMediaPlayer();
 
-          // for recording selected answers
-          Intent intent = new Intent(getBaseContext(), Test1Vowel2Activity.class);
+          try {
+            Intent intent = new Intent(getBaseContext(), Test1Vowel2Activity.class);
 
-          intent.putExtra("info", getIntent().getStringExtra("info"));
-          intent.putExtra("t1Answers", t1Answers);
-          startActivity(intent);
+            // Set JSONObject
+            JSONObject result = new JSONObject();
+            JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+            JSONObject part = new JSONObject();
+            JSONArray answer = new JSONArray();
+
+            for(int i=0; i<t1Answers.length; i++) {
+              JSONObject q = new JSONObject();
+              q.put("index", i);
+              if(t1Answers[i] == t1RightAnswers[i]) {
+                q.put("correct", "true");
+              } else {
+                q.put("correct", "false");
+              }
+              q.put("student_answer", t1Answers[i]);
+              answer.put(q);
+            }
+
+            part.put("objective", answer);
+            result.put("part1", part);
+            result.put("info", info);
+            Log.d("Result1_1", result.toString());
+            intent.putExtra("result", result.toString());
+
+            // for recording selected answers
+            intent.putExtra("info", getIntent().getStringExtra("info"));
+            intent.putExtra("t1Answers", t1Answers);
+
+            startActivity(intent);
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
         } else {
           button.setEnabled(false);
           //button.setBackgroundColor(Color.parseColor("#EDEDED"));

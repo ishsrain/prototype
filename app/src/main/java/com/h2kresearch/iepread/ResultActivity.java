@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -74,6 +75,8 @@ public class ResultActivity extends AppCompatActivity
   int t6Score2 = 0;
   int t7Score2 = 0;
   int t8Score2 = 0;
+
+  JSONObject result;
 
   // 읽기 유창성 점수
   int numTotalWords;
@@ -180,6 +183,7 @@ public class ResultActivity extends AppCompatActivity
 
 
     try {
+      result = new JSONObject(getIntent().getStringExtra("result"));
       JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
 
       Bundle bundleWithFilePath = new Bundle();
@@ -250,7 +254,7 @@ public class ResultActivity extends AppCompatActivity
   }
 
   public void onContentsFragmentChanged(int index) {
-    if(index == 0){
+    if(index == 0){ // 결과 전송하기
       Intent intent = new Intent(getBaseContext(), SendActivity.class);
 
       intent.putExtra("t1Answers", t1Answers);
@@ -260,6 +264,7 @@ public class ResultActivity extends AppCompatActivity
       intent.putExtra("t6Answers", t6Answers);
       intent.putExtra("t7Answers", t7Answers);
       intent.putExtra("info", getIntent().getStringExtra("info"));
+      intent.putExtra("result", result.toString());
 
       startActivity(intent);
     }
@@ -414,19 +419,56 @@ public class ResultActivity extends AppCompatActivity
   // 읽기 유창성 채점 결과 수신
   @Override
   public void onReadingGradeSet(int totalWords, int mistakenWords, ArrayList selectedWords){
-    numTotalWords = totalWords;
-    numMistakenWords = mistakenWords;
-    readingProficiencyScore = (double) 100*(numTotalWords-numMistakenWords)/numTotalWords;
-    indSelectedWords = selectedWords;
 
-    Log.d("readingProficiency", ""+readingProficiencyScore);
-    Log.d("indSelectedWords", ""+indSelectedWords.size());
+    try {
+      numTotalWords = totalWords;
+      numMistakenWords = mistakenWords;
+      readingProficiencyScore = (double) 100 * (numTotalWords - numMistakenWords) / numTotalWords;
+      indSelectedWords = selectedWords;
+
+      if(!result.isNull("part9")) {
+        result.remove("part9");
+      }
+
+      JSONObject part = new JSONObject();
+      JSONArray answer = new JSONArray();
+
+      for (int i = 0; i < selectedWords.size(); i++) {
+        answer.put(selectedWords.get(i));
+      }
+      part.put("indices", answer);
+      result.put("part9", part);
+      Log.d("JSON Result", result.toString());
+
+      Log.d("readingProficiency", "" + readingProficiencyScore);
+      Log.d("indSelectedWords", "" + indSelectedWords.size());
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
   public void onGradeSet(int[][] gradeResults){
     // 주관식 채점 결과 수신
     grades = gradeResults;
+
+    try {
+      for(int i=0; i<8; i++){
+        JSONObject part = result.getJSONObject("part"+(i+1));
+        JSONArray voice = part.getJSONArray("voice");
+
+        for(int j=0; j<voice.length(); j++) {
+          if(grades[i][j] == 1) {
+            voice.getJSONObject(j).put("correct", "true");
+          } else {
+            voice.getJSONObject(j).put("correct", "false");
+          }
+        }
+      }
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+
     t1Score2 = sum(grades[0]);
     t2Score2 = sum(grades[1]);
     t3Score2 = sum(grades[2]);

@@ -25,6 +25,7 @@ public class IntroActivity extends AppCompatActivity {
         Intent intent = new Intent(getBaseContext(), InfoActivity.class);
         //Intent intent = new Intent(getBaseContext(), Test9ReadingActivity.class);
         //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+        //Intent intent = new Intent(getBaseContext(), SendActivity.class);
         startActivity(intent);
         finish();
       }

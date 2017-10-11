@@ -29,6 +29,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Test3NoSupport2Activity extends AppCompatActivity {
@@ -102,24 +104,58 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
           recordState = RECORD_READY;
           handler.sendEmptyMessage(RECORD_READY);
         } else {
-          // for recording selected answers
-          Intent pre_intent = getIntent();
-          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
-          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
-          t3Answers = pre_intent.getIntArrayExtra("t3Answers");
 
-          Intent intent = new Intent(getBaseContext(), Test4ComplexVowel1Activity.class);
+          try {
+            Intent intent = new Intent(getBaseContext(), Test4ComplexVowel1Activity.class);
 
-          intent.putExtra("t1Answers", t1Answers);
-          intent.putExtra("t2Answers", t2Answers);
-          intent.putExtra("t3Answers", t3Answers);
-          intent.putExtra("info", pre_intent.getStringExtra("info"));
+            JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+            JSONObject part = result.getJSONObject("part3");
+            JSONArray answer = new JSONArray();
 
-          //Log.d("t1Answers length", "length: "+t1Answers.length+" sample t1Answers[0]: "+t1Answers[0]+" sample t1Answers[1]: "+t1Answers[1]);
-          //Log.d("t2Answers length", "length: "+t2Answers.length+" sample t2Answers[0]: "+t2Answers[0]+" sample t2Answers[1]: "+t2Answers[1]);
-          //Log.d("t3Answers length", "length: "+t3Answers.length+" sample t3Answers[0]: "+t3Answers[0]+" sample t3Answers[1]: "+t3Answers[1]);
+            for(int i=0; i<3; i++) {
+              JSONObject q = new JSONObject();
+              q.put("index", i);
+              q.put("correct", "");
+              answer.put(q);
+            }
 
-          startActivity(intent);
+            part.put("voice", answer);
+            //Log.d("Result", result.toString());
+            intent.putExtra("result", result.toString());
+
+            // for recording selected answers
+            Intent pre_intent = getIntent();
+            t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+            t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+            t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+            intent.putExtra("t1Answers", t1Answers);
+            intent.putExtra("t2Answers", t2Answers);
+            intent.putExtra("t3Answers", t3Answers);
+            intent.putExtra("info", pre_intent.getStringExtra("info"));
+
+            startActivity(intent);
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
+
+//          // for recording selected answers
+//          Intent pre_intent = getIntent();
+//          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+//          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+//          t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+//
+//          Intent intent = new Intent(getBaseContext(), Test4ComplexVowel1Activity.class);
+//
+//          intent.putExtra("t1Answers", t1Answers);
+//          intent.putExtra("t2Answers", t2Answers);
+//          intent.putExtra("t3Answers", t3Answers);
+//          intent.putExtra("info", pre_intent.getStringExtra("info"));
+//
+//          //Log.d("t1Answers length", "length: "+t1Answers.length+" sample t1Answers[0]: "+t1Answers[0]+" sample t1Answers[1]: "+t1Answers[1]);
+//          //Log.d("t2Answers length", "length: "+t2Answers.length+" sample t2Answers[0]: "+t2Answers[0]+" sample t2Answers[1]: "+t2Answers[1]);
+//          //Log.d("t3Answers length", "length: "+t3Answers.length+" sample t3Answers[0]: "+t3Answers[0]+" sample t3Answers[1]: "+t3Answers[1]);
+//
+//          startActivity(intent);
         }
       }
     });

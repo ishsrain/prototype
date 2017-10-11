@@ -5,12 +5,16 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Test2Consonant1Activity extends AppCompatActivity {
 
@@ -24,6 +28,8 @@ public class Test2Consonant1Activity extends AppCompatActivity {
   String[] test1String = {"차", "자", "다", "아", "나", "바", "라", "다", "차", "나", "카", "짜", "자", "빠", "까", "타", "따", "마", "차"};
   String[] test2String = {"가", "카", "하", "다", "사", "하", "아", "싸", "짜", "다", "까", "바", "파", "마", "카", "다", "다", "바", "자"};
   String[] test3String = {"", "", "", "", "", "", "", "", "", "", "다", "파", "마", "다", "나", "하", "타", "파", "짜"}; // 얘는 11번 문제부터 보기가 주어짐
+
+  int[] t2RightAnswers = {2, 1, 1, 1, 2, 2, 1, 2, 1, 1, 2, 3, 3, 1, 2, 1, 1, 2, 3};
 
   // for playing question audio
   ImageView replayImage;
@@ -93,17 +99,43 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           // for playing question audio
           killMediaPlayer();
 
-          // for playing question audio
-          Intent pre_intent = getIntent();
-          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+          try {
+            Intent intent = new Intent(getBaseContext(), Test2Consonant2Activity.class);
+            //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
 
-          Intent intent = new Intent(getBaseContext(), Test2Consonant2Activity.class);
+            JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+            JSONObject part = new JSONObject();
+            JSONArray answer = new JSONArray();
 
-          intent.putExtra("t1Answers", t1Answers);
-          intent.putExtra("t2Answers", t2Answers);
-          intent.putExtra("info", pre_intent.getStringExtra("info"));
+            for(int i=0; i<t2Answers.length; i++) {
+              JSONObject q = new JSONObject();
+              q.put("index", i);
+              if(t2Answers[i] == t2RightAnswers[i]) {
+                q.put("correct", "true");
+              } else {
+                q.put("correct", "false");
+              }
+              q.put("student_answer", t2Answers[i]);
+              answer.put(q);
+            }
 
-          startActivity(intent);
+            part.put("objective", answer);
+            result.put("part2", part);
+            Log.d("Result2_1", result.toString());
+            intent.putExtra("result", result.toString());
+
+            // for recording selected answers
+            Intent pre_intent = getIntent();
+            t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+            intent.putExtra("t1Answers", t1Answers);
+            intent.putExtra("t2Answers", t2Answers);
+            intent.putExtra("info", pre_intent.getStringExtra("info"));
+
+            startActivity(intent);
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
+
         } else {
           button.setEnabled(false);
           //button.setBackgroundColor(Color.parseColor("#EDEDED"));

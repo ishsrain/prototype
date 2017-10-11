@@ -29,6 +29,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Test2Consonant2Activity extends AppCompatActivity {
@@ -101,18 +103,50 @@ public class Test2Consonant2Activity extends AppCompatActivity {
           recordState = RECORD_READY;
           handler.sendEmptyMessage(RECORD_READY);
         } else {
-          // for recording selected answers
-          Intent pre_intent = getIntent();
-          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
-          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
 
-          Intent intent = new Intent(getBaseContext(), Test3NoSupport1Activity.class);
+          try {
+            Intent intent = new Intent(getBaseContext(), Test3NoSupport1Activity.class);
 
-          intent.putExtra("t1Answers", t1Answers);
-          intent.putExtra("t2Answers", t2Answers);
-          intent.putExtra("info", pre_intent.getStringExtra("info"));
+            JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+            JSONObject part = result.getJSONObject("part2");
+            JSONArray answer = new JSONArray();
 
-          startActivity(intent);
+            for(int i=0; i<3; i++) {
+              JSONObject q = new JSONObject();
+              q.put("index", i);
+              q.put("correct", "");
+              answer.put(q);
+            }
+
+            part.put("voice", answer);
+            //Log.d("Result", result.toString());
+            intent.putExtra("result", result.toString());
+
+            // for recording selected answers
+            Intent pre_intent = getIntent();
+            t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+            t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+            intent.putExtra("t1Answers", t1Answers);
+            intent.putExtra("t2Answers", t2Answers);
+            intent.putExtra("info", pre_intent.getStringExtra("info"));
+
+            startActivity(intent);
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
+
+//          // for recording selected answers
+//          Intent pre_intent = getIntent();
+//          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+//          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+//
+//          Intent intent = new Intent(getBaseContext(), Test3NoSupport1Activity.class);
+//
+//          intent.putExtra("t1Answers", t1Answers);
+//          intent.putExtra("t2Answers", t2Answers);
+//          intent.putExtra("info", pre_intent.getStringExtra("info"));
+//
+//          startActivity(intent);
         }
       }
     });

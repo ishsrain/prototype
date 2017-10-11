@@ -121,6 +121,7 @@ public class Test9ReadingActivity extends AppCompatActivity {
         intent.putExtra("t6Answers", t6Answers);
         intent.putExtra("t7Answers", t7Answers);
         intent.putExtra("info", pre_intent.getStringExtra("info"));
+        intent.putExtra("result", pre_intent.getStringExtra("result"));
 
         startActivity(intent);
       }

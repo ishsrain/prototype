@@ -30,6 +30,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Test1Vowel2Activity extends AppCompatActivity {
@@ -124,16 +126,34 @@ public class Test1Vowel2Activity extends AppCompatActivity {
         } else {
           killMediaPlayer();
 
-          // for recording selected answers
-          Intent pre_intent = getIntent();
-          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+          try {
+            Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
 
-          Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
-          //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+            JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+            JSONObject part = result.getJSONObject("part1");
+            JSONArray answer = new JSONArray();
 
-          intent.putExtra("t1Answers", t1Answers);
-          intent.putExtra("info", pre_intent.getStringExtra("info"));
-          startActivity(intent);
+            for(int i=0; i<3; i++) {
+              JSONObject q = new JSONObject();
+              q.put("index", i);
+              q.put("correct", "");
+              answer.put(q);
+            }
+
+            part.put("voice", answer);
+            Log.d("Result1_2", result.toString());
+            intent.putExtra("result", result.toString());
+
+            // for recording selected answers
+            Intent pre_intent = getIntent();
+            t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+            intent.putExtra("t1Answers", t1Answers);
+            intent.putExtra("info", pre_intent.getStringExtra("info"));
+
+            startActivity(intent);
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
         }
       }
     });

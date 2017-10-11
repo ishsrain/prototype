@@ -29,6 +29,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Test7ComplexSupport2Activity extends AppCompatActivity {
@@ -105,26 +107,66 @@ public class Test7ComplexSupport2Activity extends AppCompatActivity {
           recordState = RECORD_READY;
           handler.sendEmptyMessage(RECORD_READY);
         } else {
+
+          try {
+            Intent intent = new Intent(getBaseContext(), Test8WordWithSupportActivity.class);
+
+            JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+            JSONObject part = result.getJSONObject("part7");
+            JSONArray answer = new JSONArray();
+
+            for(int i=0; i<3; i++) {
+              JSONObject q = new JSONObject();
+              q.put("index", i);
+              q.put("correct", "");
+              answer.put(q);
+            }
+
+            part.put("voice", answer);
+            //Log.d("Result", result.toString());
+            intent.putExtra("result", result.toString());
+
+            // for recording selected answers
+            Intent pre_intent = getIntent();
+            t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+            t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+            t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+            t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+            t6Answers = pre_intent.getIntArrayExtra("t6Answers");
+            t7Answers = pre_intent.getIntArrayExtra("t7Answers");
+            intent.putExtra("t1Answers", t1Answers);
+            intent.putExtra("t2Answers", t2Answers);
+            intent.putExtra("t3Answers", t3Answers);
+            intent.putExtra("t4Answers", t4Answers);
+            intent.putExtra("t6Answers", t6Answers);
+            intent.putExtra("t7Answers", t7Answers);
+            intent.putExtra("info", pre_intent.getStringExtra("info"));
+
+            startActivity(intent);
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
+
           // for recording selected answers
-          Intent pre_intent = getIntent();
-          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
-          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
-          t3Answers = pre_intent.getIntArrayExtra("t3Answers");
-          t4Answers = pre_intent.getIntArrayExtra("t4Answers");
-          t6Answers = pre_intent.getIntArrayExtra("t6Answers");
-          t7Answers = pre_intent.getIntArrayExtra("t7Answers");
-
-          Intent intent = new Intent(getBaseContext(), Test8WordWithSupportActivity.class);
-
-          intent.putExtra("t1Answers", t1Answers);
-          intent.putExtra("t2Answers", t2Answers);
-          intent.putExtra("t3Answers", t3Answers);
-          intent.putExtra("t4Answers", t4Answers);
-          intent.putExtra("t6Answers", t6Answers);
-          intent.putExtra("t7Answers", t7Answers);
-          intent.putExtra("info", pre_intent.getStringExtra("info"));
-
-          startActivity(intent);
+//          Intent pre_intent = getIntent();
+//          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+//          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+//          t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+//          t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+//          t6Answers = pre_intent.getIntArrayExtra("t6Answers");
+//          t7Answers = pre_intent.getIntArrayExtra("t7Answers");
+//
+//          Intent intent = new Intent(getBaseContext(), Test8WordWithSupportActivity.class);
+//
+//          intent.putExtra("t1Answers", t1Answers);
+//          intent.putExtra("t2Answers", t2Answers);
+//          intent.putExtra("t3Answers", t3Answers);
+//          intent.putExtra("t4Answers", t4Answers);
+//          intent.putExtra("t6Answers", t6Answers);
+//          intent.putExtra("t7Answers", t7Answers);
+//          intent.putExtra("info", pre_intent.getStringExtra("info"));
+//
+//          startActivity(intent);
         }
       }
     });

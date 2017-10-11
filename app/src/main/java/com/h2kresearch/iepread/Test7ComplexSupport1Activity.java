@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Test7ComplexSupport1Activity extends AppCompatActivity {
 
@@ -24,6 +27,7 @@ public class Test7ComplexSupport1Activity extends AppCompatActivity {
   String[] test1String = {"암", "앙", "앜", "앞", "압", "앙", "앗"};
   String[] test2String = {"앝", "았", "안", "암", "앚", "앋", "안"};
   String[] test3String = {"", "", "", "", "안", "앆", "악"}; // 얘는 5번 문제부터 보기가 주어짐
+  int[] t7RightAnswers = {2, 2, 1, 1, 2, 3, 1};
 
   int indexString = 1;
   int threeQuestionStartIndex = 4; // 4 + 1 = 5번부터 세 문제가 시작됨
@@ -97,25 +101,70 @@ public class Test7ComplexSupport1Activity extends AppCompatActivity {
           // for playing question audio
           killMediaPlayer();
 
+          try {
+            Intent intent = new Intent(getBaseContext(), Test7ComplexSupport2Activity.class);
+            //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+
+            JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+            JSONObject part = new JSONObject();
+            JSONArray answer = new JSONArray();
+
+            for(int i=0; i<t7Answers.length; i++) {
+              JSONObject q = new JSONObject();
+              q.put("index", i);
+              if(t7Answers[i] == t7RightAnswers[i]) {
+                q.put("correct", "true");
+              } else {
+                q.put("correct", "false");
+              }
+              q.put("student_answer", t7Answers[i]);
+              answer.put(q);
+            }
+
+            part.put("objective", answer);
+            result.put("part7", part);
+            //Log.d("Result", result.toString());
+            intent.putExtra("result", result.toString());
+
+            // for recording selected answers
+            Intent pre_intent = getIntent();
+            t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+            t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+            t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+            t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+            t6Answers = pre_intent.getIntArrayExtra("t6Answers");
+            intent.putExtra("t1Answers", t1Answers);
+            intent.putExtra("t2Answers", t2Answers);
+            intent.putExtra("t3Answers", t3Answers);
+            intent.putExtra("t4Answers", t4Answers);
+            intent.putExtra("t6Answers", t6Answers);
+            intent.putExtra("t7Answers", t7Answers);
+            intent.putExtra("info", pre_intent.getStringExtra("info"));
+
+            startActivity(intent);
+          } catch (JSONException e) {
+            e.printStackTrace();
+          }
+
           // for recording selected answers
-          Intent pre_intent = getIntent();
-          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
-          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
-          t3Answers = pre_intent.getIntArrayExtra("t3Answers");
-          t4Answers = pre_intent.getIntArrayExtra("t4Answers");
-          t6Answers = pre_intent.getIntArrayExtra("t6Answers");
-
-          Intent intent = new Intent(getBaseContext(), Test7ComplexSupport2Activity.class);
-
-          intent.putExtra("t1Answers", t1Answers);
-          intent.putExtra("t2Answers", t2Answers);
-          intent.putExtra("t3Answers", t3Answers);
-          intent.putExtra("t4Answers", t4Answers);
-          intent.putExtra("t6Answers", t6Answers);
-          intent.putExtra("t7Answers", t7Answers);
-          intent.putExtra("info", pre_intent.getStringExtra("info"));
-
-          startActivity(intent);
+//          Intent pre_intent = getIntent();
+//          t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+//          t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+//          t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+//          t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+//          t6Answers = pre_intent.getIntArrayExtra("t6Answers");
+//
+//          Intent intent = new Intent(getBaseContext(), Test7ComplexSupport2Activity.class);
+//
+//          intent.putExtra("t1Answers", t1Answers);
+//          intent.putExtra("t2Answers", t2Answers);
+//          intent.putExtra("t3Answers", t3Answers);
+//          intent.putExtra("t4Answers", t4Answers);
+//          intent.putExtra("t6Answers", t6Answers);
+//          intent.putExtra("t7Answers", t7Answers);
+//          intent.putExtra("info", pre_intent.getStringExtra("info"));
+//
+//          startActivity(intent);
         } else {
           button.setEnabled(false);
           //button.setBackgroundColor(Color.parseColor("#EDEDED"));

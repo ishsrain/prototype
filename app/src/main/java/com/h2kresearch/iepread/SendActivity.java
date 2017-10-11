@@ -11,11 +11,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -38,7 +41,7 @@ public class SendActivity extends AppCompatActivity {
     mediaPlayer.setLooping(false);
     mediaPlayer.start();
 
-    //startLoading();
+    startLoading();
   }
 
   private void startLoading() {
@@ -57,7 +60,8 @@ public class SendActivity extends AppCompatActivity {
           protected Void doInBackground(Void... voids) {
             try {
               // Variables
-              String filename = "RECORDED_FILE";
+              //String filename = "RECORDED_FILE";
+              String filename = "/storage/emulated/0/Download/IEPRead/11/11/20171011_13243935/q1_1.mp4";
               String stringUrl = "http://110.76.77.86:3000/android";
               String attachmentName = "data";
               String crlf = "\r\n";
@@ -66,6 +70,7 @@ public class SendActivity extends AppCompatActivity {
 
               //Setup the request
               HttpURLConnection httpUrlConnection = null;
+
               URL url = new URL(stringUrl);
               httpUrlConnection = (HttpURLConnection) url.openConnection();
               httpUrlConnection.setUseCaches(false);
@@ -123,7 +128,16 @@ public class SendActivity extends AppCompatActivity {
               // Finish content wrapper
               wr.writeBytes(twoHyphens + boundary + twoHyphens + crlf);
               wr.flush();
-              wr.close();
+
+              // String Sending
+              OutputStream outputStream = httpUrlConnection.getOutputStream();
+              BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+              bufferedWriter.write("kimwoohyun");
+              bufferedWriter.flush();
+              bufferedWriter.close();
+              outputStream.close();
+
+              httpUrlConnection.connect();
 
               // Response
               InputStream responseStream = new BufferedInputStream(
