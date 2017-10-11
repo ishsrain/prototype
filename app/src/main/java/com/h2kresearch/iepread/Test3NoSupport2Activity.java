@@ -29,6 +29,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import org.json.JSONObject;
 
 public class Test3NoSupport2Activity extends AppCompatActivity {
 
@@ -112,10 +113,11 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
           intent.putExtra("t1Answers", t1Answers);
           intent.putExtra("t2Answers", t2Answers);
           intent.putExtra("t3Answers", t3Answers);
+          intent.putExtra("info", pre_intent.getStringExtra("info"));
 
-          Log.d("t1Answers length", "length: "+t1Answers.length+" sample t1Answers[0]: "+t1Answers[0]+" sample t1Answers[1]: "+t1Answers[1]);
-          Log.d("t2Answers length", "length: "+t2Answers.length+" sample t2Answers[0]: "+t2Answers[0]+" sample t2Answers[1]: "+t2Answers[1]);
-          Log.d("t3Answers length", "length: "+t3Answers.length+" sample t3Answers[0]: "+t3Answers[0]+" sample t3Answers[1]: "+t3Answers[1]);
+          //Log.d("t1Answers length", "length: "+t1Answers.length+" sample t1Answers[0]: "+t1Answers[0]+" sample t1Answers[1]: "+t1Answers[1]);
+          //Log.d("t2Answers length", "length: "+t2Answers.length+" sample t2Answers[0]: "+t2Answers[0]+" sample t2Answers[1]: "+t2Answers[1]);
+          //Log.d("t3Answers length", "length: "+t3Answers.length+" sample t3Answers[0]: "+t3Answers[0]+" sample t3Answers[1]: "+t3Answers[1]);
 
           startActivity(intent);
         }
@@ -172,11 +174,14 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
         recorder.release();
         recorder = null;
       }
-      recorder = new MediaRecorder();
 
-      File file = new File(sdcard, "q3_"+ Integer.toString(indexString)+".mp4");
-      RECORDED_FILE = file.getAbsolutePath();
+      // Get Path
+      JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+      String RECORDED_DIR = info.getString("filePath");
+      RECORDED_FILE = RECORDED_DIR+"/q3_"+ Integer.toString(indexString)+".mp4";
       //Log.d("Recoded File Path", RECORDED_FILE);
+
+      recorder = new MediaRecorder();
       recorder.setOutputFile(RECORDED_FILE);
       recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
       recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);

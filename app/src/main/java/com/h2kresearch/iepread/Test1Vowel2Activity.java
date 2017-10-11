@@ -57,7 +57,6 @@ public class Test1Vowel2Activity extends AppCompatActivity {
   int msTime = 1500;
 
   // Record/Play File
-  public static String RECORDED_DIR;
   public static String RECORDED_FILE;
   MediaPlayer player;
   MediaRecorder recorder;
@@ -123,15 +122,17 @@ public class Test1Vowel2Activity extends AppCompatActivity {
           recordState = RECORD_READY;
           handler.sendEmptyMessage(RECORD_READY);
         } else {
-          // for recording selected answers
           killMediaPlayer();
+
+          // for recording selected answers
           Intent pre_intent = getIntent();
           t1Answers = pre_intent.getIntArrayExtra("t1Answers");
 
           Intent intent = new Intent(getBaseContext(), Test2Consonant1Activity.class);
+          //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
 
           intent.putExtra("t1Answers", t1Answers);
-          intent.putExtra("info",pre_intent.getStringArrayExtra("info"));
+          intent.putExtra("info", pre_intent.getStringExtra("info"));
           startActivity(intent);
         }
       }
@@ -190,11 +191,11 @@ public class Test1Vowel2Activity extends AppCompatActivity {
         recorder = null;
       }
 
-      // Make Folder
+      // Get Path
       JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
-      RECORDED_DIR = info.getString("filePath");
+      String RECORDED_DIR = info.getString("filePath");
       RECORDED_FILE = RECORDED_DIR+"/q1_"+ Integer.toString(indexString)+".mp4";
-      Log.d("Recoded File Path", RECORDED_FILE);
+      //Log.d("Recoded File Path", RECORDED_FILE);
 
       recorder = new MediaRecorder();
       recorder.setOutputFile(RECORDED_FILE);

@@ -44,6 +44,7 @@ public class TestEndActivity extends AppCompatActivity {
         intent.putExtra("t4Answers", t4Answers);
         intent.putExtra("t6Answers", t6Answers);
         intent.putExtra("t7Answers", t7Answers);
+        intent.putExtra("info", pre_intent.getStringExtra("info"));
 
         startActivity(intent);
         finish();

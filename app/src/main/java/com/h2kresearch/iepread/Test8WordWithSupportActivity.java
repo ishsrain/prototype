@@ -29,6 +29,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import org.json.JSONObject;
 
 public class Test8WordWithSupportActivity extends AppCompatActivity {
 
@@ -121,6 +122,7 @@ public class Test8WordWithSupportActivity extends AppCompatActivity {
           intent.putExtra("t4Answers", t4Answers);
           intent.putExtra("t6Answers", t6Answers);
           intent.putExtra("t7Answers", t7Answers);
+          intent.putExtra("info", pre_intent.getStringExtra("info"));
 
           startActivity(intent);
         }
@@ -177,11 +179,14 @@ public class Test8WordWithSupportActivity extends AppCompatActivity {
         recorder.release();
         recorder = null;
       }
-      recorder = new MediaRecorder();
 
-      File file = new File(sdcard, "q8_"+ Integer.toString(indexString)+".mp4");
-      RECORDED_FILE = file.getAbsolutePath();
+      // Get Path
+      JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+      String RECORDED_DIR = info.getString("filePath");
+      RECORDED_FILE = RECORDED_DIR+"/q8_"+ Integer.toString(indexString)+".mp4";
       //Log.d("Recoded File Path", RECORDED_FILE);
+
+      recorder = new MediaRecorder();
       recorder.setOutputFile(RECORDED_FILE);
       recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
       recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);

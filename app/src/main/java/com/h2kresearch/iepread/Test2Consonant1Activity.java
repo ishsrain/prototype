@@ -101,6 +101,7 @@ public class Test2Consonant1Activity extends AppCompatActivity {
 
           intent.putExtra("t1Answers", t1Answers);
           intent.putExtra("t2Answers", t2Answers);
+          intent.putExtra("info", pre_intent.getStringExtra("info"));
 
           startActivity(intent);
         } else {

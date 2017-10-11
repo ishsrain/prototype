@@ -76,7 +76,8 @@ public class InfoActivity extends AppCompatActivity {
         }
         //System.out.println("info:"+info);
 
-        Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
+        //Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
+        Intent intent = new Intent(getBaseContext(), Test9ReadingActivity.class);
 
         intent.putExtra("info", info.toString());
         startActivity(intent);

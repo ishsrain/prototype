@@ -110,6 +110,7 @@ public class Test6SimpleSupport1Activity extends AppCompatActivity {
           intent.putExtra("t3Answers", t3Answers);
           intent.putExtra("t4Answers", t4Answers);
           intent.putExtra("t6Answers", t6Answers);
+          intent.putExtra("info", pre_intent.getStringExtra("info"));
 
           startActivity(intent);
         } else {

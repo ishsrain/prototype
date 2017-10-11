@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ResultActivity extends AppCompatActivity
     implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener, Contents5Fragment.OnFragmentInteractionListener, Contents6Fragment.OnFragmentInteractionListener, ContentsFragment.OnReadingGradeListener,
@@ -88,7 +90,8 @@ public class ResultActivity extends AppCompatActivity
     menutop2Fragment = new Menutop2Fragment();
     menutop3Fragment = new Menutop3Fragment();
 
-    contents2Fragment = (Contents2Fragment)getSupportFragmentManager().findFragmentById(R.id.fragment10);
+    //contents2Fragment = (Contents2Fragment)getSupportFragmentManager().findFragmentById(R.id.fragment10);
+    contents2Fragment = new Contents2Fragment();
     contentsFragment = new ContentsFragment();
     contents3Fragment = new Contents3Fragment();
     contents4Fragment = new Contents4Fragment();
@@ -174,6 +177,24 @@ public class ResultActivity extends AppCompatActivity
     t4Score = t4RightAnswers.length - 5;
     t6Score = t6RightAnswers.length;
     t7Score = t7RightAnswers.length;*/
+
+
+    try {
+      JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+
+      Bundle bundleWithFilePath = new Bundle();
+      bundleWithFilePath.putString("filepath", info.getString("filePath"));
+
+      if (contents2Fragment.getArguments() == null){
+        contents2Fragment.setArguments(bundleWithFilePath);
+      } else {
+        contents2Fragment.getArguments().putAll(bundleWithFilePath);
+      }
+      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
+    } catch (JSONException e) {
+      e.printStackTrace();
+    }
+    getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
   }
 
   public void onMenutopFragmentChanged(int index) {
@@ -231,21 +252,51 @@ public class ResultActivity extends AppCompatActivity
   public void onContentsFragmentChanged(int index) {
     if(index == 0){
       Intent intent = new Intent(getBaseContext(), SendActivity.class);
+
+      intent.putExtra("t1Answers", t1Answers);
+      intent.putExtra("t2Answers", t2Answers);
+      intent.putExtra("t3Answers", t3Answers);
+      intent.putExtra("t4Answers", t4Answers);
+      intent.putExtra("t6Answers", t6Answers);
+      intent.putExtra("t7Answers", t7Answers);
+      intent.putExtra("info", getIntent().getStringExtra("info"));
+
       startActivity(intent);
     }
     if(index == 1){ // 의미/무의미 단어 읽기
+
+      try {
+        Bundle bundleWithFilePath = new Bundle();
+        JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+        bundleWithFilePath.putString("filepath", info.getString("filePath"));
+
+        if (contents2Fragment.getArguments() == null){
+          contents2Fragment.setArguments(bundleWithFilePath);
+        } else {
+          contents2Fragment.getArguments().putAll(bundleWithFilePath);
+        }
+      } catch (JSONException e) {
+        e.printStackTrace();
+      }
+
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
     } else if(index == 2) { // 읽기 유창성 검사
 
-      if(indSelectedWords != null){
-        Bundle bundleWithSelectedIdx = new Bundle();
-        bundleWithSelectedIdx.putStringArrayList("indSelectedWords", indSelectedWords);
+      try {
+        if(indSelectedWords != null){
+          Bundle bundleWithSelectedIdx = new Bundle();
+          bundleWithSelectedIdx.putStringArrayList("indSelectedWords", indSelectedWords);
+          JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+          bundleWithSelectedIdx.putString("filepath", info.getString("filePath"));
 
-        if (contentsFragment.getArguments() == null){
-          contentsFragment.setArguments(bundleWithSelectedIdx);
-        } else {
-          contentsFragment.getArguments().putAll(bundleWithSelectedIdx);
+          if (contentsFragment.getArguments() == null){
+            contentsFragment.setArguments(bundleWithSelectedIdx);
+          } else {
+            contentsFragment.getArguments().putAll(bundleWithSelectedIdx);
+          }
         }
+      } catch (JSONException e) {
+        e.printStackTrace();
       }
 
       getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsFragment).commit();

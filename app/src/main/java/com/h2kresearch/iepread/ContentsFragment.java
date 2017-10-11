@@ -2,6 +2,7 @@ package com.h2kresearch.iepread;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,8 +17,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,9 @@ public class ContentsFragment extends Fragment {
   int mistakenWords = 0;
 
   TextView mainText;
+  String RECORDED_FILE;
+  MediaPlayer mediaPlayer;
+  int playBackPosition = 0;
 
   private OnReadingGradeListener readingGradeListener;
   public interface OnReadingGradeListener{
@@ -89,6 +95,11 @@ public class ContentsFragment extends Fragment {
       if(getArguments().getStringArrayList("indSelectedWords") != null){
         selectedWords = getArguments().getStringArrayList("indSelectedWords");
       }
+
+      if(getArguments().getString("filepath") != null){
+        RECORDED_FILE = getArguments().getString("filepath");
+        Log.d("Recorded File Path", RECORDED_FILE);
+      }
     }
   }
 
@@ -109,6 +120,48 @@ public class ContentsFragment extends Fragment {
 
     // Make the TextView clickable
     mainText.setMovementMethod(new LinkMovementMethod());
+
+    ImageView play = (ImageView) rootView.findViewById(R.id.imageView17);
+    play.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View view) {
+        try {
+
+          playBackPosition = mediaPlayer.getCurrentPosition();
+          mediaPlayer.pause();
+
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }
+    });
+
+    ImageView pause = (ImageView) rootView.findViewById(R.id.imageView18);
+    pause.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View view) {
+        try {
+          if (mediaPlayer != null) {
+            try {
+              mediaPlayer.release();
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+          }
+
+          mediaPlayer = new MediaPlayer();
+          mediaPlayer.setDataSource(RECORDED_FILE+"/q9_1.mp4");
+          //mediaPlayer.setLooping(false);
+          mediaPlayer.prepare();
+          mediaPlayer.start();
+          mediaPlayer.seekTo(playBackPosition);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    });
+
+
     return rootView;
   }
 

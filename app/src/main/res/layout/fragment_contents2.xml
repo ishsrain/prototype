@@ -2059,21 +2059,6 @@
               app:srcCompat="@drawable/line" />
           </LinearLayout>
 
-          <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:orientation="horizontal">
-
-            <ImageView
-              android:id="@+id/imageView24"
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:layout_weight="1"
-              app:srcCompat="@drawable/line" />
-          </LinearLayout>
         </TableRow>
       </TableLayout>
     </LinearLayout>

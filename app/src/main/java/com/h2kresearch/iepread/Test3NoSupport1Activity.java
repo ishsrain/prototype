@@ -104,6 +104,7 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
           intent.putExtra("t1Answers", t1Answers);
           intent.putExtra("t2Answers", t2Answers);
           intent.putExtra("t3Answers", t3Answers);
+          intent.putExtra("info", pre_intent.getStringExtra("info"));
 
           startActivity(intent);
         } else {
