@@ -283,18 +283,18 @@ public class ResultActivity extends AppCompatActivity
     } else if(index == 2) { // 읽기 유창성 검사
 
       try {
+        Bundle bundleWithSelectedIdx = new Bundle();
+        JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+        bundleWithSelectedIdx.putString("filepath", info.getString("filePath"));
         if(indSelectedWords != null){
-          Bundle bundleWithSelectedIdx = new Bundle();
           bundleWithSelectedIdx.putStringArrayList("indSelectedWords", indSelectedWords);
-          JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
-          bundleWithSelectedIdx.putString("filepath", info.getString("filePath"));
-
-          if (contentsFragment.getArguments() == null){
-            contentsFragment.setArguments(bundleWithSelectedIdx);
-          } else {
-            contentsFragment.getArguments().putAll(bundleWithSelectedIdx);
-          }
         }
+        if (contentsFragment.getArguments() == null){
+          contentsFragment.setArguments(bundleWithSelectedIdx);
+        } else {
+          contentsFragment.getArguments().putAll(bundleWithSelectedIdx);
+        }
+
       } catch (JSONException e) {
         e.printStackTrace();
       }

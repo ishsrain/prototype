@@ -126,21 +126,6 @@ public class ContentsFragment extends Fragment {
       @Override
       public void onClick(View view) {
         try {
-
-          playBackPosition = mediaPlayer.getCurrentPosition();
-          mediaPlayer.pause();
-
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    });
-
-    ImageView pause = (ImageView) rootView.findViewById(R.id.imageView18);
-    pause.setOnClickListener(new View.OnClickListener(){
-      @Override
-      public void onClick(View view) {
-        try {
           if (mediaPlayer != null) {
             try {
               mediaPlayer.release();
@@ -155,7 +140,21 @@ public class ContentsFragment extends Fragment {
           mediaPlayer.prepare();
           mediaPlayer.start();
           mediaPlayer.seekTo(playBackPosition);
+
         } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    });
+
+    ImageView pause = (ImageView) rootView.findViewById(R.id.imageView18);
+    pause.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View view) {
+        try {
+          playBackPosition = mediaPlayer.getCurrentPosition();
+          mediaPlayer.pause();
+        } catch (Exception e) {
           e.printStackTrace();
         }
       }
