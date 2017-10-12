@@ -12,9 +12,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ResultActivity extends AppCompatActivity
-    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener, Contents5Fragment.OnFragmentInteractionListener, Contents6Fragment.OnFragmentInteractionListener, ContentsFragment.OnReadingGradeListener,
-    MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener, Menutop3Fragment.OnFragmentInteractionListener,
-    ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener, Contents3Fragment.OnFragmentInteractionListener, Contents4Fragment.OnFragmentInteractionListener, ContentsMonthFragment.OnFragmentInteractionListener, ContentsWeekFragment.OnFragmentInteractionListener {
+    implements MenuleftFragment.OnFragmentInteractionListener, Contents2Fragment.OnGradeListener,
+    Contents5Fragment.OnFragmentInteractionListener,
+    Contents6Fragment.OnFragmentInteractionListener, ContentsFragment.OnReadingGradeListener,
+    MenutopFragment.OnFragmentInteractionListener, Menutop2Fragment.OnFragmentInteractionListener,
+    Menutop3Fragment.OnFragmentInteractionListener,
+    ContentsFragment.OnFragmentInteractionListener, Contents2Fragment.OnFragmentInteractionListener,
+    Contents3Fragment.OnFragmentInteractionListener,
+    Contents4Fragment.OnFragmentInteractionListener,
+    ContentsMonthFragment.OnFragmentInteractionListener,
+    ContentsWeekFragment.OnFragmentInteractionListener {
 
   MenutopFragment menutopFragment;
   Menutop2Fragment menutop2Fragment;
@@ -89,7 +96,8 @@ public class ResultActivity extends AppCompatActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_result);
 
-    menutopFragment = (MenutopFragment)getSupportFragmentManager().findFragmentById(R.id.fragment9);
+    menutopFragment = (MenutopFragment) getSupportFragmentManager()
+        .findFragmentById(R.id.fragment9);
     menutop2Fragment = new Menutop2Fragment();
     menutop3Fragment = new Menutop3Fragment();
 
@@ -113,64 +121,66 @@ public class ResultActivity extends AppCompatActivity
     t7Answers = pre_intent.getIntArrayExtra("t7Answers");
 
     // for test purposes
-    if(t1Answers == null){
+    if (t1Answers == null) {
       t1Answers = new int[t1RightAnswers.length];
     }
-    if(t2Answers == null){
+    if (t2Answers == null) {
       t2Answers = new int[t2RightAnswers.length];
     }
-    if(t3Answers == null){
+    if (t3Answers == null) {
       t3Answers = new int[t3RightAnswers.length];
     }
-    if(t4Answers == null){
+    if (t4Answers == null) {
       t4Answers = new int[t4RightAnswers.length];
     }
-    if(t6Answers == null){
+    if (t6Answers == null) {
       t6Answers = new int[t6RightAnswers.length];
     }
-    if(t7Answers == null){
+    if (t7Answers == null) {
       t7Answers = new int[t7RightAnswers.length];
     }
 
     // 객관식 점수 계산
-    for(int i=0; i<t1Answers.length; i++){
-      if(t1Answers[i] == t1RightAnswers[i]){
+    for (int i = 0; i < t1Answers.length; i++) {
+      if (t1Answers[i] == t1RightAnswers[i]) {
         t1Score += 1;
       }
     }
 
-    for(int i=0; i<t2Answers.length; i++){
-      if(t2Answers[i] == t2RightAnswers[i]){
+    for (int i = 0; i < t2Answers.length; i++) {
+      if (t2Answers[i] == t2RightAnswers[i]) {
         t2Score += 1;
       }
     }
 
-    for(int i=0; i<t3Answers.length; i++){
-      if(t3Answers[i] == t3RightAnswers[i]){
+    for (int i = 0; i < t3Answers.length; i++) {
+      if (t3Answers[i] == t3RightAnswers[i]) {
         t3Score += 1;
       }
     }
 
-    for(int i=0; i<t4Answers.length; i++){
-      if(t4Answers[i] == t4RightAnswers[i]){
+    for (int i = 0; i < t4Answers.length; i++) {
+      if (t4Answers[i] == t4RightAnswers[i]) {
         t4Score += 1;
       }
     }
 
-    for(int i=0; i<t6Answers.length; i++){
-      if(t6Answers[i] == t6RightAnswers[i]){
+    for (int i = 0; i < t6Answers.length; i++) {
+      if (t6Answers[i] == t6RightAnswers[i]) {
         t6Score += 1;
       }
     }
 
-    for(int i=0; i<t7Answers.length; i++){
-      if(t7Answers[i] == t7RightAnswers[i]){
+    for (int i = 0; i < t7Answers.length; i++) {
+      if (t7Answers[i] == t7RightAnswers[i]) {
         t7Score += 1;
       }
     }
 
-    Log.d("multiple grades sample", "t1score: "+t1Score+" t2score: "+t2Score+"t3score: "+t3Score);
-    Log.d("answers delivered", "t1Answers: "+t1Answers.length+" t2Answers: "+t2Answers.length);
+    Log.d("multiple grades sample",
+        "t1score: " + t1Score + " t2score: " + t2Score + "t3score: " + t3Score);
+    Log.d("answers delivered",
+        "t1Answers: " + t1Answers.length + " t2Answers: " + t2Answers.length);
     //ft = getSupportFragmentManager().beginTransaction();
 
     //test
@@ -181,7 +191,6 @@ public class ResultActivity extends AppCompatActivity
     t6Score = t6RightAnswers.length;
     t7Score = t7RightAnswers.length;*/
 
-
     try {
       result = new JSONObject(getIntent().getStringExtra("result"));
       JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
@@ -189,24 +198,29 @@ public class ResultActivity extends AppCompatActivity
       Bundle bundleWithFilePath = new Bundle();
       bundleWithFilePath.putString("filepath", info.getString("filePath"));
 
-      if (contents2Fragment.getArguments() == null){
+      if (contents2Fragment.getArguments() == null) {
         contents2Fragment.setArguments(bundleWithFilePath);
       } else {
         contents2Fragment.getArguments().putAll(bundleWithFilePath);
       }
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents2Fragment).commit();
     } catch (JSONException e) {
       e.printStackTrace();
     }
-    getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
+    getSupportFragmentManager().beginTransaction()
+        .replace(R.id.contentsContainer, contents2Fragment).commit();
   }
 
   public void onMenutopFragmentChanged(int index) {
-    if(index == 1){ // 주관식 채점하기
-      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutopFragment).commit();  // 주관식 채점하기 메뉴
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit(); // 의미/무의미 단어 읽기 내용
-    } else if(index == 2) { // 채점결과 학인하기
-      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop2Fragment).commit(); // 채점결과 확인하기 메뉴
+    if (index == 1) { // 주관식 채점하기
+      getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutopFragment)
+          .commit();  // 주관식 채점하기 메뉴
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents2Fragment).commit(); // 의미/무의미 단어 읽기 내용
+    } else if (index == 2) { // 채점결과 학인하기
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.topMenuContainer, menutop2Fragment).commit(); // 채점결과 확인하기 메뉴
 
       Bundle bundleWithTestResults = new Bundle();
       bundleWithTestResults.putInt("t1Score", t1Score);
@@ -230,52 +244,55 @@ public class ResultActivity extends AppCompatActivity
       bundleWithTestResults.putIntArray("t6RightAnswers", t6RightAnswers);
       bundleWithTestResults.putIntArray("t7RightAnswers", t7RightAnswers);
 
-      if (contents3Fragment.getArguments() == null){
+      if (contents3Fragment.getArguments() == null) {
         contents3Fragment.setArguments(bundleWithTestResults);
       } else {
         contents3Fragment.getArguments().putAll(bundleWithTestResults);
       }
 
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit(); // 객관식 채점결과 내용
-    } else if(index == 3) { // IEP 확인하기
-        Bundle bundle = new Bundle();
-        bundle.putInt("diagnosisResult", diagnosisResult);
-        if(contents4Fragment.getArguments() == null){
-            contents4Fragment.setArguments(bundle);
-        } else {
-            contents4Fragment.getArguments().putAll(bundle);
-        }
-        getSupportFragmentManager().beginTransaction().replace(R.id.topMenuContainer, menutop3Fragment).commit(); // IEP 확인하기 메뉴
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit(); // 학기별 교육내용 내용
-      if(subjectiveCompleted != 1) { // 주관식 채점이 안된 상태로 IEP를 확인하려고 할 때
-          Log.d("IEP error", "보고 말하기 채점을 완료해주세요.");
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents3Fragment).commit(); // 객관식 채점결과 내용
+    } else if (index == 3) { // IEP 확인하기
+      Bundle bundle = new Bundle();
+      bundle.putInt("diagnosisResult", diagnosisResult);
+      if (contents4Fragment.getArguments() == null) {
+        contents4Fragment.setArguments(bundle);
+      } else {
+        contents4Fragment.getArguments().putAll(bundle);
+      }
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.topMenuContainer, menutop3Fragment).commit(); // IEP 확인하기 메뉴
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents4Fragment).commit(); // 학기별 교육내용 내용
+      if (subjectiveCompleted != 1) { // 주관식 채점이 안된 상태로 IEP를 확인하려고 할 때
+        Log.d("IEP error", "보고 말하기 채점을 완료해주세요.");
       }
     }
   }
 
   public void onContentsFragmentChanged(int index) {
-    if(index == 0){ // 결과 전송하기
+    if (index == 0) { // 결과 전송하기
       Intent intent = new Intent(getBaseContext(), SendActivity.class);
 
-      intent.putExtra("t1Answers", t1Answers);
-      intent.putExtra("t2Answers", t2Answers);
-      intent.putExtra("t3Answers", t3Answers);
-      intent.putExtra("t4Answers", t4Answers);
-      intent.putExtra("t6Answers", t6Answers);
-      intent.putExtra("t7Answers", t7Answers);
-      intent.putExtra("info", getIntent().getStringExtra("info"));
+//      intent.putExtra("t1Answers", t1Answers);
+//      intent.putExtra("t2Answers", t2Answers);
+//      intent.putExtra("t3Answers", t3Answers);
+//      intent.putExtra("t4Answers", t4Answers);
+//      intent.putExtra("t6Answers", t6Answers);
+//      intent.putExtra("t7Answers", t7Answers);
+//      intent.putExtra("info", getIntent().getStringExtra("info"));
       intent.putExtra("result", result.toString());
 
       startActivity(intent);
     }
-    if(index == 1){ // 의미/무의미 단어 읽기
+    if (index == 1) { // 의미/무의미 단어 읽기
 
       try {
         Bundle bundleWithFilePath = new Bundle();
         JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
         bundleWithFilePath.putString("filepath", info.getString("filePath"));
 
-        if (contents2Fragment.getArguments() == null){
+        if (contents2Fragment.getArguments() == null) {
           contents2Fragment.setArguments(bundleWithFilePath);
         } else {
           contents2Fragment.getArguments().putAll(bundleWithFilePath);
@@ -284,17 +301,18 @@ public class ResultActivity extends AppCompatActivity
         e.printStackTrace();
       }
 
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents2Fragment).commit();
-    } else if(index == 2) { // 읽기 유창성 검사
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents2Fragment).commit();
+    } else if (index == 2) { // 읽기 유창성 검사
 
       try {
         Bundle bundleWithSelectedIdx = new Bundle();
         JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
         bundleWithSelectedIdx.putString("filepath", info.getString("filePath"));
-        if(indSelectedWords != null){
+        if (indSelectedWords != null) {
           bundleWithSelectedIdx.putStringArrayList("indSelectedWords", indSelectedWords);
         }
-        if (contentsFragment.getArguments() == null){
+        if (contentsFragment.getArguments() == null) {
           contentsFragment.setArguments(bundleWithSelectedIdx);
         } else {
           contentsFragment.getArguments().putAll(bundleWithSelectedIdx);
@@ -304,8 +322,9 @@ public class ResultActivity extends AppCompatActivity
         e.printStackTrace();
       }
 
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsFragment).commit();
-    } else if(index == 3) { // 객관식 채점 결과 확인하기
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contentsFragment).commit();
+    } else if (index == 3) { // 객관식 채점 결과 확인하기
       Bundle bundleWithTestResults = new Bundle();
       bundleWithTestResults.putInt("t1Score", t1Score);
       bundleWithTestResults.putInt("t2Score", t2Score);
@@ -328,41 +347,45 @@ public class ResultActivity extends AppCompatActivity
       bundleWithTestResults.putIntArray("t6RightAnswers", t6RightAnswers);
       bundleWithTestResults.putIntArray("t7RightAnswers", t7RightAnswers);
 
-      if (contents3Fragment.getArguments() == null){
+      if (contents3Fragment.getArguments() == null) {
         contents3Fragment.setArguments(bundleWithTestResults);
       } else {
         contents3Fragment.getArguments().putAll(bundleWithTestResults);
       }
 
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents3Fragment).commit();
-    } else if(index == 4) { // 학기별 교육 내용
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents3Fragment).commit();
+    } else if (index == 4) { // 학기별 교육 내용
       Bundle bundle = new Bundle();
       bundle.putInt("diagnosisResult", diagnosisResult);
-      if(contents4Fragment.getArguments() == null){
+      if (contents4Fragment.getArguments() == null) {
         contents4Fragment.setArguments(bundle);
       } else {
         contents4Fragment.getArguments().putAll(bundle);
       }
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents4Fragment).commit();
-    } else if(index == 5) { // 월별 교육 내용
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents4Fragment).commit();
+    } else if (index == 5) { // 월별 교육 내용
       Bundle bundle = new Bundle();
       bundle.putInt("diagnosisResult", diagnosisResult);
-      if (contentsMFragment.getArguments() == null){
+      if (contentsMFragment.getArguments() == null) {
         contentsMFragment.setArguments(bundle);
       } else {
         contentsMFragment.getArguments().putAll(bundle);
       }
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsMFragment).commit();
-    } else if(index == 6) { // 주별 교육 내용
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contentsMFragment).commit();
+    } else if (index == 6) { // 주별 교육 내용
       Bundle bundle = new Bundle();
       bundle.putInt("diagnosisResult", diagnosisResult);
-      if (contentsWFragment.getArguments() == null){
+      if (contentsWFragment.getArguments() == null) {
         contentsWFragment.setArguments(bundle);
       } else {
         contentsWFragment.getArguments().putAll(bundle);
       }
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contentsWFragment).commit();
-    } else if(index == 7) { // 주관식 채점 결과 확인하기
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contentsWFragment).commit();
+    } else if (index == 7) { // 주관식 채점 결과 확인하기
       Bundle bundleWithTestResults = new Bundle();
       bundleWithTestResults.putIntArray("t1Answers", grades[0]);
       bundleWithTestResults.putIntArray("t2Answers", grades[1]);
@@ -382,13 +405,14 @@ public class ResultActivity extends AppCompatActivity
       bundleWithTestResults.putInt("t7Score", t7Score2);
       bundleWithTestResults.putInt("t8Score", t8Score2);
 
-      if (contents5Fragment.getArguments() == null){
+      if (contents5Fragment.getArguments() == null) {
         contents5Fragment.setArguments(bundleWithTestResults);
       } else {
         contents5Fragment.getArguments().putAll(bundleWithTestResults);
       }
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents5Fragment).commit();
-    } else if(index == 8) { // 최종 결과 확인하기
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents5Fragment).commit();
+    } else if (index == 8) { // 최종 결과 확인하기
       Bundle bundleWithTestResults = new Bundle();
 
       bundleWithTestResults.putInt("t1ScoreFinal", t1Score + t1Score2);
@@ -402,23 +426,24 @@ public class ResultActivity extends AppCompatActivity
       bundleWithTestResults.putInt("totalWords", numTotalWords);
       bundleWithTestResults.putInt("mistakenWords", numMistakenWords);
 
-      if (contents6Fragment.getArguments() == null){
+      if (contents6Fragment.getArguments() == null) {
         contents6Fragment.setArguments(bundleWithTestResults);
       } else {
         contents6Fragment.getArguments().putAll(bundleWithTestResults);
       }
-      getSupportFragmentManager().beginTransaction().replace(R.id.contentsContainer, contents6Fragment).commit();
+      getSupportFragmentManager().beginTransaction()
+          .replace(R.id.contentsContainer, contents6Fragment).commit();
     }
   }
 
   @Override
-  public void onFragmentInteraction(Uri uri){
+  public void onFragmentInteraction(Uri uri) {
 
   }
 
   // 읽기 유창성 채점 결과 수신
   @Override
-  public void onReadingGradeSet(int totalWords, int mistakenWords, ArrayList selectedWords){
+  public void onReadingGradeSet(int totalWords, int mistakenWords, ArrayList selectedWords) {
 
     try {
       numTotalWords = totalWords;
@@ -426,7 +451,7 @@ public class ResultActivity extends AppCompatActivity
       readingProficiencyScore = (double) 100 * (numTotalWords - numMistakenWords) / numTotalWords;
       indSelectedWords = selectedWords;
 
-      if(!result.isNull("part9")) {
+      if (!result.isNull("part9")) {
         result.remove("part9");
       }
 
@@ -448,26 +473,29 @@ public class ResultActivity extends AppCompatActivity
   }
 
   @Override
-  public void onGradeSet(int[][] gradeResults){
+  public void onGradeSet(int[][] gradeResults) {
     // 주관식 채점 결과 수신
     grades = gradeResults;
 
     try {
-      for(int i=0; i<8; i++){
-        JSONObject part = result.getJSONObject("part"+(i+1));
-        JSONArray voice = part.getJSONArray("voice");
+      for (int i = 0; i < 8; i++) {
+        if (!result.isNull("part" + (i + 1))) {
+          JSONObject part = result.getJSONObject("part" + (i + 1));
+          JSONArray voice = part.getJSONArray("voice");
 
-        for(int j=0; j<voice.length(); j++) {
-          if(grades[i][j] == 1) {
-            voice.getJSONObject(j).put("correct", "true");
-          } else {
-            voice.getJSONObject(j).put("correct", "false");
+          for (int j = 0; j < voice.length(); j++) {
+            if (grades[i][j] == 1) {
+              voice.getJSONObject(j).put("correct", "true");
+            } else if (grades[i][j] == 0) {
+              voice.getJSONObject(j).put("correct", "false");
+            }
           }
         }
       }
     } catch (JSONException e) {
       e.printStackTrace();
     }
+    Log.d("JSON Result", result.toString());
 
     t1Score2 = sum(grades[0]);
     t2Score2 = sum(grades[1]);
@@ -478,36 +506,40 @@ public class ResultActivity extends AppCompatActivity
     t7Score2 = sum(grades[6]);
     t8Score2 = sum(grades[7]);
 
-    if (((double) t1Score + t1Score2)/(t1RightAnswers.length + 3) < cutThreshold) { // 쉬운모음
-        diagnosisResult = 0; // IEP 1단계
-    } else if (((double) t2Score + t2Score2)/(t2RightAnswers.length + 3) < cutThreshold) { // 자음
-        diagnosisResult = 1; // IEP 2단계
-    } else if (((double) t3Score + t3Score2)/(t3RightAnswers.length + 3) < cutThreshold) { // 쉬운음절
-        diagnosisResult = 1; // IEP 2단계
-    } else if (((double) t4Score + t4Score2)/(t4RightAnswers.length + 3) < cutThreshold) { // 복잡한모음
-        diagnosisResult = 2; // IEP 3단계
+    if (((double) t1Score + t1Score2) / (t1RightAnswers.length + 3) < cutThreshold) { // 쉬운모음
+      diagnosisResult = 0; // IEP 1단계
+    } else if (((double) t2Score + t2Score2) / (t2RightAnswers.length + 3) < cutThreshold) { // 자음
+      diagnosisResult = 1; // IEP 2단계
+    } else if (((double) t3Score + t3Score2) / (t3RightAnswers.length + 3) < cutThreshold) { // 쉬운음절
+      diagnosisResult = 1; // IEP 2단계
+    } else if (((double) t4Score + t4Score2) / (t4RightAnswers.length + 3)
+        < cutThreshold) { // 복잡한모음
+      diagnosisResult = 2; // IEP 3단계
     } else if ((double) t5Score2 / 8 < cutThreshold) { // 쉬운단어
-        diagnosisResult = 2; // IEP 3단계
-    } else if (((double) t6Score + t6Score2)/(t6RightAnswers.length + 3) < cutThreshold) { // 쉬운받침
-        diagnosisResult = 3; // IEP 4단계
-    } else if (((double) t7Score + t7Score2)/(t7RightAnswers.length + 3) < cutThreshold) { // 복잡한받침
-        diagnosisResult = 3; // IEP 4단계
+      diagnosisResult = 2; // IEP 3단계
+    } else if (((double) t6Score + t6Score2) / (t6RightAnswers.length + 3) < cutThreshold) { // 쉬운받침
+      diagnosisResult = 3; // IEP 4단계
+    } else if (((double) t7Score + t7Score2) / (t7RightAnswers.length + 3)
+        < cutThreshold) { // 복잡한받침
+      diagnosisResult = 3; // IEP 4단계
     } else if ((double) t8Score2 / 8 < cutThreshold) { // 복잡한단어
-        diagnosisResult = 4; // IEP 5단계
+      diagnosisResult = 4; // IEP 5단계
     } else { // 읽기유창성
-        diagnosisResult = 5; // IEP 6단계
+      diagnosisResult = 5; // IEP 6단계
     }
 
     subjectiveCompleted = 1; //주관식 채점 완료
 
-    Log.d("voice grades sample", "t1score2: "+t1Score2+" t2score2: "+t2Score2+"t3score2: "+t3Score2);
+    Log.d("voice grades sample",
+        "t1score2: " + t1Score2 + " t2score2: " + t2Score2 + "t3score2: " + t3Score2);
   }
 
   public int sum(int[] array) {
     int sum = 0;
 
-    for (int i = 0; i < array.length; i++)
+    for (int i = 0; i < array.length; i++) {
       sum += array[i];
+    }
 
     return sum;
   }

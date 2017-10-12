@@ -93,7 +93,10 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test1vowel2);
 
-    playInstructionAudio();
+    //playInstructionAudio();
+    Intent tutorialIntent = new Intent(getBaseContext(), TutorialActivity.class);
+    tutorialIntent.putExtra("tutorial", 2);
+    startActivity(tutorialIntent);
 
     // ProgressBar
     progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -353,4 +356,5 @@ public class Test1Vowel2Activity extends AppCompatActivity {
       } catch (InterruptedException e) {}
     }
   };
+
 }

@@ -23,6 +23,7 @@ public class TestStartActivity extends AppCompatActivity {
       public void run() {
         Intent intent = new Intent(getBaseContext(), Test1Vowel1Activity.class);
 
+        intent.putExtra("result", getIntent().getStringExtra("result"));
         intent.putExtra("info", getIntent().getStringExtra("info"));
         startActivity(intent);
         finish();

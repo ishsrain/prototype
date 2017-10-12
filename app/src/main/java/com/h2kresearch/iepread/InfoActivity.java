@@ -52,6 +52,9 @@ public class InfoActivity extends AppCompatActivity {
     buttonStart.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
+        //Intent intent = new Intent(getBaseContext(), Test8WordWithSupportActivity.class);
+
         // Current Time
         SimpleDateFormat sdfNow = new SimpleDateFormat("yyyyMMdd_HH24mmss");
         String time = sdfNow.format(new Date(System.currentTimeMillis()));
@@ -63,21 +66,20 @@ public class InfoActivity extends AppCompatActivity {
         dir.mkdirs();
 
         // Set JSONObject
-        JSONObject info;
-        info = new JSONObject();
+        JSONObject result = new JSONObject();
+        JSONObject info = new JSONObject();
         try {
           info.put("teacherName", teacherName.getText());
           info.put("teacherEmail", teacherEmail.getText());
           info.put("studentName", studentName.getText());
           info.put("studentNumber", studentNumber.getText());
           info.put("filePath",filePath);
+          result.put("info", info);
         } catch (JSONException e) {
           e.printStackTrace();
         }
         //System.out.println("info:"+info);
-
-        Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
-        //Intent intent = new Intent(getBaseContext(), SendActivity.class);
+        intent.putExtra("result", result.toString());
 
         intent.putExtra("info", info.toString());
         startActivity(intent);

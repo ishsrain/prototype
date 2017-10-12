@@ -98,7 +98,11 @@ public class Test1Vowel1Activity extends AppCompatActivity {
     t1Answers = new int[test1String.length];
 
     // for playing question audio
-    playInstructionAudio();
+//    playInstructionAudio();
+    Intent tutorialIntent = new Intent(getBaseContext(), TutorialActivity.class);
+    tutorialIntent.putExtra("tutorial", 1);
+    startActivity(tutorialIntent);
+
     //playQuestionAudio(indexString);
     replayImage = (ImageView) findViewById(R.id.imageView8);
 
@@ -122,8 +126,8 @@ public class Test1Vowel1Activity extends AppCompatActivity {
             Intent intent = new Intent(getBaseContext(), Test1Vowel2Activity.class);
 
             // Set JSONObject
-            JSONObject result = new JSONObject();
-            JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+            JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+//            JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
             JSONObject part = new JSONObject();
             JSONArray answer = new JSONArray();
 
@@ -141,7 +145,7 @@ public class Test1Vowel1Activity extends AppCompatActivity {
 
             part.put("objective", answer);
             result.put("part1", part);
-            result.put("info", info);
+//            result.put("info", info);
             Log.d("Result1_1", result.toString());
             intent.putExtra("result", result.toString());
 
@@ -248,5 +252,11 @@ public class Test1Vowel1Activity extends AppCompatActivity {
         return false;
       }
     });
+  }
+
+  @Override
+  protected void onRestart() {
+    super.onRestart();
+    playQuestionAudio(indexString);
   }
 }

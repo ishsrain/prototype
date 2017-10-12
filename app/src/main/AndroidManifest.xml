@@ -50,7 +50,8 @@
     <activity android:name=".ResultActivity" />
     <activity android:name=".TestEndActivity" />
     <activity android:name=".TestStartActivity" />
-    <activity android:name=".SendActivity"></activity>
+    <activity android:name=".SendActivity" />
+    <activity android:name=".TutorialActivity"></activity>
   </application>
 
 </manifest>
