@@ -97,7 +97,7 @@
                 android:layout_weight="4"
                 android:fadeScrollbars="false"
                 android:indeterminate="false"
-                android:max="23"
+                android:max="22"
                 android:progress="1"
                 android:progressBackgroundTint="#a6a6a6"
                 android:progressTint="#a6a6a6"

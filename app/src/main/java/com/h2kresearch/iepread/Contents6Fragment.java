@@ -107,7 +107,7 @@ public class Contents6Fragment extends Fragment {
     testName = (TextView) v.findViewById(R.id.testName1);
     testName.setText("1. 쉬운 모음 ("+t1ScoreFinal+"/13)");
     testName = (TextView) v.findViewById(R.id.testName2);
-    testName.setText("2. 자음 ("+t2ScoreFinal+"/23)");
+    testName.setText("2. 자음 ("+t2ScoreFinal+"/22)");
     testName = (TextView) v.findViewById(R.id.testName3);
     testName.setText("3. 쉬운 음절 ("+t3ScoreFinal+"/17)");
     testName = (TextView) v.findViewById(R.id.testName4);
@@ -131,7 +131,7 @@ public class Contents6Fragment extends Fragment {
     progressBar.setProgress(t1ScoreFinal);
 
     testResult = (TextView) v.findViewById(R.id.textView26);
-    testResult.setText("정답률: " + t2ScoreFinal * 100/23 + "%");
+    testResult.setText("정답률: " + t2ScoreFinal * 100/22 + "%");
     progressBar = (ProgressBar) v.findViewById(R.id.progressBar5);
     progressBar.setProgress(t2ScoreFinal);
 
@@ -166,10 +166,9 @@ public class Contents6Fragment extends Fragment {
     progressBar.setProgress(t8ScoreFinal);
 
     testResult = (TextView) v.findViewById(R.id.textView33);
-    testResult.setText("정답률: " + numAccurateWords * 100/numTotalWords + "%");
+    testResult.setText("정답률: " + numAccurateWords * 100/177 + "%");
     progressBar = (ProgressBar) v.findViewById(R.id.progressBar12);
     progressBar.setProgress(numAccurateWords);
-
 
       return v;
   }
