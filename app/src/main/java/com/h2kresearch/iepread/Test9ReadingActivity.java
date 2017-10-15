@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +22,20 @@ import org.json.JSONObject;
 
 public class Test9ReadingActivity extends AppCompatActivity {
 
+  public static final int THREAD_STOP = 0;
+  public static final int THREAD_START = 1;
+
+  int recordState = RECORD_READY;
+  public static final int RECORD_READY = 1;
+  public static final int RECORD_START = 2;
+  public static final int RECORD_STOP = 3;
+  public static final int PLAY_START = 4;
+  public static final int PLAY_STOP = 5;
+
   TextView test;
-  ProgressBar progressBar;
-  Button nextButton;
+  ProgressBar progressBar, timeBar;
+  ImageView recordButton;
+  Button next;
 
   Thread thread;
 
@@ -42,65 +56,45 @@ public class Test9ReadingActivity extends AppCompatActivity {
   MediaPlayer player = null;
   MediaRecorder recorder = null;
 
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void playInstructionAudio() {
+
+    resourceNumber = getResources().getIdentifier("i_t9_1", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test9reading);
 
-    // Record
-
-    File sdcard = Environment.getExternalStorageDirectory();
-    File file = new File(sdcard, "recorded.mp4");
-    RECORDED_FILE = file.getAbsolutePath();
-
-    // Get Path
-    try {
-      JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
-      String RECORDED_DIR = info.getString("filePath");
-      RECORDED_FILE = RECORDED_DIR + "/q9_1.mp4";
-      //Log.d("Recoded File Path", RECORDED_FILE);
-    } catch (JSONException e) {
-      e.printStackTrace();
-    }
+    playInstructionAudio();
 
     // TextView
     test = (TextView) findViewById(R.id.textView10);
-    test.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-
-        thread = new Thread(new Runnable() {
-          @Override
-          public void run() {
-
-            // Progress Bar Working
-            for (int i = 0; i < msTime; i++) {
-              progressBar.setProgress(i);
-              try {
-                Thread.sleep(1);
-              } catch (InterruptedException e) {
-                e.printStackTrace();
-              }
-            }
-
-            // Progress Bar Init
-            progressBar.setProgress(0);
-
-          }
-        });
-
-        thread.start();
-        recordFunction();
-      }
-    });
 
     // ProgressBar
     progressBar = (ProgressBar) findViewById(R.id.progressBar2);
     progressBar.setMax(msTime);
 
     // Next Button
-    nextButton = (Button) findViewById(R.id.button4);
-    nextButton.setOnClickListener(new OnClickListener() {
+    next = (Button) findViewById(R.id.button4);
+    next.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
         // for recording selected answers
@@ -126,65 +120,196 @@ public class Test9ReadingActivity extends AppCompatActivity {
         startActivity(intent);
       }
     });
-  }
 
-  private void recordFunction() {
+    // TimeBar
+    timeBar = (ProgressBar) findViewById(R.id.progressBar6);
+    timeBar.setMax(msTime);
 
-    // Recording
-    if (recorder != null) {
-      recorder.stop();
-      recorder.release();
-      recorder = null;
-    }
-
-    recorder = new MediaRecorder();
-
-    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-    recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-    recorder.setMaxDuration(40 * 1000);
-    recorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
+    // Record Button
+    handler.sendEmptyMessage(RECORD_READY);
+    recordButton = (ImageView) findViewById(R.id.imageView10);
+    recordButton.setOnClickListener(new OnClickListener() {
       @Override
-      public void onInfo(MediaRecorder mr, int what, int extra) {
-        if(what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED){
-          if (recorder == null)
-            return;
+      public void onClick(View view) {
 
-          recorder.stop();
-          recorder.release();
-          recorder = null;
-          //Toast.makeText(getApplicationContext(), "3초가 지나 녹음이 중지되었습니다", Toast.LENGTH_LONG).show();
+        if(thread != null) {
+          // Thread Stop
+          ButtonStateChange(THREAD_STOP);
+        }
+        else {
+          killMediaPlayer();
+          thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+              try {
+                // Progress Bar Working
+                for (int i = 0; i < msTime; i++) {
+                  timeBar.setProgress(i);
+                  Thread.sleep(1);
+                }
+                // Thread Stop
+                ButtonStateChange(THREAD_STOP);
+              } catch (InterruptedException e) {}
+            }
+          });
 
-          // Playing
-//          if (player != null) {
-//            player.stop();
-//            player.release();
-//            player = null;
-//          }
-//
-////          Toast.makeText(getApplicationContext(), "녹음된 파일을 재생합니다.", Toast.LENGTH_LONG).show();
-//          try {
-//            player = new MediaPlayer();
-//
-//            player.setDataSource(RECORDED_FILE);
-//            player.prepare();
-//            player.start();
-//          } catch (Exception e) {
-//            Log.e("SampleAudioRecorder", "Audio play failed.", e);
-//          }
+          // Thread Start
+          ButtonStateChange(THREAD_START);
+          thread.start();
         }
       }
     });
 
-    recorder.setOutputFile(RECORDED_FILE);
+  }
 
+  private void RecordStart() {
     try {
-//      Toast.makeText(getApplicationContext(), "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
+      if (recorder != null) {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+      }
 
+      // Get Path
+      JSONObject info = new JSONObject(getIntent().getStringExtra("info"));
+      String RECORDED_DIR = info.getString("filePath");
+      RECORDED_FILE = RECORDED_DIR + "/q9_1.mp4";
+      //Log.d("Recoded File Path", RECORDED_FILE);
+
+      recorder = new MediaRecorder();
+      recorder.setOutputFile(RECORDED_FILE);
+      recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+      recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+      recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+      recorder.setMaxDuration(40 * 1000);
+      recorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
+        @Override
+        public void onInfo(MediaRecorder mr, int what, int extra) {
+          if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
+            if (recorder == null) {
+              return;
+            }
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+            //Toast.makeText(getApplicationContext(), "3초가 지나 녹음이 중지되었습니다", Toast.LENGTH_LONG).show();
+          }
+        }
+      });
       recorder.prepare();
+//      Toast.makeText(getApplicationContext(), "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
       recorder.start();
-    } catch (Exception ex) {
-      Log.e("SampleAudioRecorder", "Exception : ", ex);
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
     }
   }
+
+  private void RecordStop() {
+    try {
+      if (recorder != null) {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+      }
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
+    }
+  }
+
+  private void PlayStart() {
+    try {
+      if (player != null) {
+        player.stop();
+        player.release();
+        player = null;
+      }
+      player = new MediaPlayer();
+      player.setDataSource(RECORDED_FILE);
+      player.prepare();
+//      Toast.makeText(getApplicationContext(), "녹음된 파일을 재생합니다.", Toast.LENGTH_LONG).show();
+      player.start();
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
+    }
+  }
+
+  private void PlayStop() {
+    try {
+      if (player != null) {
+        player.stop();
+        player.release();
+        player = null;
+      }
+    } catch (Exception e) {
+      Log.e("SampleAudioRecorder", "Exception : ", e);
+    }
+  }
+
+  public void ButtonStateChange(int input){
+    if(input == THREAD_START) {
+      if(recordState == RECORD_READY) {
+        // Record START
+        recordState = RECORD_START;
+        handler.sendEmptyMessage(RECORD_STOP);
+        RecordStart();
+      } else if(recordState == RECORD_STOP){
+        // Play START
+        recordState = PLAY_START;
+        handler.sendEmptyMessage(RECORD_STOP);
+        PlayStart();
+      } else if(recordState == PLAY_STOP) {
+        // Play START
+        recordState = PLAY_START;
+        handler.sendEmptyMessage(RECORD_STOP);
+        PlayStart();
+      }
+    } else if(input == THREAD_STOP) {
+      // Kill Thread
+      thread.interrupt();
+      thread = null;
+
+      if (recordState == RECORD_START) {
+        // Record Stop
+        recordState = RECORD_STOP;
+        handler.sendEmptyMessage(PLAY_START);
+        RecordStop();
+      } else if (recordState == PLAY_START) {
+        // Play Stop
+        recordState = PLAY_STOP;
+        handler.sendEmptyMessage(PLAY_START);
+        PlayStop();
+      }
+    }
+  }
+
+  // Handler
+  Handler handler = new Handler() {
+    public void handleMessage(Message msg) {
+      try {
+        if (msg.what == RECORD_READY || msg.what == RECORD_START) {
+          timeBar.setProgress(0);
+//          retry.setVisibility(View.INVISIBLE);
+          next.setVisibility(View.INVISIBLE);
+          recordButton.setImageResource(R.drawable.record);
+          recordButton.setEnabled(false);
+          Thread.sleep(100);
+          recordButton.setEnabled(true);
+        } else if (msg.what == RECORD_STOP || msg.what == PLAY_STOP) {
+          timeBar.setProgress(0);
+          recordButton.setImageResource(R.drawable.stop);
+          recordButton.setEnabled(false);
+          Thread.sleep(100);
+          recordButton.setEnabled(true);
+        } else if (msg.what == PLAY_START) {
+          timeBar.setProgress(0);
+//          retry.setVisibility(View.VISIBLE);
+          next.setVisibility(View.VISIBLE);
+          recordButton.setImageResource(R.drawable.replay);
+          recordButton.setEnabled(false);
+          Thread.sleep(100);
+          recordButton.setEnabled(true);
+        }
+      } catch (InterruptedException e) {}
+    }
+  };
 }
