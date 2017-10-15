@@ -365,4 +365,9 @@ public class Test8WordWithSupportActivity extends AppCompatActivity {
       } catch (InterruptedException e) {}
     }
   };
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

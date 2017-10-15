@@ -259,4 +259,9 @@ public class Test1Vowel1Activity extends AppCompatActivity {
     super.onRestart();
     playQuestionAudio(indexString);
   }
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

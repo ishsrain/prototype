@@ -257,4 +257,9 @@ public class Test7ComplexSupport1Activity extends AppCompatActivity {
       }
     });
   }
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

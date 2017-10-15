@@ -357,4 +357,8 @@ public class Test1Vowel2Activity extends AppCompatActivity {
     }
   };
 
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

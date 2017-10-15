@@ -312,4 +312,9 @@ public class Test9ReadingActivity extends AppCompatActivity {
       } catch (InterruptedException e) {}
     }
   };
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

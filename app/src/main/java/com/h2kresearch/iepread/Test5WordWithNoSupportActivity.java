@@ -355,4 +355,9 @@ public class Test5WordWithNoSupportActivity extends AppCompatActivity {
       } catch (InterruptedException e) {}
     }
   };
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

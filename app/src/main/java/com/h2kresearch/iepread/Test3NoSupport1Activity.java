@@ -241,4 +241,9 @@ public class Test3NoSupport1Activity extends AppCompatActivity {
       }
     });
   }
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

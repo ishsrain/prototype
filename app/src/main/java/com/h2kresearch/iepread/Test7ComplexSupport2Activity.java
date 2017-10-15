@@ -364,4 +364,9 @@ public class Test7ComplexSupport2Activity extends AppCompatActivity {
       } catch (InterruptedException e) {}
     }
   };
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }
