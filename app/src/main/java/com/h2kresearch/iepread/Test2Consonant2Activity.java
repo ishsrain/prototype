@@ -67,10 +67,35 @@ public class Test2Consonant2Activity extends AppCompatActivity {
   int[] t1Answers;
   int[] t2Answers;
 
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void playInstructionAudio() {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("i_t2_2", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test2consonant2);
+
+    playInstructionAudio();
 
     // Record
     sdcard = Environment.getExternalStorageDirectory();
@@ -165,6 +190,7 @@ public class Test2Consonant2Activity extends AppCompatActivity {
     recordButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
+        killMediaPlayer();
 
         if(thread != null) {
           // Thread Stop

@@ -42,10 +42,35 @@ public class Test9ReadingActivity extends AppCompatActivity {
   MediaPlayer player = null;
   MediaRecorder recorder = null;
 
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void playInstructionAudio() {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("i_t9_1", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test9reading);
+
+    playInstructionAudio();
 
     // Record
 
@@ -104,6 +129,7 @@ public class Test9ReadingActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         // for recording selected answers
+        killMediaPlayer();
         Intent pre_intent = getIntent();
         t1Answers = pre_intent.getIntArrayExtra("t1Answers");
         t2Answers = pre_intent.getIntArrayExtra("t2Answers");

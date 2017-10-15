@@ -1,6 +1,7 @@
 package com.h2kresearch.iepread;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,10 +16,34 @@ public class TestEndActivity extends AppCompatActivity {
   int[] t6Answers;
   int[] t7Answers;
 
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void playInstructionAudio() {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("i_t10_1", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test_end);
+    playInstructionAudio();
 
     startLoading(); //comment for test, another commit test
   }
@@ -50,6 +75,6 @@ public class TestEndActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
       }
-    }, 1000);
+    }, 5000);
   }
 }
