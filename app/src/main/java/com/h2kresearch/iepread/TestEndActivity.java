@@ -77,4 +77,9 @@ public class TestEndActivity extends AppCompatActivity {
       }
     }, 5000);
   }
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

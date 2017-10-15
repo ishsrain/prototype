@@ -268,4 +268,9 @@ public class Test4ComplexVowel1Activity extends AppCompatActivity {
       }
     });
   }
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }

@@ -543,4 +543,9 @@ public class ResultActivity extends AppCompatActivity
 
     return sum;
   }
+
+  @Override
+  public void onBackPressed() {
+    //super.onBackPressed();
+  }
 }
