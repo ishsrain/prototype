@@ -36,6 +36,27 @@ public class Test2Consonant1Activity extends AppCompatActivity {
   MediaPlayer mediaPlayer;
   int resourceNumber;
 
+  private void playInstructionAudio() {
+        killMediaPlayer();
+
+        resourceNumber = getResources().getIdentifier("i_t2_1", "raw", getPackageName());
+
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+        mediaPlayer.setLooping(false);
+        mediaPlayer.start();
+
+      mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+          @Override
+          public void onCompletion(MediaPlayer mp) {
+              resourceNumber = getResources().getIdentifier("t2_1", "raw", getPackageName());
+              mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+              mediaPlayer.setLooping(false);
+              mediaPlayer.start();
+          }
+      });
+
+  }
+
   private void playQuestionAudio(int questionNumber) {
     killMediaPlayer();
 
@@ -68,6 +89,8 @@ public class Test2Consonant1Activity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test2consonant1);
 
+    playInstructionAudio();
+
     progressBar = (ProgressBar) findViewById(R.id.progressBar33);
     progressBar.setMax(test1String.length);
     progressBar.setProgress(indexString);
@@ -80,7 +103,7 @@ public class Test2Consonant1Activity extends AppCompatActivity {
     t2Answers = new int[test1String.length];
 
     // for playing question audio
-    playQuestionAudio(indexString);
+    //playQuestionAudio(indexString);
     replayImage = (ImageView) findViewById(R.id.imageView8);
 
     replayImage.setOnClickListener(new View.OnClickListener() {

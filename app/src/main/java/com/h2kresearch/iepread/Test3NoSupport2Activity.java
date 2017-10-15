@@ -68,10 +68,36 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
   int[] t2Answers;
   int[] t3Answers;
 
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void playInstructionAudio() {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("i_t3_2", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_test3nosupport2);
+
+    playInstructionAudio();
 
     // Record
     sdcard = Environment.getExternalStorageDirectory();
@@ -174,7 +200,7 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
     recordButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-
+        killMediaPlayer();
         if(thread != null) {
           // Thread Stop
           ButtonStateChange(THREAD_STOP);
