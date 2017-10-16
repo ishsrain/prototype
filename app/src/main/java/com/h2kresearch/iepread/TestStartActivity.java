@@ -1,6 +1,7 @@
 package com.h2kresearch.iepread;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class TestStartActivity extends AppCompatActivity {
         intent.putExtra("result", getIntent().getStringExtra("result"));
         intent.putExtra("info", getIntent().getStringExtra("info"));
         startActivity(intent);
+
         finish();
       }
     }, 3000);

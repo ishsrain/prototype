@@ -4,6 +4,7 @@ import android.Manifest;
 import android.Manifest.permission;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -28,6 +29,30 @@ public class InfoActivity extends AppCompatActivity {
   EditInfo studentName;
   EditInfo studentNumber;
   Button buttonStart;
+
+  MediaPlayer mediaPlayer;
+  int resourceNumber;
+
+  private void killMediaPlayer() {
+    if (mediaPlayer != null) {
+      try {
+        mediaPlayer.release();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void playInstructionAudio() {
+    killMediaPlayer();
+
+    resourceNumber = getResources().getIdentifier("i_t0_1", "raw", getPackageName());
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceNumber);
+    mediaPlayer.setLooping(false);
+    mediaPlayer.start();
+  }
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +99,8 @@ public class InfoActivity extends AppCompatActivity {
       }
     }
 
+    playInstructionAudio();
+
     // Info EditText
     teacherName = (EditInfo) findViewById(R.id.editText);
     teacherEmail = (EditInfo) findViewById(R.id.editText2);
@@ -99,10 +126,13 @@ public class InfoActivity extends AppCompatActivity {
     buttonStart.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
+        //Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
         //Intent intent = new Intent(getBaseContext(), Test8WordWithSupportActivity.class);
+        //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
+        //Intent intent = new Intent(getBaseContext(), Test2Consonant2Activity.class);
+        Intent intent = new Intent(getBaseContext(), TestEndActivity.class);
 
-        // Current Time
+          // Current Time
         SimpleDateFormat sdfNow = new SimpleDateFormat("yyyyMMdd_HH24mmss");
         String time = sdfNow.format(new Date(System.currentTimeMillis()));
 
@@ -130,6 +160,7 @@ public class InfoActivity extends AppCompatActivity {
 
         intent.putExtra("info", info.toString());
         startActivity(intent);
+        killMediaPlayer();
         //finish();
       }
     });
