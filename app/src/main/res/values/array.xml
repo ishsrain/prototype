@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="testpart">
+    <item >쉬운모음</item>
+    <item >자음</item>
+    <item >쉬운음절</item>
+    <item >복잡한모음</item>
+    <item >쉬운단어</item>
+    <item >쉬운받침</item>
+    <item >복잡한받침</item>
+    <item >복잡한단어</item>
+    <item >읽기유창성</item>
+    <item >진단종료</item>
+  </string-array>
+</resources>

@@ -126,11 +126,11 @@ public class InfoActivity extends AppCompatActivity {
     buttonStart.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        //Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
+        Intent intent = new Intent(getBaseContext(), TestStartActivity.class);
         //Intent intent = new Intent(getBaseContext(), Test8WordWithSupportActivity.class);
         //Intent intent = new Intent(getBaseContext(), ResultActivity.class);
         //Intent intent = new Intent(getBaseContext(), Test2Consonant2Activity.class);
-        Intent intent = new Intent(getBaseContext(), TestEndActivity.class);
+        //Intent intent = new Intent(getBaseContext(), TestEndActivity.class);
 
           // Current Time
         SimpleDateFormat sdfNow = new SimpleDateFormat("yyyyMMdd_HH24mmss");

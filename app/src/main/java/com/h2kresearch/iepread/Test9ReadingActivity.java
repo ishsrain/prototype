@@ -1,11 +1,13 @@
 package com.h2kresearch.iepread;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -162,6 +165,51 @@ public class Test9ReadingActivity extends AppCompatActivity {
       }
     });
 
+    TextView testStop = (TextView) findViewById(R.id.textView60);
+    testStop.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+
+        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(Test9ReadingActivity.this);
+        alert_confirm.setMessage("진단을 중단하시겠습니까?");
+        alert_confirm.setCancelable(false);
+
+        alert_confirm.setPositiveButton("네", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            // 'YES'
+            killMediaPlayer();
+            Intent pre_intent = getIntent();
+            t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+            t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+            t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+            t4Answers = pre_intent.getIntArrayExtra("t4Answers");
+            t6Answers = pre_intent.getIntArrayExtra("t6Answers");
+            t7Answers = pre_intent.getIntArrayExtra("t7Answers");
+
+            Intent intent = new Intent(getBaseContext(), TestEndActivity.class);
+
+            intent.putExtra("t1Answers", t1Answers);
+            intent.putExtra("t2Answers", t2Answers);
+            intent.putExtra("t3Answers", t3Answers);
+            intent.putExtra("t4Answers", t4Answers);
+            intent.putExtra("t6Answers", t6Answers);
+            intent.putExtra("t7Answers", t7Answers);
+            intent.putExtra("info", pre_intent.getStringExtra("info"));
+            intent.putExtra("result", pre_intent.getStringExtra("result"));
+
+            startActivity(intent);
+          }
+        });
+        alert_confirm.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {}
+        });
+
+        AlertDialog alert = alert_confirm.create();
+        alert.show();
+      }
+    });
   }
 
   private void RecordStart() {

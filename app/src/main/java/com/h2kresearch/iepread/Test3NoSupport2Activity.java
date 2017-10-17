@@ -1,5 +1,6 @@
 package com.h2kresearch.iepread;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -225,6 +227,64 @@ public class Test3NoSupport2Activity extends AppCompatActivity {
           ButtonStateChange(THREAD_START);
           thread.start();
         }
+      }
+    });
+
+    TextView testStop = (TextView) findViewById(R.id.textView60);
+    testStop.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View view) {
+
+        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(Test3NoSupport2Activity.this);
+        alert_confirm.setMessage("진단을 중단하시겠습니까?");
+        alert_confirm.setCancelable(false);
+
+        alert_confirm.setPositiveButton("네", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            // 'YES'
+            try {
+              Intent intent = new Intent(getBaseContext(), TestEndActivity.class);
+
+              // Set JSONObject
+              JSONObject result = new JSONObject(getIntent().getStringExtra("result"));
+              JSONObject part = result.getJSONObject("part3");
+              JSONArray answer = new JSONArray();
+
+              for(int i=0; i<3; i++) {
+                JSONObject q = new JSONObject();
+                q.put("index", i);
+                q.put("correct", "");
+                answer.put(q);
+              }
+
+              part.put("voice", answer);
+              //Log.d("Result", result.toString());
+              intent.putExtra("result", result.toString());
+
+              // for recording selected answers
+              Intent pre_intent = getIntent();
+              t1Answers = pre_intent.getIntArrayExtra("t1Answers");
+              t2Answers = pre_intent.getIntArrayExtra("t2Answers");
+              t3Answers = pre_intent.getIntArrayExtra("t3Answers");
+              intent.putExtra("t1Answers", t1Answers);
+              intent.putExtra("t2Answers", t2Answers);
+              intent.putExtra("t3Answers", t3Answers);
+              intent.putExtra("info", pre_intent.getStringExtra("info"));
+
+              startActivity(intent);
+            } catch (JSONException e) {
+              e.printStackTrace();
+            }
+          }
+        });
+        alert_confirm.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {}
+        });
+
+        AlertDialog alert = alert_confirm.create();
+        alert.show();
       }
     });
   }

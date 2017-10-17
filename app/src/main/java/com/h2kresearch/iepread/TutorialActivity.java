@@ -36,66 +36,67 @@ public class TutorialActivity extends AppCompatActivity {
   }
 
   public void playTutorial1() {
-    try {
-      playInstructionAudio("i_t1_1");
-      imageView.setImageResource(R.drawable.tutorial1);
 
-      AnimationDrawable animation = (AnimationDrawable) imageView.getDrawable();
-      animation.setOneShot(true);
-      animation.start();
-
-      AlertDialog.Builder alert_confirm = new AlertDialog.Builder(TutorialActivity.this);
-      alert_confirm.setMessage("튜토리얼을 계속하시겠습니까?").setCancelable(false).setPositiveButton("네",
-          new DialogInterface.OnClickListener() {
+    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(TutorialActivity.this);
+    alert_confirm.setMessage("튜토리얼을 계속하시겠습니까?").setCancelable(false).setPositiveButton("네",
+        new DialogInterface.OnClickListener() {
           @Override
-              public void onClick(DialogInterface dialog, int which) {
-                  // 'YES'
+          public void onClick(DialogInterface dialog, int which) {
+            // 'YES'
+            try {
+              playInstructionAudio("i_t1_1");
+              imageView.setImageResource(R.drawable.tutorial1);
+
+              AnimationDrawable animation = (AnimationDrawable) imageView.getDrawable();
+              animation.setOneShot(true);
+              animation.start();
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
           }
         }).setNegativeButton("아니오",
-          new DialogInterface.OnClickListener() {
+        new DialogInterface.OnClickListener() {
           @Override
-              public void onClick(DialogInterface dialog, int which) {
-                  // 'No'
-                  finish();
-                  killMediaPlayer();
-              }
+          public void onClick(DialogInterface dialog, int which) {
+            // 'No'
+            finish();
+            killMediaPlayer();
+          }
         });
-      AlertDialog alert = alert_confirm.create();
-      alert.show();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    AlertDialog alert = alert_confirm.create();
+    alert.show();
   }
 
   public void playTutorial2() {
-    try {
-      playInstructionAudio("i_t1_2");
-      imageView.setImageResource(R.drawable.tutorial2);
 
-      AnimationDrawable animation = (AnimationDrawable) imageView.getDrawable();
-      animation.setOneShot(true);
-      animation.start();
-        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(TutorialActivity.this);
-        alert_confirm.setMessage("튜토리얼을 계속하시겠습니까?").setCancelable(false).setPositiveButton("네",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 'YES'
-                    }
-                }).setNegativeButton("아니오",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 'No'
-                        finish();
-                        killMediaPlayer();
-                    }
-                });
-        AlertDialog alert = alert_confirm.create();
-        alert.show();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(TutorialActivity.this);
+    alert_confirm.setMessage("튜토리얼을 계속하시겠습니까?").setCancelable(false).setPositiveButton("네",
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            // 'YES'
+            try {
+              playInstructionAudio("i_t1_2");
+              imageView.setImageResource(R.drawable.tutorial2);
+
+              AnimationDrawable animation = (AnimationDrawable) imageView.getDrawable();
+              animation.setOneShot(true);
+              animation.start();
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+          }
+        }).setNegativeButton("아니오",
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            // 'No'
+            finish();
+            killMediaPlayer();
+          }
+        });
+    AlertDialog alert = alert_confirm.create();
+    alert.show();
   }
 
   private void killMediaPlayer() {
