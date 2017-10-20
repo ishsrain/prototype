@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -166,9 +167,9 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           button.setEnabled(false);
           //button.setBackgroundColor(Color.parseColor("#EDEDED"));
 
-          test1.setBackground(getDrawable(R.drawable.roundcorner));
+          test1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test1.setTextColor(Color.parseColor("#404040"));
-          test2.setBackground(getDrawable(R.drawable.roundcorner));
+          test2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test2.setTextColor(Color.parseColor("#404040"));
 
           test1.setText(test1String[indexString]);
@@ -176,7 +177,7 @@ public class Test2Consonant1Activity extends AppCompatActivity {
 
           if (indexString >= threeQuestionStartIndex) {
             test3.setVisibility(View.VISIBLE);
-            test3.setBackground(getDrawable(R.drawable.roundcorner));
+            test3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
             test3.setText(test3String[indexString]);
             test3.setTextColor(Color.parseColor("#404040"));
           }
@@ -197,11 +198,11 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           button.setEnabled(true);
           //button.setBackgroundColor(Color.parseColor("#7ABC4F"));
 
-          test1.setBackground(getDrawable(R.drawable.roundcorner_clicked));
+          test1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner_clicked));
           test1.setTextColor(Color.parseColor("#ffffff"));
-          test2.setBackground(getDrawable(R.drawable.roundcorner));
+          test2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test2.setTextColor(Color.parseColor("#404040"));
-          test3.setBackground(getDrawable(R.drawable.roundcorner));
+          test3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
 
           // for recording selected answers
@@ -218,11 +219,11 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           button.setEnabled(true);
           //button.setBackgroundColor(Color.parseColor("#7ABC4F"));
 
-          test1.setBackground(getDrawable(R.drawable.roundcorner));
+          test1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test1.setTextColor(Color.parseColor("#404040"));
-          test2.setBackground(getDrawable(R.drawable.roundcorner_clicked));
+          test2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner_clicked));
           test2.setTextColor(Color.parseColor("#ffffff"));
-          test3.setBackground(getDrawable(R.drawable.roundcorner));
+          test3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test3.setTextColor(Color.parseColor("#404040"));
 
           // for recording selected answers
@@ -240,11 +241,11 @@ public class Test2Consonant1Activity extends AppCompatActivity {
           button.setEnabled(true);
           //button.setBackgroundColor(Color.parseColor("#7ABC4F"));
 
-          test1.setBackground(getDrawable(R.drawable.roundcorner));
+          test1.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test1.setTextColor(Color.parseColor("#404040"));
-          test2.setBackground(getDrawable(R.drawable.roundcorner));
+          test2.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner));
           test2.setTextColor(Color.parseColor("#404040"));
-          test3.setBackground(getDrawable(R.drawable.roundcorner_clicked));
+          test3.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.roundcorner_clicked));
           test3.setTextColor(Color.parseColor("#ffffff"));
 
           // for recording selected answers

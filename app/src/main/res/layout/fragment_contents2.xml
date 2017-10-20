@@ -144,15 +144,18 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q1_1_2"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
 
           </LinearLayout>
@@ -192,7 +195,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q1_2_2"
@@ -200,7 +204,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
 
           </LinearLayout>
@@ -246,7 +251,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q1_3_2"
@@ -254,7 +260,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -331,7 +338,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q2_1_2"
@@ -339,7 +347,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -378,7 +387,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q2_2_2"
@@ -386,7 +396,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -431,7 +442,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q2_3_2"
@@ -439,7 +451,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -516,7 +529,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q3_1_2"
@@ -524,7 +538,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -563,7 +578,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q3_2_2"
@@ -571,7 +587,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -616,7 +633,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q3_3_2"
@@ -624,7 +642,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -701,7 +720,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q4_1_2"
@@ -709,7 +729,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -748,7 +769,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q4_2_2"
@@ -756,7 +778,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -801,7 +824,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q4_3_2"
@@ -809,7 +833,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -886,7 +911,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_1_2"
@@ -894,7 +920,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -933,7 +960,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_2_2"
@@ -941,7 +969,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -986,7 +1015,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_3_2"
@@ -994,7 +1024,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1033,7 +1064,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_4_2"
@@ -1041,7 +1073,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1086,7 +1119,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_5_2"
@@ -1094,7 +1128,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1133,7 +1168,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_6_2"
@@ -1141,7 +1177,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1186,7 +1223,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_7_2"
@@ -1194,7 +1232,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1233,7 +1272,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q5_8_2"
@@ -1241,7 +1281,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1309,7 +1350,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q6_1_2"
@@ -1317,7 +1359,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1356,7 +1399,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q6_2_2"
@@ -1364,7 +1408,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1409,7 +1454,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q6_3_2"
@@ -1417,7 +1463,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1494,7 +1541,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q7_1_2"
@@ -1502,7 +1550,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1541,7 +1590,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q7_2_2"
@@ -1549,7 +1599,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1594,7 +1645,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q7_3_2"
@@ -1602,7 +1654,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1679,7 +1732,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_1_2"
@@ -1687,7 +1741,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1726,7 +1781,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_2_2"
@@ -1734,7 +1790,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1779,7 +1836,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_3_2"
@@ -1787,7 +1845,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1826,7 +1885,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_4_2"
@@ -1834,7 +1894,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1879,7 +1940,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_5_2"
@@ -1887,7 +1949,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -1926,7 +1989,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_6_2"
@@ -1934,7 +1998,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>
@@ -1979,7 +2044,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_7_2"
@@ -1987,7 +2053,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
 
@@ -2026,7 +2093,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="1" />
+                android:text="1"
+                app:buttonTint="#404040" />
 
               <RadioButton
                 android:id="@+id/q8_8_2"
@@ -2034,7 +2102,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:buttonTint="@android:color/black"
-                android:text="0" />
+                android:text="0"
+                app:buttonTint="#404040" />
             </RadioGroup>
           </LinearLayout>
         </TableRow>

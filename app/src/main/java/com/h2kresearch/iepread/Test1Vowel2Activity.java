@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -165,7 +168,9 @@ public class Test1Vowel2Activity extends AppCompatActivity {
 
     // TextView
     test = (TextView) findViewById(R.id.textView9);
-    test.setLetterSpacing(0.3f);
+    if(VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+      test.setLetterSpacing(0.3f);
+    }
 
     // TimeBar
     timeBar = (ProgressBar) findViewById(R.id.progressBar6);
